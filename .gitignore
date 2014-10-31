@@ -1,3 +1,5 @@
 *.dll
 Debug/
 *.exe
+projetocg.opensdf
+projetocg.sdf

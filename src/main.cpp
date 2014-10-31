@@ -12,8 +12,10 @@
 
 using namespace cv;
 
+#include "hdrfunctions.h"
 
 int main(int argc, char** argv) {
+	/*
 	if (argc < 2) {
 		std::cout << "Precisa passar o nome dos arquivos coração! \n";    
 		return 0;
@@ -29,6 +31,8 @@ int main(int argc, char** argv) {
     fileName += "symmetric";
     fileName += extension;
     // imwrite(fileName.c_str(), result, compression_params);
+	*/
+	openhdr("imagem1.hdr");
 	return 0;
 
 }
