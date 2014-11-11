@@ -24,7 +24,7 @@ int main(int argc, char** argv)
 	observations.push_back(4);
 
 	LinearInterpolator li(observations, imagesToInterpolate, 1);
-	HdrImage final = li.calculateInterpolationOn(3);
+	HdrImage final = li.calculateInterpolationOn(2);
 	final.saveImageAsPng("output.png");
 	final.saveImageAsHdr("output.hdr");
 
