@@ -3,18 +3,20 @@
 #include "gaussinterpolator.h"
 
 HdrImage GaussianInterpolator::takeStep() {
-	FIBITMAP macaco;
-	HdrImage interpolation(&macaco);
+	int width = values_[0].getWidth();
+	int height = values_[0].getHeight();
+	HdrImage interpolation(width, height);
 	step++;
 	return interpolation;
 }
 
-HdrImage GaussianInterpolator::calculateInterpolationOn(double observation) {
+HdrImage GaussianInterpolator::calculateInterpolationOn(int observation) {
 	int numberOfObservations = observations_.size();
 	int middle = std::floor(numberOfObservations/2);
 	double medianObservation = observations_[middle];
 	double p = (observation-medianObservation)/interval_;
-	FIBITMAP macaco;
-	HdrImage interpolation(&macaco);
+	int width = values_[0].getWidth();
+	int height = values_[0].getHeight();
+	HdrImage interpolation(width, height);
 	return interpolation;
 }

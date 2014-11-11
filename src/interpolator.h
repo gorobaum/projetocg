@@ -8,16 +8,16 @@
 
 class Interpolator {
 public:
-	Interpolator(std::vector<double> observations, std::vector<HdrImage> values, double interval) :
+	Interpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
 		observations_(observations),
 		values_(values),
 		interval_(interval) {}
-	virtual HdrImage calculateInterpolationOn(double observation) = 0;
+	virtual HdrImage calculateInterpolationOn(int observation) = 0;
 	virtual HdrImage takeStep() = 0;
 protected:
-	std::vector<double> observations_;
+	std::vector<int> observations_;
 	std::vector<HdrImage> values_;
-	double interval_;
+	int interval_;
 	int step = 0;
 };
 

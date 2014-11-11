@@ -9,6 +9,7 @@ add_executable(main
 	src/main.cpp
 	src/gaussinterpolator.cpp
 	src/lagrangeinterpolator.cpp
+	src/linearinterpolator.cpp
 	src/hdrimage.cpp)
 
 include_directories("${FreeImage_INCLUDE_DIRS}")

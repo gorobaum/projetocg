@@ -8,7 +8,7 @@
 
 class LaGrangeInterpolator : public Interpolator {
 public:
-	HdrImage calculateInterpolationOn(double observation);
+	HdrImage calculateInterpolationOn(int observation);
 	HdrImage takeStep();
 };
 
