@@ -12,7 +12,7 @@ public:
 		observations_(observations),
 		values_(values),
 		interval_(interval) {}
-	virtual HdrImage calculateInterpolationOn(int observation) = 0;
+	virtual HdrImage calculateInterpolationOn(float observation) = 0;
 	virtual HdrImage takeStep() = 0;
 protected:
 	std::vector<int> observations_;

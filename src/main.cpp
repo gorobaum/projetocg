@@ -25,7 +25,8 @@ int main(int argc, char** argv)
 
 	LinearInterpolator li(observations, imagesToInterpolate, 1);
 	HdrImage final = li.calculateInterpolationOn(3);
-	final.saveImage("output.png");
+	final.saveImageAsPng("output.png");
+	final.saveImageAsHdr("output.hdr");
 
 	//std::cout << "Has pixeis " << FreeImage_GetHeight(bitmap) << "\n";
 

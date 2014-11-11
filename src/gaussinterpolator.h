@@ -9,7 +9,7 @@
 
 class GaussianInterpolator : public Interpolator {
 public:
-	HdrImage calculateInterpolationOn(int observation);
+	HdrImage calculateInterpolationOn(float observation);
 	HdrImage takeStep();
 };
 

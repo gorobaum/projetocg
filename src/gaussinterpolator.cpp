@@ -10,7 +10,7 @@ HdrImage GaussianInterpolator::takeStep() {
 	return interpolation;
 }
 
-HdrImage GaussianInterpolator::calculateInterpolationOn(int observation) {
+HdrImage GaussianInterpolator::calculateInterpolationOn(float observation) {
 	int numberOfObservations = observations_.size();
 	int middle = std::floor(numberOfObservations/2);
 	double medianObservation = observations_[middle];
