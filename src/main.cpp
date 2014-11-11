@@ -7,9 +7,8 @@
 
 int main(int argc, char** argv) 
 {
-	FreeImage_Initialise();
 	DLL_API void DLL_CALLCONV FreeImage_Initialise(BOOL load_local_plugins_only FI_DEFAULT(FALSE));
-	std::cout << FreeImage_GetVersion();
+	std::cout << FreeImage_GetVersion() << "\n";
 	FIBITMAP *bitmap = FreeImage_AllocateT(FIT_RGBAF, 320, 240);
 	if (bitmap) 
 	{
@@ -25,6 +24,7 @@ int main(int argc, char** argv)
 	{
 		FreeImage_Unload(bitmap3);
 	}
+	std::cout << "Has pixeis " << FreeImage_GetHeight(bitmap) << "\n";
 	DLL_API void DLL_CALLCONV FreeImage_DeInitialise();
 	return 0;
 }
