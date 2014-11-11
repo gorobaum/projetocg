@@ -8,7 +8,8 @@ find_package(FreeImage)
 add_executable(main 
 	src/main.cpp
 	src/gaussinterpolator.cpp
-	src/lagrangeinterpolator.cpp)
+	src/lagrangeinterpolator.cpp
+	src/hdrimage.cpp)
 
 include_directories("${FreeImage_INCLUDE_DIRS}")
 target_link_libraries(main ${FreeImage_LIBRARIES})
