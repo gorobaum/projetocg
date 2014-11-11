@@ -4,9 +4,11 @@
 #include <vector>
 #include <FreeImage.h>
 
+#include "hdrimage.h"
+
 class Interpolator {
 public:
-	Interpolator(std::vector<double> observations, std::vector<FIBITMAP*> values, double interval) :
+	Interpolator(std::vector<double> observations, std::vector<HdrImage> values, double interval) :
 		observations_(observations),
 		values_(values),
 		interval_(interval) {}
@@ -14,7 +16,7 @@ public:
 	virtual FIRGBAF takeStep() = 0;
 protected:
 	std::vector<double> observations_;
-	std::vector<FIBITMAP*> values_;
+	std::vector<HdrImage> values_;
 	double interval_;
 	int step = 0;
 };
