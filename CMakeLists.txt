@@ -6,7 +6,9 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmaketools")
 find_package(FreeImage)
 
 add_executable(main 
-	src/main.cpp)
+	src/main.cpp
+	src/gaussinterpolator.cpp
+	src/lagrangeinterpolator.cpp)
 
 include_directories("${FreeImage_INCLUDE_DIRS}")
 target_link_libraries(main ${FreeImage_LIBRARIES})

@@ -3,7 +3,9 @@
 #include <vector>
 #include <cstring>
 
-#include "FreeImage.h"
+#include <FreeImage.h>
+
+#include "gaussinterpolator.h"
 
 int main(int argc, char** argv) 
 {
@@ -22,9 +24,11 @@ int main(int argc, char** argv)
 	FIBITMAP *bitmap3 = FreeImage_Load(FIF_HDR, "lpbom.hdr", HDR_DEFAULT);
 	if(bitmap3)
 	{
+		RGBQUAD value;
+		FreeImage_GetPixelColor(bitmap3, 0, 0, &value);
+		std::cout << "Color in [0,0] = " << value.rgbRed << "\n";
 		FreeImage_Unload(bitmap3);
 	}
-	std::cout << "Has pixeis " << FreeImage_GetHeight(bitmap) << "\n";
 	DLL_API void DLL_CALLCONV FreeImage_DeInitialise();
 	return 0;
 }
