@@ -17,11 +17,19 @@ int main(int argc, char** argv)
 	FIBITMAP *bitmap2 = FreeImage_Load(FIF_PNG, "menuNew.png", PNG_DEFAULT);
 	if(bitmap2)
 	{
+		if (FreeImage_Save(FIF_BMP, bitmap2, "menuNew.bmp", BMP_DEFAULT)) 
+		{
+			// bitmap successfully saved!
+		}
 		FreeImage_Unload(bitmap2);
 	}
 	FIBITMAP *bitmap3 = FreeImage_Load(FIF_HDR, "lpbom.hdr", HDR_DEFAULT);
 	if(bitmap3)
 	{
+		if (FreeImage_Save(FIF_PNG, bitmap3, "lpbom.png", PNG_DEFAULT)) 
+		{
+			// bitmap successfully saved!
+		}
 		FreeImage_Unload(bitmap3);
 	}
 	std::cout << "Has pixeis " << FreeImage_GetHeight(bitmap) << "\n";
