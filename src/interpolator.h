@@ -12,8 +12,8 @@ public:
 		observations_(observations),
 		values_(values),
 		interval_(interval) {}
-	virtual FIRGBAF calculateInterpolationOn(double observation) = 0;
-	virtual FIRGBAF takeStep() = 0;
+	virtual HdrImage calculateInterpolationOn(double observation) = 0;
+	virtual HdrImage takeStep() = 0;
 protected:
 	std::vector<double> observations_;
 	std::vector<HdrImage> values_;

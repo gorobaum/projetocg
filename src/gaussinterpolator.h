@@ -5,11 +5,12 @@
 #include <FreeImage.h>
 
 #include "interpolator.h"
+#include "hdrimage.h"
 
 class GaussianInterpolator : public Interpolator {
 public:
-	FIRGBAF calculateInterpolationOn(double observation);
-	FIRGBAF takeStep();
+	HdrImage calculateInterpolationOn(double observation);
+	HdrImage takeStep();
 };
 
 #endif

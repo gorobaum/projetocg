@@ -8,8 +8,8 @@
 
 class LaGrangeInterpolator : public Interpolator {
 public:
-	FIRGBAF calculateInterpolationOn(double observation);
-	FIRGBAF takeStep();
+	HdrImage calculateInterpolationOn(double observation);
+	HdrImage takeStep();
 };
 
 #endif
