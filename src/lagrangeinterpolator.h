@@ -7,9 +7,10 @@
 #include "interpolator.h"
 
 class LaGrangeInterpolator : public Interpolator {
+using Interpolator::Interpolator;
 public:
 	HdrImage calculateInterpolationOn(float observation);
-	HdrImage takeStep();
+	HdrImage takeStep(float observation);
 };
 
 #endif

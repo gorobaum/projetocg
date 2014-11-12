@@ -2,7 +2,7 @@
 
 #include "gaussinterpolator.h"
 
-HdrImage GaussianInterpolator::takeStep() {
+HdrImage GaussianInterpolator::takeStep(float observation) {
 	int width = values_[0].getWidth();
 	int height = values_[0].getHeight();
 	HdrImage interpolation(width, height);
