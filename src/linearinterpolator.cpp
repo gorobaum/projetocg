@@ -3,6 +3,13 @@
 
 #include "linearinterpolator.h"
 
+
+LinearInterpolator::LinearInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
+	Interpolator(observations, values, interval)
+{
+	step = 0;
+}
+
 HdrImage LinearInterpolator::takeStep(float observation) {
 	int width = values_[0].getWidth();
 	int height = values_[0].getHeight();

@@ -8,11 +8,14 @@
 #include "hdrimage.h"
 
 class GaussianInterpolator : public Interpolator {
+using Interpolator::Interpolator;
 public:
 	HdrImage calculateInterpolationOn(float observation);
 	HdrImage takeStep(float observation);
+	GaussianInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval);
+
 private:
-	double p = 0.0;
+	double p;
 };
 
 #endif

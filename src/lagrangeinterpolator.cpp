@@ -3,6 +3,12 @@
 
 #include "lagrangeinterpolator.h"
 
+LaGrangeInterpolator::LaGrangeInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
+	Interpolator(observations, values, interval)
+{
+	step = 0;
+}
+
 HdrImage LaGrangeInterpolator::takeStep(float observation) {
 	int width = values_[0].getWidth();
 	int height = values_[0].getHeight();

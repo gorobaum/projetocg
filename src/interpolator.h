@@ -18,7 +18,7 @@ protected:
 	std::vector<int> observations_;
 	std::vector<HdrImage> values_;
 	int interval_;
-	unsigned int step = 0;
+	unsigned int step;
 };
 
 #endif

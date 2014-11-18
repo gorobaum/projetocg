@@ -2,6 +2,13 @@
 
 #include "gaussinterpolator.h"
 
+GaussianInterpolator::GaussianInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
+	Interpolator(observations, values, interval)
+{
+	step = 0;
+	p = 0.0;
+}
+
 HdrImage GaussianInterpolator::takeStep(float observation) {
 	int width = values_[0].getWidth();
 	int height = values_[0].getHeight();

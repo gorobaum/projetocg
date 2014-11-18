@@ -11,6 +11,7 @@ using Interpolator::Interpolator;
 public:
 	HdrImage calculateInterpolationOn(float observation);
 	HdrImage takeStep(float observation);
+	LaGrangeInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval);
 };
 
 #endif
