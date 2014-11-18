@@ -3,3 +3,5 @@ Debug/
 *.exe
 projetocg.opensdf
 projetocg.sdf
+*.hdr
+*.png

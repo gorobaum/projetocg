@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\gaussianbackwardinterpolator.cpp" />
+    <ClCompile Include="src\gaussianforwardinterpolator.cpp" />
     <ClCompile Include="src\gaussinterpolator.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -30,9 +32,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\stirlinginterpolator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\FreeImage.h" />
+    <ClInclude Include="src\gaussianbackwardinterpolator.h" />
+    <ClInclude Include="src\gaussianforwardinterpolator.h" />
     <ClInclude Include="src\gaussinterpolator.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -48,6 +53,7 @@
     <ClInclude Include="src\linearinterpolator.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="src\stirlinginterpolator.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6FD778F3-8E3A-418D-BC66-66F7B399383A}</ProjectGuid>

@@ -7,6 +7,9 @@
 
 #include "linearinterpolator.h"
 #include "lagrangeinterpolator.h"
+#include "gaussianforwardinterpolator.h"
+#include "gaussianbackwardinterpolator.h"
+#include "stirlinginterpolator.h"
 #include "hdrimage.h"
 
 int main(int argc, char** argv) 
@@ -15,15 +18,18 @@ int main(int argc, char** argv)
 	
 	HdrImage one("blue.hdr");
 	HdrImage two("red.hdr");
+	HdrImage three("green.hdr");
 
 	std::vector<HdrImage> imagesToInterpolate;
 	imagesToInterpolate.push_back(one);
 	imagesToInterpolate.push_back(two);
+	imagesToInterpolate.push_back(three);
 
 	std::vector<int> observations;
 	observations.push_back(2);
 	observations.push_back(4);
-
+	observations.push_back(6);
+	
 	LinearInterpolator li(observations, imagesToInterpolate, 1);
 	HdrImage finalLi = li.calculateInterpolationOn(3.5);
 	finalLi.saveImageAsPng("output-li.png");
@@ -33,6 +39,21 @@ int main(int argc, char** argv)
 	HdrImage finalLgi = lgi.calculateInterpolationOn(3.5);
 	finalLgi.saveImageAsPng("output-lg.png");
 	finalLgi.saveImageAsHdr("output-lg.hdr");
+
+	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 2);
+	HdrImage finalGfi = gfi.calculateInterpolationOn(4.5);
+	finalGfi.saveImageAsPng("output-lgfi.png");
+	finalGfi.saveImageAsHdr("output-lgfi.hdr");
+
+	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 2);
+	HdrImage finalGbi = gbi.calculateInterpolationOn(4.5);
+	finalGbi.saveImageAsPng("output-lgbi.png");
+	finalGbi.saveImageAsHdr("output-lgbi.hdr");
+
+	StirlingInterpolator si(observations, imagesToInterpolate, 2);
+	HdrImage finalSi = si.calculateInterpolationOn(4.5);
+	finalSi.saveImageAsPng("output-lsi.png");
+	finalSi.saveImageAsHdr("output-lsi.hdr");
 
 	//std::cout << "Has pixeis " << FreeImage_GetHeight(bitmap) << "\n";
 

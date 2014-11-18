@@ -47,6 +47,21 @@ HdrImage HdrImage::operator*(const double& param) {
 	return ret;
 }
 
+HdrImage HdrImage::operator/(const double& param) {
+	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 128, 0, 0, 0);
+	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_); y++) {
+		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_, y);
+		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
+		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_); x++) {
+			diffImageBits[x].red = thisBits[x].red / param;
+			diffImageBits[x].blue = thisBits[x].blue / param;
+			diffImageBits[x].green = thisBits[x].green / param;
+		}
+	}
+	HdrImage ret(diffImage);
+	return ret;
+}
+
 int HdrImage::getWidth() {
 	return FreeImage_GetWidth(imageBitmap_);
 }
