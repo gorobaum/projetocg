@@ -11,6 +11,8 @@ class GaussianInterpolator : public Interpolator {
 public:
 	HdrImage calculateInterpolationOn(float observation);
 	HdrImage takeStep(float observation);
+private:
+	double p = 0.0;
 };
 
 #endif
