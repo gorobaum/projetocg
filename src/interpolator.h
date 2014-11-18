@@ -11,7 +11,8 @@ public:
 	Interpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
 		observations_(observations),
 		values_(values),
-		interval_(interval) {}
+		interval_(interval),
+		step(0){}
 	virtual HdrImage calculateInterpolationOn(float observation) = 0;
 	virtual HdrImage takeStep(float observation) = 0;
 protected:

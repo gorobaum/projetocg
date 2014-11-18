@@ -5,10 +5,7 @@
 
 
 LinearInterpolator::LinearInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
-	Interpolator(observations, values, interval)
-{
-	step = 0;
-}
+	Interpolator(observations, values, interval){}
 
 HdrImage LinearInterpolator::takeStep(float observation) {
 	int width = values_[0].getWidth();
