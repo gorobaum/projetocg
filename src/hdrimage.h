@@ -23,6 +23,8 @@ public:
 	HdrImage operator+(const HdrImage& param);
 	HdrImage operator*(const double& param);
 	HdrImage operator/(const double& param);
+	HdrImage HdrImage::clamp();
+
 private:
 	FIBITMAP *imageBitmap_;
 };

@@ -70,6 +70,7 @@ HdrImage GaussianForwardInterpolator::calculateInterpolationOn(float observation
 		if(signal == -1) counter++;
 		numerator = numerator*(p+signal*counter);
 	}
+	interpolation = interpolation.clamp();
 	for(int i = 0; i < 2*dist+1; i++)
 	{
 		free(dy[i]);

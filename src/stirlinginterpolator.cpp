@@ -30,5 +30,6 @@ HdrImage StirlingInterpolator::calculateInterpolationOn(float observation) {
 	gf = gfi.calculateInterpolationOn(observation);
 	gb = gbi.calculateInterpolationOn(observation);
 	interpolation = gf*0.5 + gb*0.5;
+	interpolation = interpolation.clamp();
 	return interpolation;
 }

@@ -1,5 +1,10 @@
 #include "hdrimage.h"
 
+float max(float a, float b)
+{
+	return (a > b) ? a : b;
+}
+
 HdrImage HdrImage::operator-(const HdrImage& param) {
 	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 128, 0, 0, 0);
 	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_); y++) {
@@ -56,6 +61,21 @@ HdrImage HdrImage::operator/(const double& param) {
 			diffImageBits[x].red = thisBits[x].red / param;
 			diffImageBits[x].blue = thisBits[x].blue / param;
 			diffImageBits[x].green = thisBits[x].green / param;
+		}
+	}
+	HdrImage ret(diffImage);
+	return ret;
+}
+
+HdrImage HdrImage::clamp() {
+	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 128, 0, 0, 0);
+	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_); y++) {
+		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_, y);
+		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
+		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_); x++) {
+			diffImageBits[x].red = max(thisBits[x].red, 0.0);
+			diffImageBits[x].blue = max(thisBits[x].blue, 0.0);
+			diffImageBits[x].green = max(thisBits[x].green, 0.0);
 		}
 	}
 	HdrImage ret(diffImage);
