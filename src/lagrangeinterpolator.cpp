@@ -29,5 +29,6 @@ HdrImage LaGrangeInterpolator::calculateInterpolationOn(float observation) {
 	for (unsigned int i = 0;  i < observations_.size(); i++) {
 		interpolation = interpolation + takeStep(observation);
 	}
+	interpolation = interpolation.clamp();
 	return interpolation;
 }
