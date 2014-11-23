@@ -1,9 +1,6 @@
 #include "hdrimage.h"
+#include "minmax.h"
 
-float max(float a, float b)
-{
-	return (a > b) ? a : b;
-}
 
 HdrImage HdrImage::operator-(const HdrImage& param) {
 	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 128, 0, 0, 0);

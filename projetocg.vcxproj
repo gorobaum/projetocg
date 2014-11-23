@@ -32,6 +32,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\minmax.cpp" />
     <ClCompile Include="src\stirlinginterpolator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +54,7 @@
     <ClInclude Include="src\linearinterpolator.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="src\minmax.h" />
     <ClInclude Include="src\stirlinginterpolator.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

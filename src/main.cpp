@@ -29,7 +29,7 @@ int main(int argc, char** argv)
 	observations.push_back(2);
 	observations.push_back(4);
 	observations.push_back(6);
-	
+	/*
 	LinearInterpolator li(observations, imagesToInterpolate, 1);
 	HdrImage finalLi = li.calculateInterpolationOn(5);
 	finalLi.saveImageAsPng("output-li.png");
@@ -38,13 +38,25 @@ int main(int argc, char** argv)
 	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 1);
 	HdrImage finalLgi = lgi.calculateInterpolationOn(5);
 	finalLgi.saveImageAsPng("output-lg.png");
-	finalLgi.saveImageAsHdr("output-lg.hdr");
+	finalLgi.saveImageAsHdr("output-lg.hdr");*/
 
-	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 2);
-	HdrImage finalGfi = gfi.calculateInterpolationOn(5);
-	finalGfi.saveImageAsPng("output-lgfi.png");
-	finalGfi.saveImageAsHdr("output-lgfi.hdr");
 
+	for(int i = -100; i <= 100; i++)
+	{
+		GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 2);
+		std::string name;
+		HdrImage finalGfi = gfi.calculateInterpolationOn(4.0+(2* ((float) (i/100.0))));
+		name.erase();
+		name.append("lgfipos");
+		name.append(std::to_string(i));
+		name.append(".png");
+		finalGfi.saveImageAsPng(name);
+		//finalGfi.saveImageAsHdr("output-lgfi.hdr");
+	}
+	//HdrImage finalGfi = gfi.calculateInterpolationOn(5);
+	//finalGfi.saveImageAsPng("output-lgfi.png");
+	//finalGfi.saveImageAsHdr("output-lgfi.hdr");
+	/*
 	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 2);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(5);
 	finalGbi.saveImageAsPng("output-lgbi.png");
@@ -54,7 +66,7 @@ int main(int argc, char** argv)
 	HdrImage finalSi = si.calculateInterpolationOn(5);
 	finalSi.saveImageAsPng("output-lsi.png");
 	finalSi.saveImageAsHdr("output-lsi.hdr");
-	
+	*/
 	//std::cout << "Has pixeis " << FreeImage_GetHeight(bitmap) << "\n";
 
 	DLL_API void DLL_CALLCONV FreeImage_DeInitialise();

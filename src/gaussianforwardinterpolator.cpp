@@ -1,6 +1,7 @@
 #include <cmath>
 #include <iostream>
 #include "gaussianforwardinterpolator.h"
+#include "minmax.h"
 
 
 GaussianForwardInterpolator::GaussianForwardInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
@@ -36,7 +37,7 @@ HdrImage GaussianForwardInterpolator::calculateInterpolationOn(float observation
 		xpos--;
 		xneg++;
 	}
-	if(x0+1 < numberOfObservations && abs(observation-observations_[x0]) > abs(observation-observations_[x0+1]))
+	if(x0+1 < numberOfObservations && min(xpos,xneg) < min(xpos-1, xneg+1) )
 	{
 		x0 = x0+1;
 		xpos--;
