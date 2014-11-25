@@ -3,7 +3,7 @@
 
 #include "lagrangeinterpolator.h"
 
-LaGrangeInterpolator::LaGrangeInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
+LaGrangeInterpolator::LaGrangeInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval) :
 	Interpolator(observations, values, interval){}
 
 HdrImage LaGrangeInterpolator::takeStep(float observation) {

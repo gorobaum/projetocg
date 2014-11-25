@@ -3,7 +3,7 @@
 #include "gaussianforwardinterpolator.h"
 #include "minmax.h"
 
-GaussianForwardInterpolator::GaussianForwardInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
+GaussianForwardInterpolator::GaussianForwardInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval) :
 	Interpolator(observations, values, interval){}
 
 HdrImage GaussianForwardInterpolator::takeStep(float observation) {

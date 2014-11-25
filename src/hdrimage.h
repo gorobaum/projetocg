@@ -3,18 +3,19 @@
 
 #include <string>
 #include <memory>
+#include <iostream>
 
 #include <FreeImage.h>
 
 class HdrImage {
 public:
 	HdrImage(int width, int height) {
-		imageBitmap_ = FreeImage_AllocateT(FIT_RGBAF, width, height, 128, 0, 0, 0);
+		imageBitmap_ = std::shared_ptr<FIBITMAP>(FreeImage_AllocateT(FIT_RGBF, width, height), &FreeImage_Unload);
 	}
 	HdrImage(std::string filename) {
-		imageBitmap_ = FreeImage_Load(FIF_HDR, filename.c_str(), HDR_DEFAULT);
+		imageBitmap_ = std::shared_ptr<FIBITMAP>(FreeImage_Load(FIF_HDR, filename.c_str(), HDR_DEFAULT), &FreeImage_Unload);
 	}
-	HdrImage(FIBITMAP *imageBitmap) :
+	HdrImage(const std::shared_ptr<FIBITMAP> &imageBitmap) :
 		imageBitmap_(imageBitmap) {}
 	int getWidth();
 	int getHeight();
@@ -28,7 +29,7 @@ public:
 	HdrImage clamp();
 
 private:
-	FIBITMAP *imageBitmap_;
+	std::shared_ptr<FIBITMAP> imageBitmap_;
 };
 
 #endif
