@@ -10,7 +10,10 @@ add_executable(main
 	src/gaussinterpolator.cpp
 	src/lagrangeinterpolator.cpp
 	src/linearinterpolator.cpp
-	src/hdrimage.cpp)
+	src/hdrimage.cpp
+	src/minmax.cpp
+	src/gaussianbackwardinterpolator.cpp
+	src/gaussianforwardinterpolator.cpp)
 
 include_directories("${FreeImage_INCLUDE_DIRS}")
 target_link_libraries(main ${FreeImage_LIBRARIES})

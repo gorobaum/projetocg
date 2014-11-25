@@ -2,6 +2,8 @@
 #define PROJCG_HDRIMAGE_H_
 
 #include <string>
+#include <memory>
+
 #include <FreeImage.h>
 
 class HdrImage {
@@ -23,7 +25,7 @@ public:
 	HdrImage operator+(const HdrImage& param);
 	HdrImage operator*(const double& param);
 	HdrImage operator/(const double& param);
-	HdrImage HdrImage::clamp();
+	HdrImage clamp();
 
 private:
 	FIBITMAP *imageBitmap_;

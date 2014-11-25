@@ -3,10 +3,8 @@
 #include "gaussianforwardinterpolator.h"
 #include "minmax.h"
 
-
 GaussianForwardInterpolator::GaussianForwardInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
 	Interpolator(observations, values, interval){}
-
 
 HdrImage GaussianForwardInterpolator::takeStep(float observation) {
 	int width = values_[0].getWidth();
