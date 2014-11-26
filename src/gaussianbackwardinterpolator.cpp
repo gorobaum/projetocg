@@ -53,7 +53,7 @@ HdrImage GaussianBackwardInterpolator::calculateInterpolationOn(float observatio
 		for(int j = 0; j < 2*dist+1-i; j++)
 		{
 			dy[i][j] = HdrImage(width, height);
-			if(i == 0)	dy[i][j] = values_[x0-xneg+j];
+			if(i == 0)	dy[i][j] = values_[x0-dist+j];
 			else dy[i][j] = dy[i-1][j+1]-dy[i-1][j];
 		}
 	}

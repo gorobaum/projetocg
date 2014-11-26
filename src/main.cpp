@@ -30,17 +30,17 @@ int main(int argc, char** argv)
 	observations.push_back(4);
 	observations.push_back(6);
 	
-	// LinearInterpolator li(observations, imagesToInterpolate, 1);
-	// HdrImage finalLi = li.calculateInterpolationOn(5);
-	// finalLi.saveImageAsPng("output-li.png");
-	// finalLi.saveImageAsHdr("output-li.hdr");
+	LinearInterpolator li(observations, imagesToInterpolate, 1);
+	HdrImage finalLi = li.calculateInterpolationOn(5);
+	finalLi.saveImageAsPng("output-li.png");
+	finalLi.saveImageAsHdr("output-li.hdr");
 
-	// LaGrangeInterpolator lgi(observations, imagesToInterpolate, 1);
-	// HdrImage finalLgi = lgi.calculateInterpolationOn(5);
-	// finalLgi.saveImageAsPng("output-lg.png");
-	// finalLgi.saveImageAsHdr("output-lg.hdr");
+	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 1);
+	HdrImage finalLgi = lgi.calculateInterpolationOn(5);
+	finalLgi.saveImageAsPng("output-lg.png");
+	finalLgi.saveImageAsHdr("output-lg.hdr");
 
-
+	/*
 	for(int i = -100; i <= 100; i++)
 	{
 		std::cout << i << "\n";
@@ -53,7 +53,7 @@ int main(int argc, char** argv)
 		name.append(".png");
 		finalGfi.saveImageAsPng(name);
 		//finalGfi.saveImageAsHdr("output-lgfi.hdr");
-	}
+	}*/
 	//HdrImage finalGfi = gfi.calculateInterpolationOn(5);
 	//finalGfi.saveImageAsPng("output-lgfi.png");
 	//finalGfi.saveImageAsHdr("output-lgfi.hdr");
