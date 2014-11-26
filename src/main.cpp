@@ -40,7 +40,7 @@ int main(int argc, char** argv)
 	finalLgi.saveImageAsPng("output-lg.png");
 	finalLgi.saveImageAsHdr("output-lg.hdr");
 
-	/*
+	
 	for(int i = -100; i <= 100; i++)
 	{
 		std::cout << i << "\n";
@@ -53,7 +53,7 @@ int main(int argc, char** argv)
 		name.append(".png");
 		finalGfi.saveImageAsPng(name);
 		//finalGfi.saveImageAsHdr("output-lgfi.hdr");
-	}*/
+	}
 	//HdrImage finalGfi = gfi.calculateInterpolationOn(5);
 	//finalGfi.saveImageAsPng("output-lgfi.png");
 	//finalGfi.saveImageAsHdr("output-lgfi.hdr");

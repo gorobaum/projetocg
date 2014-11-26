@@ -14,7 +14,7 @@ HdrImage HdrImage::operator-(const HdrImage& param) {
 			diffImageBits[x].green = thisBits[x].green - paramBits[x].green;
 		}
 	}
-	std::shared_ptr<FIBITMAP> macaco(diffImage);
+	std::shared_ptr<FIBITMAP> macaco(diffImage, unloader);
 	HdrImage ret(macaco);
 	return ret;
 }
@@ -31,7 +31,7 @@ HdrImage HdrImage::operator+(const HdrImage& param) {
 			diffImageBits[x].green = thisBits[x].green + paramBits[x].green;
 		}
 	}
-	std::shared_ptr<FIBITMAP> macaco(diffImage);
+	std::shared_ptr<FIBITMAP> macaco(diffImage, unloader);
 	HdrImage ret(macaco);
 	return ret;
 }
@@ -47,7 +47,7 @@ HdrImage HdrImage::operator*(const double& param) {
 			diffImageBits[x].green = thisBits[x].green * param;
 		}
 	}
-	std::shared_ptr<FIBITMAP> macaco(diffImage);
+	std::shared_ptr<FIBITMAP> macaco(diffImage, unloader);
 	HdrImage ret(macaco);
 	return ret;
 }
@@ -63,7 +63,7 @@ HdrImage HdrImage::operator/(const double& param) {
 			diffImageBits[x].green = thisBits[x].green / param;
 		}
 	}
-	std::shared_ptr<FIBITMAP> macaco(diffImage);
+	std::shared_ptr<FIBITMAP> macaco(diffImage, unloader);
 	HdrImage ret(macaco);
 	return ret;
 }
@@ -79,7 +79,7 @@ HdrImage HdrImage::clamp() {
 			diffImageBits[x].green = max(thisBits[x].green, 0.0);
 		}
 	}
-	std::shared_ptr<FIBITMAP> macaco(diffImage);
+	std::shared_ptr<FIBITMAP> macaco(diffImage, unloader);
 	HdrImage ret(macaco);
 	return ret;
 }
@@ -109,4 +109,12 @@ FIRGBF HdrImage::getPixelAt(unsigned int x, unsigned int y) {
 			ret = bits[x];
 		}
 	return ret;
+}
+
+#include <iostream>
+
+void unloader(FIBITMAP* a)
+{
+	std::cout << "awda" << std::endl;
+	FreeImage_Unload(a);
 }
