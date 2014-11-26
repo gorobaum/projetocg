@@ -16,58 +16,69 @@ int main(int argc, char** argv)
 {
 	DLL_API void DLL_CALLCONV FreeImage_Initialise(BOOL load_local_plugins_only FI_DEFAULT(FALSE));
 	
+	HdrImage zero("black.hdr");
 	HdrImage one("blue.hdr");
 	HdrImage two("red.hdr");
 	HdrImage three("green.hdr");
+	HdrImage four("white.hdr");
+
 
 	std::vector<HdrImage> imagesToInterpolate;
+	imagesToInterpolate.push_back(zero);
 	imagesToInterpolate.push_back(one);
 	imagesToInterpolate.push_back(two);
 	imagesToInterpolate.push_back(three);
+	imagesToInterpolate.push_back(four);
 
 	std::vector<int> observations;
+	observations.push_back(0);
 	observations.push_back(2);
 	observations.push_back(4);
 	observations.push_back(6);
-	/*
-	LinearInterpolator li(observations, imagesToInterpolate, 1);
-	HdrImage finalLi = li.calculateInterpolationOn(5);
-	finalLi.saveImageAsPng("output-li.png");
-	finalLi.saveImageAsHdr("output-li.hdr");
-
-	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 1);
-	HdrImage finalLgi = lgi.calculateInterpolationOn(5);
-	finalLgi.saveImageAsPng("output-lg.png");
-	finalLgi.saveImageAsHdr("output-lg.hdr");*/
-
-
-	for(int i = -100; i <= 100; i++)
+	observations.push_back(8);
+	
+	int i = 0;
+	int interval = 0;
+	std::string name;
+	if(argc > 3) 
 	{
-		GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 2);
-		std::string name;
-		HdrImage finalGfi = gfi.calculateInterpolationOn(4.0+(2* ((float) (i/100.0))));
-		name.erase();
-		name.append("lgfipos");
-		name.append(std::to_string(i));
-		name.append(".png");
-		finalGfi.saveImageAsPng(name);
-		//finalGfi.saveImageAsHdr("output-lgfi.hdr");
+		i = atoi(argv[1]);
+		interval = atoi(argv[2]);
+		name = argv[3];
 	}
-	//HdrImage finalGfi = gfi.calculateInterpolationOn(5);
-	//finalGfi.saveImageAsPng("output-lgfi.png");
-	//finalGfi.saveImageAsHdr("output-lgfi.hdr");
-	/*
-	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 2);
-	HdrImage finalGbi = gbi.calculateInterpolationOn(5);
-	finalGbi.saveImageAsPng("output-lgbi.png");
-	finalGbi.saveImageAsHdr("output-lgbi.hdr");
+	else return 1;
 
-	StirlingInterpolator si(observations, imagesToInterpolate, 2);
-	HdrImage finalSi = si.calculateInterpolationOn(5);
-	finalSi.saveImageAsPng("output-lsi.png");
-	finalSi.saveImageAsHdr("output-lsi.hdr");
-	*/
-	//std::cout << "Has pixeis " << FreeImage_GetHeight(bitmap) << "\n";
+	HdrImage image(1,1);
+
+	if(name == "li")
+	{
+		LinearInterpolator li(observations, imagesToInterpolate, interval);
+		image = li.calculateInterpolationOn(2.0*(float)i/100.0);
+	}
+	else if(name == "la")
+	{
+		LaGrangeInterpolator lgi(observations, imagesToInterpolate, interval);
+		image = lgi.calculateInterpolationOn(2.0*(float)i/100.0);
+	}
+	else if(name == "gf")
+	{
+		GaussianForwardInterpolator gfi(observations, imagesToInterpolate, interval);
+		image = gfi.calculateInterpolationOn(2.0*(float)i/100.0);
+	}
+	else if(name == "gb")
+	{
+		GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, interval);
+		image = gbi.calculateInterpolationOn(2.0*(float)i/100.0);
+	}
+	else if(name == "si")
+	{
+		StirlingInterpolator si(observations, imagesToInterpolate, interval);
+		image = si.calculateInterpolationOn(2.0*(float)i/100.0);
+	}
+
+	name.append(std::to_string(i));
+	name.append(".hdr");
+	image.saveImageAsHdr(name);
 
 	DLL_API void DLL_CALLCONV FreeImage_DeInitialise();
 	return 0;
