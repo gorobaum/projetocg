@@ -44,14 +44,14 @@ HdrImage GaussianForwardInterpolator::calculateInterpolationOn(float observation
 	double p = (observation-observations_[x0])/(1.0*interval_);
 	int dist = xpos;
 	if(xneg < dist) dist = xneg;
-	HdrImage **dy;
-	dy = (HdrImage **) malloc((2*dist+1)*sizeof(HdrImage *));
+	std::vector<std::vector<HdrImage>> dy;
 	for(int i = 0; i < 2*dist+1; i++)
 	{
-		dy[i] = (HdrImage *) malloc((2*dist+1)*sizeof(HdrImage));
+		std::vector<HdrImage> v;
+		dy.push_back(v);
 		for(int j = 0; j < 2*dist+1-i; j++)
 		{
-			dy[i][j] = HdrImage(width, height);
+			dy[i].push_back(HdrImage(width, height));
 			if(i == 0)	dy[i][j] = values_[x0-dist+j];
 			else dy[i][j] = dy[i-1][j+1]-dy[i-1][j];
 		}
@@ -70,10 +70,6 @@ HdrImage GaussianForwardInterpolator::calculateInterpolationOn(float observation
 		numerator = numerator*(p+signal*counter);
 	}
 	interpolation = interpolation.clamp();
-	for(int i = 0; i < 2*dist+1; i++)
-	{
-		free(dy[i]);
-	}
-	free(dy);
+
 	return interpolation;
 }
