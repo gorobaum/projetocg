@@ -4,7 +4,7 @@
 #include "linearinterpolator.h"
 
 
-LinearInterpolator::LinearInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval) :
+LinearInterpolator::LinearInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
 	Interpolator(observations, values, interval){}
 
 HdrImage LinearInterpolator::takeStep(float observation) {

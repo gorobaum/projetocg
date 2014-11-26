@@ -29,21 +29,20 @@ int main(int argc, char** argv)
 	observations.push_back(2);
 	observations.push_back(4);
 	observations.push_back(6);
-	
-	// LinearInterpolator li(observations, imagesToInterpolate, 1);
-	// HdrImage finalLi = li.calculateInterpolationOn(5);
-	// finalLi.saveImageAsPng("output-li.png");
-	// finalLi.saveImageAsHdr("output-li.hdr");
+	/*
+	LinearInterpolator li(observations, imagesToInterpolate, 1);
+	HdrImage finalLi = li.calculateInterpolationOn(5);
+	finalLi.saveImageAsPng("output-li.png");
+	finalLi.saveImageAsHdr("output-li.hdr");
 
-	// LaGrangeInterpolator lgi(observations, imagesToInterpolate, 1);
-	// HdrImage finalLgi = lgi.calculateInterpolationOn(5);
-	// finalLgi.saveImageAsPng("output-lg.png");
-	// finalLgi.saveImageAsHdr("output-lg.hdr");
+	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 1);
+	HdrImage finalLgi = lgi.calculateInterpolationOn(5);
+	finalLgi.saveImageAsPng("output-lg.png");
+	finalLgi.saveImageAsHdr("output-lg.hdr");*/
 
 
 	for(int i = -100; i <= 100; i++)
 	{
-		std::cout << i << "\n";
 		GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 2);
 		std::string name;
 		HdrImage finalGfi = gfi.calculateInterpolationOn(4.0+(2* ((float) (i/100.0))));
