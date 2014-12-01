@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\exec.cpp" />
     <ClCompile Include="src\gaussianbackwardinterpolator.cpp" />
     <ClCompile Include="src\gaussianforwardinterpolator.cpp" />
     <ClCompile Include="src\gaussinterpolator.cpp">
@@ -36,6 +37,7 @@
     <ClCompile Include="src\stirlinginterpolator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\exec.h" />
     <ClInclude Include="src\FreeImage.h" />
     <ClInclude Include="src\gaussianbackwardinterpolator.h" />
     <ClInclude Include="src\gaussianforwardinterpolator.h" />
