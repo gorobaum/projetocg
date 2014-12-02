@@ -93,7 +93,7 @@ int HdrImage::getHeight() {
 }	
 
 void HdrImage::saveImageAsPng(std::string filename) {
-	FreeImage_Save(FIF_PNG, FreeImage_ToneMapping(imageBitmap_.get(), FITMO_FATTAL02), filename.c_str(), PNG_DEFAULT);
+	FreeImage_Save(FIF_PNG, FreeImage_ToneMapping(imageBitmap_.get(), FITMO_REINHARD05), filename.c_str(), PNG_DEFAULT);
 }
 
 void HdrImage::saveImageAsHdr(std::string filename) {
