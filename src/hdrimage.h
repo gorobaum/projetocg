@@ -11,7 +11,7 @@
 class HdrImage {
 public:
 	HdrImage(int width, int height) {
-		imageBitmap_ = std::shared_ptr<FIBITMAP>(FreeImage_AllocateT(FIT_RGBF, width, height), &FreeImage_Unload);
+		imageBitmap_ = std::shared_ptr<FIBITMAP>(FreeImage_AllocateT(FIT_RGBF, width, height, 96), &FreeImage_Unload);
 	}
 	HdrImage(std::string filename) {
 		imageBitmap_ = std::shared_ptr<FIBITMAP>(FreeImage_Load(FIF_HDR, filename.c_str(), HDR_DEFAULT), &FreeImage_Unload);

@@ -3,7 +3,7 @@
 #include "gaussianbackwardinterpolator.h"
 #include "minmax.h"
 
-GaussianBackwardInterpolator::GaussianBackwardInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
+GaussianBackwardInterpolator::GaussianBackwardInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval) :
 	Interpolator(observations, values, interval){}
 
 

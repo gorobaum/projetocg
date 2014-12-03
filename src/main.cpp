@@ -16,58 +16,41 @@ int main(int argc, char** argv)
 {
 	DLL_API void DLL_CALLCONV FreeImage_Initialise(BOOL load_local_plugins_only FI_DEFAULT(FALSE));
 	
-	HdrImage one("blue.hdr");
-	HdrImage two("red.hdr");
-	HdrImage three("green.hdr");
+	HdrImage one("ang11.hdr");
+	HdrImage two("ang13.hdr");
+	HdrImage three("ang15.hdr");
+	HdrImage four("ang17.hdr");
 
 	std::vector<HdrImage> imagesToInterpolate;
 	imagesToInterpolate.push_back(one);
 	imagesToInterpolate.push_back(two);
 	imagesToInterpolate.push_back(three);
+	imagesToInterpolate.push_back(four);
 
 	std::vector<int> observations;
-	observations.push_back(2);
-	observations.push_back(4);
-	observations.push_back(6);
+	observations.push_back(0);
+	observations.push_back(60);
+	observations.push_back(120);
+	observations.push_back(180);
 	
-	LinearInterpolator li(observations, imagesToInterpolate, 1);
-	HdrImage finalLi = li.calculateInterpolationOn(4);
-	finalLi.saveImageAsPng("output-li.png");
-	finalLi.saveImageAsHdr("output-li.hdr");
+	LinearInterpolator li(observations, imagesToInterpolate, 60);
+	HdrImage finalLi = li.calculateInterpolationOn(90);
+	finalLi.saveImageAsHdr("ext1linear.hdr");
+	finalLi.saveImageAsPng("ext1linear.png");
 
-	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 1);
-	HdrImage finalLgi = lgi.calculateInterpolationOn(4);
-	finalLgi.saveImageAsPng("output-lg.png");
-	finalLgi.saveImageAsHdr("output-lg.hdr");
+	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 60);
+	HdrImage finalLgi = lgi.calculateInterpolationOn(90);
+	finalLgi.saveImageAsHdr("ext1lagrange.hdr");
+	finalLgi.saveImageAsPng("ext1lagrange.png");
 
-	
-	// for(int i = -100; i <= 100; i++)
-	// {
-	// 	std::cout << i << "\n";
-	// 	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 2);
-	// 	std::string name;
-	// 	HdrImage finalGfi = gfi.calculateInterpolationOn(4.0+(2* ((float) (i/100.0))));
-	// 	name.erase();
-	// 	name.append("lgfipos");
-	// 	name.append(std::to_string(i));
-	// 	name.append(".png");
-	// 	finalGfi.saveImageAsPng(name);
-	// 	//finalGfi.saveImageAsHdr("output-lgfi.hdr");
-	// }
-	//HdrImage finalGfi = gfi.calculateInterpolationOn(5);
-	//finalGfi.saveImageAsPng("output-lgfi.png");
-	//finalGfi.saveImageAsHdr("output-lgfi.hdr");
-	/*
-	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 2);
-	HdrImage finalGbi = gbi.calculateInterpolationOn(5);
-	finalGbi.saveImageAsPng("output-lgbi.png");
-	finalGbi.saveImageAsHdr("output-lgbi.hdr");
+	// GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
+	// HdrImage finalGfi = gfi.calculateInterpolationOn(90);
+	// finalGfi.saveImageAsHdr("ext1forward.hdr");
 
-	StirlingInterpolator si(observations, imagesToInterpolate, 2);
-	HdrImage finalSi = si.calculateInterpolationOn(5);
-	finalSi.saveImageAsPng("output-lsi.png");
-	finalSi.saveImageAsHdr("output-lsi.hdr");
-	*/
+	// GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
+	// HdrImage finalGbi = gbi.calculateInterpolationOn(90);
+	// finalGbi.saveImageAsHdr("ext1backward.hdr");
+
 	//std::cout << "Has pixeis " << FreeImage_GetHeight(bitmap) << "\n";
 
 	DLL_API void DLL_CALLCONV FreeImage_DeInitialise();
