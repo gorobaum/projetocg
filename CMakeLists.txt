@@ -13,7 +13,8 @@ add_executable(main
 	src/hdrimage.cpp
 	src/minmax.cpp
 	src/gaussianbackwardinterpolator.cpp
-	src/gaussianforwardinterpolator.cpp)
+	src/gaussianforwardinterpolator.cpp
+	src/pixelobserver.cpp)
 
 include_directories("${FreeImage_INCLUDE_DIRS}")
 target_link_libraries(main ${FreeImage_LIBRARIES})
