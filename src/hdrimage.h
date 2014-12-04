@@ -23,6 +23,8 @@ public:
 	void saveImageAsPng(std::string filename);
 	void saveImageAsHdr(std::string filename);
 	FIRGBF getPixelAt(unsigned int x, unsigned int y);
+	float calcDist(const HdrImage& param);
+	HdrImage diffAbs(const HdrImage& param);
 	HdrImage operator-(const HdrImage& param);
 	HdrImage operator+(const HdrImage& param);
 	HdrImage operator*(const double& param);

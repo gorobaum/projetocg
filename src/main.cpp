@@ -37,7 +37,7 @@ int main(int argc, char** argv)
 	
 	PixelObserver po(696,390);
 
-	for (int i = 30; i < 210; i+=10) {
+	for (int i = 30; i <= 210; i+=10) {
 		LinearInterpolator li(observations, imagesToInterpolate, 60);
 		HdrImage finalLi = li.calculateInterpolationOn(i);
 		std::string filenamePng("ext1linear");
