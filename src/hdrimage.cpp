@@ -84,6 +84,35 @@ HdrImage HdrImage::clamp() {
 	return ret;
 }
 
+
+float HdrImage::calcDist(const HdrImage& param) {
+	HdrImage diffImage = diffAbs(param);
+	float dist = 0.0;
+	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
+		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage.imageBitmap_.get(), y);
+		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_.get()); x++)
+			dist += diffImageBits[x].red + diffImageBits[x].green + diffImageBits[x].blue;
+	}
+	return dist;
+}
+
+HdrImage HdrImage::diffAbs(const HdrImage& param) {
+	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
+	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
+		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
+		FIRGBF *paramBits = (FIRGBF *)FreeImage_GetScanLine(param.imageBitmap_.get(), y);
+		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
+		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_.get()); x++) {
+			diffImageBits[x].red = abs(thisBits[x].red - paramBits[x].red);
+			diffImageBits[x].blue = abs(thisBits[x].blue - paramBits[x].blue);
+			diffImageBits[x].green = abs(thisBits[x].green - paramBits[x].green);
+		}
+	}
+	std::shared_ptr<FIBITMAP> macaco(diffImage, FreeImage_Unload);
+	HdrImage ret(macaco);
+	return ret;
+}
+
 int HdrImage::getWidth() {
 	return FreeImage_GetWidth(imageBitmap_.get());
 }
