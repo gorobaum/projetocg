@@ -105,7 +105,7 @@ void HdrImage::saveImageAsHdr(std::string filename) {
 
 FIRGBF HdrImage::getPixelAt(unsigned int x, unsigned int y) {
 	FIRGBF ret;
-	y = FreeImage_GetHeight(imageBitmap_.get()) - y;
+	y = FreeImage_GetHeight(imageBitmap_.get()) - y -1;
 	if (y < FreeImage_GetHeight(imageBitmap_.get()) && y >= 0) 
 		if (x < FreeImage_GetWidth(imageBitmap_.get()) && x >= 0) {
 			FIRGBF *bits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
