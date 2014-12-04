@@ -13,12 +13,13 @@ public:
 	PixelObserver(int x, int y):
 		x_(x),
 		y_(y) {}
-	void addNewObservation(HdrImage image);
+	void addNewObservation(HdrImage image, int obTime);
 	void printObservationsForPlot(std::string filename);
 private:
 	int x_;
 	int y_;
 	std::vector<FIRGBF> observations;
+	std::vector<int> observationTime;
 };
 
 #endif

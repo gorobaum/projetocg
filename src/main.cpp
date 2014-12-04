@@ -44,10 +44,10 @@ int main(int argc, char** argv)
 		filenamePng += std::to_string(i)+".png";
 		finalLi.saveImageAsHdr("ext1linear.hdr");
 		finalLi.saveImageAsPng(filenamePng);
-		po.addNewObservation(finalLi);
+		po.addNewObservation(finalLi, i);
 	}
 
-	po.printObservationsForPlot("observationsLinear.data");
+	po.printObservationsForPlot("observationsLinear.dat");
 
 	// LaGrangeInterpolator lgi(observations, imagesToInterpolate, 60);
 	// HdrImage finalLgi = lgi.calculateInterpolationOn(90);
