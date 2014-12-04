@@ -21,6 +21,7 @@ int main(int argc, char** argv)
 	HdrImage three("ang15.hdr");
 	HdrImage four("ang17.hdr");
 
+
 	std::vector<HdrImage> imagesToInterpolate;
 	imagesToInterpolate.push_back(one);
 	imagesToInterpolate.push_back(two);
@@ -41,17 +42,14 @@ int main(int argc, char** argv)
 	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 60);
 	HdrImage finalLgi = lgi.calculateInterpolationOn(90);
 	finalLgi.saveImageAsHdr("ext1lagrange.hdr");
-	finalLgi.saveImageAsPng("ext1lagrange.png");
 
-	// GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
-	// HdrImage finalGfi = gfi.calculateInterpolationOn(90);
-	// finalGfi.saveImageAsHdr("ext1forward.hdr");
+	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
+	HdrImage finalGfi = gfi.calculateInterpolationOn(90);
+	finalGfi.saveImageAsHdr("ext1forward.hdr");
 
-	// GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
-	// HdrImage finalGbi = gbi.calculateInterpolationOn(90);
-	// finalGbi.saveImageAsHdr("ext1backward.hdr");
-
-	//std::cout << "Has pixeis " << FreeImage_GetHeight(bitmap) << "\n";
+	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
+	HdrImage finalGbi = gbi.calculateInterpolationOn(90);
+	finalGbi.saveImageAsHdr("ext1backward.hdr");
 
 	DLL_API void DLL_CALLCONV FreeImage_DeInitialise();
 	return 0;

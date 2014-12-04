@@ -3,8 +3,9 @@
 
 
 HdrImage HdrImage::operator-(const HdrImage& param) {
-	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 128, 0, 0, 0);
+	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
 	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
+
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *paramBits = (FIRGBF *)FreeImage_GetScanLine(param.imageBitmap_.get(), y);
 		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
@@ -20,7 +21,7 @@ HdrImage HdrImage::operator-(const HdrImage& param) {
 }
 
 HdrImage HdrImage::operator+(const HdrImage& param) {
-	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 128, 0, 0, 0);
+	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
 	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *paramBits = (FIRGBF *)FreeImage_GetScanLine(param.imageBitmap_.get(), y);
@@ -37,7 +38,7 @@ HdrImage HdrImage::operator+(const HdrImage& param) {
 }
 
 HdrImage HdrImage::operator*(const double& param) {
-	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 128, 0, 0, 0);
+	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
 	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
@@ -53,7 +54,7 @@ HdrImage HdrImage::operator*(const double& param) {
 }
 
 HdrImage HdrImage::operator/(const double& param) {
-	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 128, 0, 0, 0);
+	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
 	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
@@ -69,7 +70,7 @@ HdrImage HdrImage::operator/(const double& param) {
 }
 
 HdrImage HdrImage::clamp() {
-	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 128, 0, 0, 0);
+	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
 	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
@@ -96,6 +97,7 @@ void HdrImage::saveImageAsPng(std::string filename) {
 	FreeImage_Save(FIF_PNG, FreeImage_ToneMapping(imageBitmap_.get(), FITMO_REINHARD05), filename.c_str(), PNG_DEFAULT);
 }
 
+
 void HdrImage::saveImageAsHdr(std::string filename) {
 	FreeImage_Save(FIF_HDR, imageBitmap_.get(), filename.c_str(), HDR_DEFAULT);
 }
@@ -103,8 +105,9 @@ void HdrImage::saveImageAsHdr(std::string filename) {
 
 FIRGBF HdrImage::getPixelAt(unsigned int x, unsigned int y) {
 	FIRGBF ret;
-	if (y < FreeImage_GetHeight(imageBitmap_.get())) 
-		if (x < FreeImage_GetWidth(imageBitmap_.get())) {
+	y = FreeImage_GetHeight(imageBitmap_.get()) - y;
+	if (y < FreeImage_GetHeight(imageBitmap_.get()) && y >= 0) 
+		if (x < FreeImage_GetWidth(imageBitmap_.get()) && x >= 0) {
 			FIRGBF *bits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 			ret = bits[x];
 		}

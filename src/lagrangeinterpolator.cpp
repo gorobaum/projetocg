@@ -36,13 +36,6 @@ HdrImage LaGrangeInterpolator::calculateInterpolationOn(float observation) {
 		}
 		interpolation = interpolation + values_[step]*(numerator/denominator);
 	}
-	std::cout << "LAGRANGE\n";
-	std::cout << "interpolation[695][390] = " << interpolation.getPixelAt(695,390).red << "\n";
-	std::cout << "interpolation[695][390] = " << interpolation.getPixelAt(695,390).green << "\n";
-	std::cout << "interpolation[695][390] = " << interpolation.getPixelAt(695,390).blue << "\n";
-	std::cout << "interpolation[696][390] = " << interpolation.getPixelAt(696,390).red << "\n";
-	std::cout << "interpolation[696][390] = " << interpolation.getPixelAt(696,390).green << "\n";
-	std::cout << "interpolation[696][390] = " << interpolation.getPixelAt(696,390).blue << "\n";
 	interpolation = interpolation.clamp();
 	return interpolation;
 }

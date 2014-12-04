@@ -25,13 +25,6 @@ HdrImage LinearInterpolator::calculateInterpolationOn(float observation) {
 
 		interpolation = values_[count-1]+(values_[count] - values_[count-1])*denominator;
 	}
-	std::cout << "LINEAR\n";
-	std::cout << "interpolation[695][390] = " << interpolation.getPixelAt(695,390).red << "\n";
-	std::cout << "interpolation[695][390] = " << interpolation.getPixelAt(695,390).green << "\n";
-	std::cout << "interpolation[695][390] = " << interpolation.getPixelAt(695,390).blue << "\n";
-	std::cout << "interpolation[696][390] = " << interpolation.getPixelAt(696,390).red << "\n";
-	std::cout << "interpolation[696][390] = " << interpolation.getPixelAt(696,390).green << "\n";
-	std::cout << "interpolation[696][390] = " << interpolation.getPixelAt(696,390).blue << "\n";
 	interpolation = interpolation.clamp();
 	return interpolation;
 }
