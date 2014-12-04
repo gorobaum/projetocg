@@ -29,10 +29,10 @@ int main(int argc, char** argv)
 	imagesToInterpolate.push_back(four);
 
 	std::vector<int> observations;
-	observations.push_back(0);
-	observations.push_back(60);
-	observations.push_back(120);
-	observations.push_back(180);
+	observations.push_back(30);
+	observations.push_back(90);
+	observations.push_back(150);
+	observations.push_back(210);
 	
 	LinearInterpolator li(observations, imagesToInterpolate, 60);
 	HdrImage finalLi = li.calculateInterpolationOn(90);
@@ -47,10 +47,12 @@ int main(int argc, char** argv)
 	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
 	HdrImage finalGfi = gfi.calculateInterpolationOn(90);
 	finalGfi.saveImageAsHdr("ext1forward.hdr");
+	finalLgi.saveImageAsPng("ext1forward.png");
 
 	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(90);
 	finalGbi.saveImageAsHdr("ext1backward.hdr");
+	finalLgi.saveImageAsPng("ext1backward.png");
 
 	DLL_API void DLL_CALLCONV FreeImage_DeInitialise();
 	return 0;
