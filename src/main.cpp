@@ -49,20 +49,20 @@ int main(int argc, char** argv)
 
 	po.printObservationsForPlot("observationsLinear.dat");
 
-	// LaGrangeInterpolator lgi(observations, imagesToInterpolate, 60);
-	// HdrImage finalLgi = lgi.calculateInterpolationOn(90);
-	// finalLgi.saveImageAsHdr("ext1lagrange.hdr");
-	// finalLgi.saveImageAsPng("ext1lagrange.png");
+	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 60);
+	HdrImage finalLgi = lgi.calculateInterpolationOn(90);
+	finalLgi.saveImageAsHdr("ext1lagrange.hdr");
+	finalLgi.saveImageAsPng("ext1lagrange.png");
 
-	// GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
-	// HdrImage finalGfi = gfi.calculateInterpolationOn(90);
-	// finalGfi.saveImageAsHdr("ext1forward.hdr");
-	// finalLgi.saveImageAsPng("ext1forward.png");
+	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
+	HdrImage finalGfi = gfi.calculateInterpolationOn(90);
+	finalGfi.saveImageAsHdr("ext1forward.hdr");
+	finalLgi.saveImageAsPng("ext1forward.png");
 
-	// GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
-	// HdrImage finalGbi = gbi.calculateInterpolationOn(90);
-	// finalGbi.saveImageAsHdr("ext1backward.hdr");
-	// finalLgi.saveImageAsPng("ext1backward.png");
+	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
+	HdrImage finalGbi = gbi.calculateInterpolationOn(90);
+	finalGbi.saveImageAsHdr("ext1backward.hdr");
+	finalLgi.saveImageAsPng("ext1backward.png");
 
 	DLL_API void DLL_CALLCONV FreeImage_DeInitialise();
 	return 0;
