@@ -10,7 +10,6 @@ class LaGrangeInterpolator : public Interpolator {
 using Interpolator::Interpolator;
 public:
 	HdrImage calculateInterpolationOn(float observation);
-	HdrImage takeStep(float observation);
 	LaGrangeInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval);
 };
 

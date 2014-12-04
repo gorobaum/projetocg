@@ -14,7 +14,6 @@ public:
 		interval_(interval),
 		step(0) {}
 	virtual HdrImage calculateInterpolationOn(float observation) = 0;
-	virtual HdrImage takeStep(float observation) = 0;
 protected:
 	std::vector<int> observations_;
 	std::vector<HdrImage> values_;

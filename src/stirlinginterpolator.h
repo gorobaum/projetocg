@@ -11,7 +11,6 @@ class StirlingInterpolator : public Interpolator {
 using Interpolator::Interpolator;
 public:
 	HdrImage calculateInterpolationOn(float observation);
-	HdrImage takeStep(float observation);
 	StirlingInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval);
 
 private:

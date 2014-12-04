@@ -42,6 +42,7 @@ int main(int argc, char** argv)
 	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 60);
 	HdrImage finalLgi = lgi.calculateInterpolationOn(90);
 	finalLgi.saveImageAsHdr("ext1lagrange.hdr");
+	finalLgi.saveImageAsPng("ext1lagrange.png");
 
 	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
 	HdrImage finalGfi = gfi.calculateInterpolationOn(90);

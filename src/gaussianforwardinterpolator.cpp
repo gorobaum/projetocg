@@ -6,16 +6,6 @@
 GaussianForwardInterpolator::GaussianForwardInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval) :
 	Interpolator(observations, values, interval){}
 
-HdrImage GaussianForwardInterpolator::takeStep(float observation) {
-	int width = values_[0].getWidth();
-	int height = values_[0].getHeight();
-	HdrImage interpolation(width, height);
-
-	step++;
-	return interpolation;
-}
-
-
 HdrImage GaussianForwardInterpolator::calculateInterpolationOn(float observation) {
 	int numberOfObservations = observations_.size();
 	int width = values_[0].getWidth();

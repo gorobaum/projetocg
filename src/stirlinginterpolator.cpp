@@ -7,17 +7,6 @@
 StirlingInterpolator::StirlingInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
 	Interpolator(observations, values, interval){}
 
-
-HdrImage StirlingInterpolator::takeStep(float observation) {
-	int width = values_[0].getWidth();
-	int height = values_[0].getHeight();
-	HdrImage interpolation(width, height);
-
-	step++;
-	return interpolation;
-}
-
-
 HdrImage StirlingInterpolator::calculateInterpolationOn(float observation) {
 	int numberOfObservations = observations_.size();
 	int width = values_[0].getWidth();
