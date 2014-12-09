@@ -19,12 +19,19 @@
 \TOGdataURL{}
 \TOGcodeURL{}
 
-\title{The Title of Your Paper Goes Here}
+\title{Lighting estimation for different time periods using light probes}
 
-\author{Robert A. Smith\thanks{e-mail:rsmith@gmail.com}\\Smith Research}
-\pdfauthor{Robert A. Smith}
+\author{
+  Caio F. Valente\\
+  \texttt{caiov@ime.usp.br}
+  \and
+  Thiago G. Nunes\\
+  \texttt{first2.last2@xxxxx.com}
+}
+\pdfauthor{Caio F. Valente}
+\pdfauthor{Thiago G. Nunes}
 
-\keywords{radiosity, global illumination, constant time}
+\keywords{image based lighting, global illumination}
 
 \begin{document}
 
@@ -57,11 +64,42 @@
 
 \section{Introduction}
 
-\section{HDR Images and Light Probes}
+	Computer graphics is present in a wide variety of areas ranging from entertainment to medicine or military applications, and one of its biggest challenges is generating realistic and convincing synthetic scenes. Realistic scene synthesis is dependent on a few factors, like geometry, materials and lighting. One of the most complex elements to reproduce are those related to lighting.
 
-\section{Interpolations}
+	We would like to render scenes in different periods of the day with realistic and convincing lighting. Realistic lighting can be achieved by means of a technique called IBL – Image Based Lighting. 
 
-\section{Experiments}
+	IBL consists in obtaining light probes, which are omnidirectional HDR images, and using them as environment maps during the rendering phase.
+
+	However, this technique is limited in the sense that we must obtain a new light probe for every instant we would like to render. This limitation makes the use of image-based lighting inviable depending on the time range of the scenes to be rendered due to enormous amount of work involved in obtaining the light probes.
+
+	Our main goal is to alleviate the restriction that a light probe must be obtained for every moment to be rendered. In order to do that we propose the use of interpolation to estimate the light probes for the instants that data is not available.
+
+	We propose two comparisons to validate our approximation:
+	\begin{itemize}
+		\item Comparing light probes obtained through interpolation and light probes obtained through the usual way, which is done by combining different exposure time images.
+		\item Comparing the rendering a simple object using the interpolated light probe as a light source and the same object in the real scene. The object is a white cube.
+	\end{itemize}
+
+
+
+
+\section{Definitions}
+
+	\subsection{Environment Map}
+
+		Environment Map (Hughes, 2013) consists in exchanging the illumination model for a texture lookup model which contains the lighting information.
+
+	\subsection{HDR}
+
+		HDR (High Dynamic Range) is an image format capable of representing a scene’s great variation in luminosity. It is usually stored using floating points with 32 bits per channel. HDR images can be obtained by using special cameras like the Spheron (SpheronVR), or combining images with different exposure times using software like Photoshop or HDR Shop. A scene’s radiance can be recovered from a scene’s HDR image (Paul E. Debevec, 1997).
+
+	\subsection{IBL}
+
+		Image Based Lighting (Debevec, 2002) consists in capturing a scene illumination information through an omnidirectional HDR image. To capture omnidirectional images either a reflective sphere or fisheye lenses can be used. The resulting image, called light probe, is then used as an environment map in the rendering phase. Note that a new light probe must be acquired for different locations or periods, otherwise the lighting consistency might not be maintained.
+
+	\subsection{Interpolations}
+
+\section{Experiment}
 
 \section{Results}
 
