@@ -6,6 +6,6 @@ unset label                            # remove any previous labels
 set xtic auto                          # set xtics automatically
 set ytic auto                          # set ytics automatically
 set title "Pixel intensities"
-set xlabel "Intensitie (0-255)"
-set ylabel "Time (hrs)"
-plot "observationsLinear.dat" using 2:1 title 'Red' with linespoints, "observationsLinear.dat" using 3:1 title 'Green' with linespoints, "observationsLinear.dat" using 4:1 title 'Blue'  with linespoints
+set xlabel "Time (hrs)"
+set ylabel "Intensitie"
+plot "observationsBackward.dat" using 1:2 title 'Red' with linespoints, "observationsLinear.dat" using 1:3 title 'Green' with linespoints, "observationsLinear.dat" using 1:4 title 'Blue'  with linespoints

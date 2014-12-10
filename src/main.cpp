@@ -38,35 +38,43 @@ int main(int argc, char** argv)
 	observations.push_back(210);
 	observations.push_back(270);
 	
-	PixelObserver po(10,10);
-
-	for (int i = 30; i <= 270; i+=10) {
+	PixelObserver pol(10,10);
+	for (int i = 30; i <= 270; i+=1) {
 		LinearInterpolator li(observations, imagesToInterpolate, 60);
 		HdrImage finalLi = li.calculateInterpolationOn(i);
 		std::string filenamePng("ext1linear");
-		filenamePng += std::to_string(i)+".png";
-		finalLi.saveImageAsHdr("ext1linear.hdr");
-		finalLi.saveImageAsPng(filenamePng);
-		po.addNewObservation(finalLi, i);
+		pol.addNewObservation(finalLi, i);
 	}
 
-	po.printObservationsForPlot("observationsLinear.dat");
+	pol.printObservationsForPlot("observationsLinear.dat");
 
-	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 60);
-	HdrImage finalLgi = lgi.calculateInterpolationOn(90);
-	finalLgi.saveImageAsHdr("ext1lagrange.hdr");
-	finalLgi.saveImageAsPng("ext1lagrange.png");
 
-	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
-	HdrImage finalGfi = gfi.calculateInterpolationOn(90);
-	finalGfi.saveImageAsHdr("ext1forward.hdr");
-	finalLgi.saveImageAsPng("ext1forward.png");
+	PixelObserver polg(10,10);
+	for (int i = 30; i <= 270; i+=1) {
+		LaGrangeInterpolator lgi(observations, imagesToInterpolate, 60);
+		HdrImage finalLgi = lgi.calculateInterpolationOn(i);
+		polg.addNewObservation(finalLgi, i);
+	}
 
-	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
-	HdrImage finalGbi = gbi.calculateInterpolationOn(90);
-	finalGbi.saveImageAsHdr("ext1backward.hdr");
-	finalLgi.saveImageAsPng("ext1backward.png");
+	polg.printObservationsForPlot("observationsLaGrange.dat");
 
+	PixelObserver pogf(10,10);
+	for (int i = 30; i <= 270; i+=1) {
+		GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
+		HdrImage finalGfi = gfi.calculateInterpolationOn(i);
+		pogf.addNewObservation(finalGfi, i);
+	}
+
+	pogf.printObservationsForPlot("observationsFoward.dat");
+
+
+	PixelObserver pogb(10,10);
+	for (int i = 30; i <= 270; i+=1) {
+		GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
+		HdrImage finalGbi = gbi.calculateInterpolationOn(i);
+		pogb.addNewObservation(finalGbi, i);
+	}
+	pogb.printObservationsForPlot("observationsBackward.dat");
 	DLL_API void DLL_CALLCONV FreeImage_DeInitialise();
 	return 0;
 };
