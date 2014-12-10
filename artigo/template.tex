@@ -10,6 +10,14 @@
 
 \documentclass[conference]{acmsiggraph}
 
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[]{graphicx}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{float}
+
 \TOGonlineid{45678}
 \TOGvolume{0}
 \TOGnumber{0}
@@ -43,7 +51,8 @@
 \maketitle
 
 \begin{abstract}
-	In this paper, we present a way to approximate real lighting for different time periods by using image based lighting with sparsely obtained light probes. In order to maintain lighting consistency we use of interpolation, we have tested and compared a few interpolation methods.
+	In this paper, we present a way to approximate real lighting for different time periods by using image based lighting with sparsely obtained light probes. In order to maintain 
+	lighting consistency we use of interpolation, we have tested and compared a few interpolation methods.
 \end{abstract}
 
 \begin{CRcatlist}
@@ -71,7 +80,7 @@ related to lighting.
 We would like to render scenes in different periods of the day with realistic and convincing lighting. Realistic lighting can be achieved by means of a technique called IBL – Image 
 Based Lighting. 
 
-IBL consists in obtaining light probes, which are omnidirectional HDR images, and using them as environment maps during the rendering phase.
+Image Based Lighting consists in obtaining light probes, which are omnidirectional High Dynamic Range images, and using them as environment maps during the rendering phase.
 
 However, this technique is limited in the sense that we must obtain a new light probe for every instant we would like to render. This limitation makes the use of image-based lighting 
 inviable depending on the time range of the scenes to be rendered due to enormous amount of work involved in obtaining the light probes.
@@ -82,8 +91,15 @@ the light probes for the instants that data is not available.
 We propose two comparisons to validate our approximation:
 \begin{itemize}
 	\item Comparing light probes obtained through interpolation and light probes obtained through the usual way, which is done by combining different exposure time images.
-	\item Comparing the rendering a simple object using the interpolated light probe as a light source and the same object in the real scene. The object is a white cube.
+	\item Comparing the rendering a simple object using the interpolated light probe as a light source and the same object in the real scene. The object is a white cube \ref{fig:whitecube}.
 \end{itemize}
+
+\begin{figure}[!ht]
+	\caption{Image obtained by using a fisheye lens.}
+	\centering
+	\includegraphics[width=7cm]{images/fisheye.jpg}
+	\label{fig:whitecube}
+\end{figure}
 
 \section{Definitions}
 
@@ -94,8 +110,8 @@ We propose two comparisons to validate our approximation:
 \subsection{High Dynamic Range}
 
 	High Dynamic Range (HDR) is an image format capable of representing a scene’s great variation in luminosity. It is usually stored using floating points with 32 bits per channel. 
-	HDR images can be obtained by using special cameras like the Spheron \cite{spheron}, or combining images with different exposure times using software like Photoshop or HDR Shop. A 
-	scene’s radiance can be recovered from a scene’s HDR image \cite{debevec1997}.
+	HDR images can be obtained by using special cameras like the Spheron \cite{spheron}, or combining images with different exposure times using software like Photoshop or HDR Shop. 
+	A scene’s radiance can be recovered from a scene’s HDR image \cite{debevec1997}.
 
 \subsection{Image Based Lighting}
 
@@ -117,9 +133,29 @@ We propose two comparisons to validate our approximation:
 		\label{fig:lightprobe}
 	\end{figure}
 
-
 \subsection{Interpolations}
-	
+	We have used five types of polinomial interpolations to create the result Light Probe between our data. The Light Probes were interpolatate using pixel intensities over time.
+\subsubsection{Linear Interpolation}
+	The first interpolation is the classic Linear Interpolation. It's formule is as below: 
+\begin{align}
+	p' = p_0 + (p_1-p_0)*\frac{t-t_0}{t_1-t_0}
+\end{align}
+Where $p$ is the intensities of the Light Probe $p$ and $t$ it's the time of the resulting Light Probe.
+
+\subsubsection{Gauss Foward Central Difference Formula}
+	The second interpolation method is the Gauss Foward Central Difference Formula. Given a set of $n$ Light Probes over time, with a commom difference of $h$ units of time, 
+$(\dots,t_{i-2},t_{i-1},t_i,t_{i+1},t_{i+2},\dots)$ and the capture time $(\dots,p_{i-2},p_{i-1},p_i,p_{i+1},p_{i+2},\dots)$ of each observation, we can interpolate a new
+Light Probe using the following formule:
+\begin{align}
+\begin{split}
+	p' &= p_i + T \delta_{1/2} + G_2 \delta_0^2 + G_3 \delta_{1/2}^3 + \dots\\
+	T &= (t-t0)/h \\
+	G_{2n} &= \binom{T+n-1}{2n} \\
+	G_{2n+1} &= \binom{T+n}{2n+1}
+\end{split}
+\end{align}
+	The Foward interpolation uses an iterative method that adds the $n$-esieme central difference\cite{abramowitz1972handbook} to calculate the resulting Light Probe.
+The method uses a piramidal 
 \section{Experiment}
 
 \section{Results}

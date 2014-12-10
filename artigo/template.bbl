@@ -1,4 +1,11 @@
-\begin{thebibliography}{\protect\citename{Paul E.~Debevec }1997}
+\begin{thebibliography}{\protect\citename{Abramowitz and Stegun }1972}
+
+\bibitem[\protect\citename{Abramowitz and Stegun }1972]{abramowitz1972handbook}
+{\sc Abramowitz, M., and Stegun, I.~A.}
+\newblock 1972.
+\newblock {\em Handbook of mathematical functions: with formulas, graphs, and
+  mathematical tables}.
+\newblock No.~55. Courier Dover Publications.
 
 \bibitem[\protect\citename{Debevec }2002]{debevec2002}
 {\sc Debevec, P.}
