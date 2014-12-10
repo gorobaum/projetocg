@@ -1,3 +1,27 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{\protect\citename{Paul E.~Debevec }1997}
+
+\bibitem[\protect\citename{Debevec }2002]{debevec2002}
+{\sc Debevec, P.}
+\newblock 2002.
+\newblock Tutorial: Image-based lighting.
+\newblock {\em IEEE Computer Graphics and Applications\/}, 26 – 34.
+
+\bibitem[\protect\citename{Hughes }2013]{hughes2013}
+{\sc Hughes, Van~Dam, M. S. F. F.~A.}
+\newblock 2013.
+\newblock {\em Computer Graphics Principles and Practice}.
+\newblock Addison-Wesley Professional.
+
+\bibitem[\protect\citename{Paul E.~Debevec }1997]{debevec1997}
+{\sc Paul E.~Debevec, J.~M.}
+\newblock 1997.
+\newblock Recovering high dynamic range radiance maps from photographs.
+\newblock In {\em Proceedings of SIGGRAPH 1997}, ACM Press / ACM SIGGRAPH,
+  Computer Graphics Proceedings, Annual Conference Series, ACM, 369--378.
+
+\bibitem[\protect\citename{Spheron }]{spheron}
+{\sc Spheron}.
+\newblock Spheron.
+\newblock https://www.spheron.com/products/cgi-computer-generated-imagery.html.
 
 \end{thebibliography}

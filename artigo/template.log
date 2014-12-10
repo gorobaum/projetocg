@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.9)  9 DEC 2014 18:25
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.9)  10 DEC 2014 00:44
 entering extended mode
 **C:/Users/Caio/Documents/Visual*Studio*2012/Projects/projetocg/artigo/template
 .tex
@@ -383,15 +383,11 @@ LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 (Font)              scaled to size 11.03998pt on input line 45.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 49.
-
-Underfull \hbox (badness 3098) in paragraph at lines 49--53
-\OT1/ptm/m/n/9 Graph-ics and Realism---Display Al-go-rithms I.3.7 [Com-puter
- []
-
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 79.
+
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
@@ -403,9 +399,6 @@ LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 88.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 (Font)              scaled to size 9.19998pt on input line 88.
-
-Underfull \vbox (badness 1681) has occurred while \output is active []
-
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ™ in font ptmr7t!
@@ -416,18 +409,24 @@ Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ™ in font ptmr7t!
 
-<images/fisheye.jpg, id=3, 543.4704pt x 433.62pt>
+
+LaTeX Warning: Citation 'linda' on page 1 undefined on input line 98.
+
+
+LaTeX Warning: Citation 'salgado' on page 1 undefined on input line 98.
+
+<images/fisheye.jpg, id=7, 543.4704pt x 433.62pt>
 File: images/fisheye.jpg Graphic file (type jpg)
  <use images/fisheye.jpg>
 Package pdftex.def Info: images/fisheye.jpg used on input line 103.
-(pdftex.def)             Requested size: 142.26091pt x 142.26135pt.
+(pdftex.def)             Requested size: 199.16928pt x 158.90848pt.
 
-<images/lightprobe.jpg, id=4, 642.4pt x 492.84125pt>
+<images/lightprobe.jpg, id=8, 642.4pt x 492.84125pt>
 File: images/lightprobe.jpg Graphic file (type jpg)
 
 <use images/lightprobe.jpg>
 Package pdftex.def Info: images/lightprobe.jpg used on input line 109.
-(pdftex.def)             Requested size: 142.25964pt x 142.26604pt.
+(pdftex.def)             Requested size: 199.16928pt x 152.80176pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -435,11 +434,9 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ("C:\Users\Caio\Documents\Visual Studio 2012\Projects\projetocg\artigo\template
 .bbl"
-
-LaTeX Warning: Empty `thebibliography' environment on input line 3.
-
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no “ in font ptmr7t!
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -447,7 +444,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
  <C:/Users/Caio/Documents/Visual Studio 2012/Projects/projetocg/artigo/images/f
-isheye.jpg>] [2
+isheye.jpg>]
+Underfull \hbox (badness 1418) in paragraph at lines 23--26
+[]\OT1/ptm/m/sc/9 Spheron\OT1/ptm/m/n/9 .  Spheron.  https://www.spheron.com/pr
+oducts/cgi-
+ []
+
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 125.
+ [2
 
  <C:/Users/Caio/Documents/Visual Studio 2012/Projects/projetocg/artigo/images/l
 ightprobe.jpg>]
@@ -460,13 +465,13 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 125.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 125.
  ) 
 Here is how much of TeX's memory you used:
- 7043 strings out of 493921
- 106942 string characters out of 3144879
+ 7056 strings out of 493921
+ 107091 string characters out of 3144879
  189505 words of memory out of 3000000
- 10246 multiletter control sequences out of 15000+200000
- 22362 words of font info for 48 fonts, out of 3000000 for 9000
+ 10253 multiletter control sequences out of 15000+200000
+ 24086 words of font info for 50 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 43i,8n,40p,549b,323s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,8n,40p,618b,402s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86
@@ -474,9 +479,9 @@ iles (x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86
  2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/
 type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on template.pdf (2 pages, 415329 bytes).
+Output written on template.pdf (2 pages, 421397 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 17 named destinations out of 1000 (max. 500000)
+ 68 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

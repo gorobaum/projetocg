@@ -1,5 +1,30 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: template.aux
 The style file: acmsiggraph.bst
-I found no \citation commands---while reading file template.aux
 Database file #1: template.bib
-(There was 1 error message)
+Warning--I didn't find a database entry for "linda"
+Warning--I didn't find a database entry for "salgado"
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1276 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1276 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1276 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1276 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1276 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1276 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1276 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1276 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1341 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1341 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1341 of file acmsiggraph.bst
+Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
+while executing---line 1341 of file acmsiggraph.bst
+(There were 12 error messages)

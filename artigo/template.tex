@@ -43,12 +43,12 @@
 \maketitle
 
 \begin{abstract}
-	Oi
+	In this paper, we present a way to approximate real lighting for different time periods by using image based lighting with sparsely obtained light probes. In order to maintain lighting consistency we use of interpolation, we have tested and compared a few interpolation methods.
 \end{abstract}
 
 \begin{CRcatlist}
-  \CRcat{I.3.3}{Computer Graphics}{Three-Dimensional Graphics and Realism}{Display Algorithms}
-  \CRcat{I.3.7}{Computer Graphics}{Three-Dimensional Graphics and Realism}{Radiosity};
+  \CRcat{I.3.3}{Computer Graphics}{Three-Dimensional Graphics and Realism}{image based lighting}
+  \CRcat{I.3.7}{Computer Graphics}{Three-Dimensional Graphics and Realism}{global illumination};
 \end{CRcatlist}
 
 \keywordlist
@@ -87,26 +87,26 @@
 
 	\subsection{Environment Map}
 
-		Environment Map (Hughes, 2013) consists in exchanging the illumination model for a texture lookup model which contains the lighting information.
+		Environment mapping \cite{hughes2013} consists in exchanging the illumination model for a texture lookup model which contains the lighting information.
 
 	\subsection{HDR}
 
-		HDR (High Dynamic Range) is an image format capable of representing a scene’s great variation in luminosity. It is usually stored using floating points with 32 bits per channel. HDR images can be obtained by using special cameras like the Spheron (SpheronVR), or combining images with different exposure times using software like Photoshop or HDR Shop. A scene’s radiance can be recovered from a scene’s HDR image (Paul E. Debevec, 1997).
+		HDR (High Dynamic Range) is an image format capable of representing a scene’s great variation in luminosity. It is usually stored using floating points with 32 bits per channel. HDR images can be obtained by using special cameras like the Spheron \cite{spheron}, or combining images with different exposure times using software like Photoshop or HDR Shop. A scene’s radiance can be recovered from a scene’s HDR image \cite{debevec1997}.
 
 	\subsection{IBL}
 
-		Image Based Lighting (Debevec, 2002) consists in capturing a scene illumination information through an omnidirectional HDR image. To capture omnidirectional images either a reflective sphere or fisheye lenses can be used. The resulting image, called light probe, is then used as an environment map in the rendering phase. Note that a new light probe must be acquired for different locations or periods, otherwise the lighting consistency might not be maintained.
+		Image Based Lighting \cite{debevec2002} consists in capturing a scene illumination information through an omnidirectional HDR image. To capture omnidirectional images either a reflective sphere (Figure 1\cite{linda}) or fisheye lenses (Figure 2\cite{salgado}) can be used. The resulting image, called light probe, is then used as an environment map in the rendering phase. Note that a new light probe must be acquired for different locations or periods, otherwise the lighting consistency might not be maintained.
 
 		\begin{figure}[h!]
   			\caption{Image obtained by using a fisheye lens.}
  			 \centering
-			\includegraphics[width=5cm, height=5cm]{images/fisheye.jpg}
+			\includegraphics[width=7cm]{images/fisheye.jpg}
 		\end{figure}
 
 		\begin{figure}[h!]
   			\caption{Reflective sphere that could be used as a light probe.}
  			 \centering
-		\includegraphics[width=5cm, height=5cm]{images/lightprobe.jpg}
+		\includegraphics[width=7cm]{images/lightprobe.jpg}
 		\end{figure}
 
 
