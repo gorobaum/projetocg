@@ -26,7 +26,7 @@
   \texttt{caiov@ime.usp.br}
   \and
   Thiago G. Nunes\\
-  \texttt{first2.last2@xxxxx.com}
+  \texttt{nunes@ime.usp.br}
 }
 \pdfauthor{Caio F. Valente}
 \pdfauthor{Thiago G. Nunes}
@@ -64,54 +64,62 @@
 
 \section{Introduction}
 
-	Computer graphics is present in a wide variety of areas ranging from entertainment to medicine or military applications, and one of its biggest challenges is generating realistic and convincing synthetic scenes. Realistic scene synthesis is dependent on a few factors, like geometry, materials and lighting. One of the most complex elements to reproduce are those related to lighting.
+Computer graphics is present in a wide variety of areas ranging from entertainment to medicine or military applications, and one of its biggest challenges is generating realistic and 
+convincing synthetic scenes. Realistic scene synthesis is dependent on a few factors, like geometry, materials and lighting. One of the most complex elements to reproduce are those 
+related to lighting.
 
-	We would like to render scenes in different periods of the day with realistic and convincing lighting. Realistic lighting can be achieved by means of a technique called IBL – Image Based Lighting. 
+We would like to render scenes in different periods of the day with realistic and convincing lighting. Realistic lighting can be achieved by means of a technique called IBL – Image 
+Based Lighting. 
 
-	IBL consists in obtaining light probes, which are omnidirectional HDR images, and using them as environment maps during the rendering phase.
+IBL consists in obtaining light probes, which are omnidirectional HDR images, and using them as environment maps during the rendering phase.
 
-	However, this technique is limited in the sense that we must obtain a new light probe for every instant we would like to render. This limitation makes the use of image-based lighting inviable depending on the time range of the scenes to be rendered due to enormous amount of work involved in obtaining the light probes.
+However, this technique is limited in the sense that we must obtain a new light probe for every instant we would like to render. This limitation makes the use of image-based lighting 
+inviable depending on the time range of the scenes to be rendered due to enormous amount of work involved in obtaining the light probes.
 
-	Our main goal is to alleviate the restriction that a light probe must be obtained for every moment to be rendered. In order to do that we propose the use of interpolation to estimate the light probes for the instants that data is not available.
+Our main goal is to alleviate the restriction that a light probe must be obtained for every moment to be rendered. In order to do that we propose the use of interpolation to estimate 
+the light probes for the instants that data is not available.
 
-	We propose two comparisons to validate our approximation:
-	\begin{itemize}
-		\item Comparing light probes obtained through interpolation and light probes obtained through the usual way, which is done by combining different exposure time images.
-		\item Comparing the rendering a simple object using the interpolated light probe as a light source and the same object in the real scene. The object is a white cube.
-	\end{itemize}
-
-
-
+We propose two comparisons to validate our approximation:
+\begin{itemize}
+	\item Comparing light probes obtained through interpolation and light probes obtained through the usual way, which is done by combining different exposure time images.
+	\item Comparing the rendering a simple object using the interpolated light probe as a light source and the same object in the real scene. The object is a white cube.
+\end{itemize}
 
 \section{Definitions}
 
-	\subsection{Environment Map}
+\subsection{Environment Map}
 
-		Environment mapping \cite{hughes2013} consists in exchanging the illumination model for a texture lookup model which contains the lighting information.
+	Environment mapping \cite{hughes2013} consists in exchanging the illumination model for a texture lookup model which contains the lighting information.
 
-	\subsection{HDR}
+\subsection{High Dynamic Range}
 
-		HDR (High Dynamic Range) is an image format capable of representing a scene’s great variation in luminosity. It is usually stored using floating points with 32 bits per channel. HDR images can be obtained by using special cameras like the Spheron \cite{spheron}, or combining images with different exposure times using software like Photoshop or HDR Shop. A scene’s radiance can be recovered from a scene’s HDR image \cite{debevec1997}.
+	High Dynamic Range (HDR) is an image format capable of representing a scene’s great variation in luminosity. It is usually stored using floating points with 32 bits per channel. 
+	HDR images can be obtained by using special cameras like the Spheron \cite{spheron}, or combining images with different exposure times using software like Photoshop or HDR Shop. A 
+	scene’s radiance can be recovered from a scene’s HDR image \cite{debevec1997}.
 
-	\subsection{IBL}
+\subsection{Image Based Lighting}
 
-		Image Based Lighting \cite{debevec2002} consists in capturing a scene illumination information through an omnidirectional HDR image. To capture omnidirectional images either a reflective sphere (Figure 1\cite{linda}) or fisheye lenses (Figure 2\cite{salgado}) can be used. The resulting image, called light probe, is then used as an environment map in the rendering phase. Note that a new light probe must be acquired for different locations or periods, otherwise the lighting consistency might not be maintained.
+	Image Based Lighting (IBL) \cite{debevec2002} consists in capturing a scene illumination information through an omnidirectional HDR image. To capture omnidirectional images either 
+	a reflective sphere (Figure \ref{fig:fisheye}) or fisheye lenses (Figure \ref{fig:fisheye}) can be used. The resulting image, called light probe, is then used as an environment 
+	map in the rendering phase. Note that a new light probe must be acquired for different locations or periods, otherwise the lighting consistency might not be maintained.
 
-		\begin{figure}[h!]
-  			\caption{Image obtained by using a fisheye lens.}
- 			 \centering
-			\includegraphics[width=7cm]{images/fisheye.jpg}
-		\end{figure}
+	\begin{figure}[!ht]
+		\caption{Image obtained by using a fisheye lens.}
+		\centering
+		\includegraphics[width=7cm]{images/fisheye.jpg}
+		\label{fig:fisheye}
+	\end{figure}
 
-		\begin{figure}[h!]
-  			\caption{Reflective sphere that could be used as a light probe.}
- 			 \centering
+	\begin{figure}[!ht]
+		\caption{Reflective sphere that could be used as a light probe.}
+		\centering
 		\includegraphics[width=7cm]{images/lightprobe.jpg}
-		\end{figure}
+		\label{fig:lightprobe}
+	\end{figure}
 
 
-	\subsection{Interpolations}
-
+\subsection{Interpolations}
+	
 \section{Experiment}
 
 \section{Results}

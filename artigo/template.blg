@@ -1,8 +1,8 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: template.aux
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: template.aux
 The style file: acmsiggraph.bst
 Database file #1: template.bib
-Warning--I didn't find a database entry for "linda"
-Warning--I didn't find a database entry for "salgado"
 Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
 while executing---line 1276 of file acmsiggraph.bst
 Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
@@ -27,4 +27,45 @@ Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Ak
 while executing---line 1341 of file acmsiggraph.bst
 Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
 while executing---line 1341 of file acmsiggraph.bst
+You've used 4 entries,
+            2748 wiz_defined-function locations,
+            617 strings with 4925 characters,
+and the built_in function-call counts, 1325 in all, are:
+= -- 128
+> -- 36
+< -- 0
++ -- 8
+- -- 12
+* -- 86
+:= -- 229
+add.period$ -- 15
+call.type$ -- 4
+change.case$ -- 19
+chr.to.int$ -- 4
+cite$ -- 4
+duplicate$ -- 57
+empty$ -- 126
+format.name$ -- 12
+if$ -- 277
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 4
+newline$ -- 26
+num.names$ -- 12
+pop$ -- 25
+preamble$ -- 1
+purify$ -- 16
+quote$ -- 0
+skip$ -- 38
+stack$ -- 0
+substring$ -- 68
+swap$ -- 12
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 28
+warning$ -- 0
+while$ -- 14
+width$ -- 6
+write$ -- 57
 (There were 12 error messages)
