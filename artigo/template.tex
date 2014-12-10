@@ -138,13 +138,13 @@ We propose two comparisons to validate our approximation:
 \subsubsection{Linear Interpolation}
 	The first interpolation is the classic Linear Interpolation. It's formule is as below: 
 \begin{align}
-	p' = p_0 + (p_1-p_0)*\frac{t-t_0}{t_1-t_0}
+	y' = y_0 + (y_1-y_0)*\frac{x-x_0}{x_1-x_0}
 \end{align}
-Where $p$ is the intensities of the Light Probe $p$ and $t$ it's the time of the resulting Light Probe.
+Where $y$ is the intensities of the Light Probe and $x$ it's the time of the resulting Light Probe.
 
 \subsubsection{Gauss Foward Central Difference Formula}
 	The second interpolation method is the Gauss Foward Central Difference Formula. Given a set of $n$ Light Probes over time, with a commom difference of $h$ units of time, 
-$(\dots,t_{i-2},t_{i-1},t_i,t_{i+1},t_{i+2},\dots)$ and the capture time $(\dots,p_{i-2},p_{i-1},p_i,p_{i+1},p_{i+2},\dots)$ of each observation, we can interpolate a new
+$(\dots,y_{i-2},y_{i-1},y_i,y_{i+1},y_{i+2},\dots)$ and the capture time $(\dots,x_{i-2},x_{i-1},x_i,x_{i+1},x_{i+2},\dots)$ of each observation, we can interpolate a new
 Light Probe using the following formule:
 \begin{align}
 \begin{split}
@@ -154,8 +154,18 @@ Light Probe using the following formule:
 	G_{2n+1} &= \binom{T+n}{2n+1}
 \end{split}
 \end{align}
-	The Foward interpolation uses an iterative method that adds the $n$-esieme central difference\cite{abramowitz1972handbook} to calculate the resulting Light Probe.
-The method uses a piramidal 
+	The Foward interpolation uses an iterative method that adds the $n$-esieme central difference\cite{abramowitz1972handbook} using the piramidal construction showed by Figure \ref{fig:fowardcentral}.
+
+\begin{figure}[!ht]
+	\caption{Reflective sphere that could be used as a light probe.}
+	\centering
+	\includegraphics[width=10cm]{images/forward.png}
+	\label{fig:fowardcentral}
+\end{figure}
+
+\subsubsection{Gauss Backward Central Difference Formula}
+	The 
+
 \section{Experiment}
 
 \section{Results}
