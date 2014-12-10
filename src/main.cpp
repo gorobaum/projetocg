@@ -17,10 +17,11 @@ int main(int argc, char** argv)
 {
 	DLL_API void DLL_CALLCONV FreeImage_Initialise(BOOL load_local_plugins_only FI_DEFAULT(FALSE));
 	
-	HdrImage one("ang11.hdr");
-	HdrImage two("ang13.hdr");
-	HdrImage three("ang15.hdr");
-	HdrImage four("ang17.hdr");
+	HdrImage one("black.hdr");
+	HdrImage two("blue.hdr");
+	HdrImage three("red.hdr");
+	HdrImage four("green.hdr");
+	HdrImage five("white.hdr");
 
 
 	std::vector<HdrImage> imagesToInterpolate;
@@ -28,16 +29,18 @@ int main(int argc, char** argv)
 	imagesToInterpolate.push_back(two);
 	imagesToInterpolate.push_back(three);
 	imagesToInterpolate.push_back(four);
+	imagesToInterpolate.push_back(five);
 
 	std::vector<int> observations;
 	observations.push_back(30);
 	observations.push_back(90);
 	observations.push_back(150);
 	observations.push_back(210);
+	observations.push_back(270);
 	
-	PixelObserver po(696,390);
+	PixelObserver po(10,10);
 
-	for (int i = 30; i <= 210; i+=10) {
+	for (int i = 30; i <= 270; i+=10) {
 		LinearInterpolator li(observations, imagesToInterpolate, 60);
 		HdrImage finalLi = li.calculateInterpolationOn(i);
 		std::string filenamePng("ext1linear");
