@@ -28,6 +28,7 @@ public:
 	HdrImage operator*(const double& param);
 	HdrImage operator/(const double& param);
 	HdrImage clamp();
+	HdrImage clamppositive();
 	float HdrImage::calcDist(const HdrImage& param);
 	HdrImage HdrImage::diffAbs(const HdrImage& param);
 

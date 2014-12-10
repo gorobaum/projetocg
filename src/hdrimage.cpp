@@ -84,6 +84,22 @@ HdrImage HdrImage::clamp() {
 	return ret;
 }
 
+HdrImage HdrImage::clamppositive() {
+	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96, 0, 0, 0);
+	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
+		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
+		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
+		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_.get()); x++) {
+			diffImageBits[x].red = min(thisBits[x].red, 1.0);
+			diffImageBits[x].blue = min(thisBits[x].blue, 1.0);
+			diffImageBits[x].green = min(thisBits[x].green, 1.0);
+		}
+	}
+	std::shared_ptr<FIBITMAP> macaco(diffImage, FreeImage_Unload);
+	HdrImage ret(macaco);
+	return ret;
+}
+
 
 float HdrImage::calcDist(const HdrImage& param) {
 	HdrImage diffImage = diffAbs(param);

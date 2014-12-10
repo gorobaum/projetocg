@@ -58,10 +58,16 @@ int ext1(int argc, char** argv)
 	observations.push_back(325);
 
 
+
 	LinearInterpolator li(observations, imagesToInterpolate, 30);
 	HdrImage finalLi = li.calculateInterpolationOn(210);
 	finalLi.saveImageAsHdr("ext1linear.hdr");
 	std::cout << "ext1linear:  " << finalLi.calcDist(base) << std::endl;
+	finalLi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("diffext1linear.hdr");
+
+	FIRGBF b = base.getPixelAt(825, 394);
+	FIRGBF l = finalLi.getPixelAt(825, 394);
+	FIRGBF d = finalLi.diffAbs(base).getPixelAt(825, 394);
 
 	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 30);
 	HdrImage finalLgi = lgi.calculateInterpolationOn(210);
@@ -91,6 +97,7 @@ int ext1(int argc, char** argv)
 	HdrImage finalGfi = gfi.calculateInterpolationOn(90);
 	finalGfi.saveImageAsHdr("ext1forward.hdr");
 	std::cout << "ext1forward:  " << finalGfi.calcDist(base) << std::endl;
+	finalGfi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("diffext1forward.hdr");
 
 	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(90);
@@ -158,11 +165,14 @@ int ext2(int argc, char** argv)
 	HdrImage finalLi = li.calculateInterpolationOn(185);
 	finalLi.saveImageAsHdr("ext2linear.hdr");
 	std::cout << "ext2linear:  " << finalLi.calcDist(base) << std::endl;
+	finalLi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("diffext2linear.hdr");
 
 	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 30);
 	HdrImage finalLgi = lgi.calculateInterpolationOn(185);
 	finalLgi.saveImageAsHdr("ext2lagrange.hdr");
 	std::cout << "ext2lagrange:  " << finalLgi.calcDist(base) << std::endl;
+	finalLgi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("diffext2lagrange.hdr");
+
 
 	HdrImage one("ang8.hdr");
 	HdrImage two("ang10.hdr");
@@ -257,6 +267,7 @@ int ext3(int argc, char** argv)
 	HdrImage finalLi = li.calculateInterpolationOn(300);
 	finalLi.saveImageAsHdr("ext3linear.hdr");
 	std::cout << "ext3linear:  " << finalLi.calcDist(base) << std::endl;
+	finalLi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("diffext3linear.hdr");
 
 	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 30);
 	HdrImage finalLgi = lgi.calculateInterpolationOn(300);
@@ -282,6 +293,8 @@ int ext3(int argc, char** argv)
 	HdrImage finalGfi = gfi.calculateInterpolationOn(90);
 	finalGfi.saveImageAsHdr("ext3forward.hdr");
 	std::cout << "ext3forward:  " << finalGfi.calcDist(base) << std::endl;
+	finalGfi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("diffext3forward.hdr");
+
 
 	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(90);
@@ -345,6 +358,7 @@ int int1(int argc, char** argv)
 	HdrImage finalLi = li.calculateInterpolationOn(275);
 	finalLi.saveImageAsHdr("int1linear.hdr");
 	std::cout << "int1linear:  " << finalLi.calcDist(base) << std::endl;
+	finalLi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("diffint1linear.hdr");
 
 	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 30);
 	HdrImage finalLgi = lgi.calculateInterpolationOn(275);
@@ -371,6 +385,8 @@ int int1(int argc, char** argv)
 	HdrImage finalGfi = gfi.calculateInterpolationOn(90);
 	finalGfi.saveImageAsHdr("int1forward.hdr");
 	std::cout << "int1forward:  " << finalGfi.calcDist(base) << std::endl;
+	finalGfi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("diffint1forward.hdr");
+
 
 	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(90);
@@ -433,6 +449,8 @@ int int2(int argc, char** argv)
 	HdrImage finalLi = li.calculateInterpolationOn(245);
 	finalLi.saveImageAsHdr("int2linear.hdr");
 	std::cout << "int2linear:  " << finalLi.calcDist(base) << std::endl;
+	finalLi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("diffint2linear.hdr");
+
 
 	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 30);
 	HdrImage finalLgi = lgi.calculateInterpolationOn(245);
@@ -460,6 +478,8 @@ int int2(int argc, char** argv)
 	HdrImage finalGfi = gfi.calculateInterpolationOn(90);
 	finalGfi.saveImageAsHdr("int2forward.hdr");
 	std::cout << "int2forward:  " << finalGfi.calcDist(base) << std::endl;
+	finalGfi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("diffint2forward.hdr");
+
 
 	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(90);
@@ -526,6 +546,7 @@ int focustest(int argc, char** argv)
 	HdrImage finalLi = li.calculateInterpolationOn(270);
 	finalLi.saveImageAsHdr("focuslinear.hdr");
 	std::cout << "focuslinear:  " << finalLi.calcDist(base) << std::endl;
+	finalLi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("difffocuslinear.hdr");
 
 	LaGrangeInterpolator lgi(observations, imagesToInterpolate, 30);
 	HdrImage finalLgi = lgi.calculateInterpolationOn(270);
@@ -552,6 +573,8 @@ int focustest(int argc, char** argv)
 	HdrImage finalGfi = gfi.calculateInterpolationOn(90);
 	finalGfi.saveImageAsHdr("focusforward.hdr");
 	std::cout << "focusforward:  " << finalGfi.calcDist(base) << std::endl;
+	finalGfi.clamppositive().diffAbs(base.clamppositive()).saveImageAsHdr("difffocusforward.hdr");
+
 
 	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(90);
