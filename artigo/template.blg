@@ -1,8 +1,12 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: template.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: template.aux
 The style file: acmsiggraph.bst
 Database file #1: template.bib
+Warning--string name "european" is undefined
+--line 163 of file template.bib
+I was expecting a `,' or a `}'---line 163 of file template.bib
+ :   publisher = european 
+ :                        Southern Observatory"
+I'm skipping whatever remains of this entry
 Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
 while executing---line 1276 of file acmsiggraph.bst
 Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
@@ -28,45 +32,4 @@ Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Ak
 while executing---line 1341 of file acmsiggraph.bst
 Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
 while executing---line 1341 of file acmsiggraph.bst
-You've used 5 entries,
-            2748 wiz_defined-function locations,
-            623 strings with 5099 characters,
-and the built_in function-call counts, 1670 in all, are:
-= -- 163
-> -- 51
-< -- 0
-+ -- 13
-- -- 18
-* -- 111
-:= -- 291
-add.period$ -- 20
-call.type$ -- 5
-change.case$ -- 24
-chr.to.int$ -- 5
-cite$ -- 6
-duplicate$ -- 72
-empty$ -- 153
-format.name$ -- 19
-if$ -- 348
-int.to.chr$ -- 1
-int.to.str$ -- 0
-missing$ -- 6
-newline$ -- 32
-num.names$ -- 15
-pop$ -- 33
-preamble$ -- 1
-purify$ -- 21
-quote$ -- 0
-skip$ -- 45
-stack$ -- 0
-substring$ -- 73
-swap$ -- 15
-text.length$ -- 0
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 32
-warning$ -- 1
-while$ -- 17
-width$ -- 8
-write$ -- 71
-(There were 12 error messages)
+(There were 13 error messages)

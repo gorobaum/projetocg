@@ -116,7 +116,7 @@ We propose two comparisons to validate our approximation:
 \subsection{Image Based Lighting}
 
 	Image Based Lighting (IBL) \cite{debevec2002} consists in capturing a scene illumination information through an omnidirectional HDR image. To capture omnidirectional images either 
-	a reflective sphere (Figure \ref{fig:fisheye}) or fisheye lenses (Figure \ref{fig:fisheye}) can be used. The resulting image, called light probe, is then used as an environment 
+	a reflective sphere (Figure \ref{fig:lightprobe}\cite{linda2007}) or fisheye lenses (Figure \ref{fig:fisheye}\cite{salgado2010}) can be used. The resulting image, called light probe, is then used as an environment 
 	map in the rendering phase. Note that a new light probe must be acquired for different locations or periods, otherwise the lighting consistency might not be maintained.
 
 	\begin{figure}[!ht]
@@ -134,18 +134,18 @@ We propose two comparisons to validate our approximation:
 	\end{figure}
 
 \subsection{Interpolations}
-	We have used five types of polinomial interpolations to create the result Light Probe between our data. The Light Probes were interpolatate using pixel intensities over time.
+	We have used five types of  interpolations to generate new light probes from our data. The light probes were interpolatate using pixel intensities over time.
 \subsubsection{Linear Interpolation}
-	The first interpolation is the classic Linear Interpolation. It's formule is as below: 
+	The first interpolation is the classic linear interpolation. It's formula is as below: 
 \begin{align}
 	y' = y_0 + (y_1-y_0)*\frac{x-x_0}{x_1-x_0}
 \end{align}
-Where $y$ is the intensities of the Light Probe and $x$ it's the time of the resulting Light Probe.
+Where $y$ represents the intensities of each pixel while $x$ represents the time associated with the light probe's acquisition.
 
 \subsubsection{Gauss Foward Central Difference Formula}
-	The second interpolation method is the Gauss Foward Central Difference Formula. Given a set of $n$ Light Probes over time, with a commom difference of $h$ units of time, 
-$(\dots,y_{i-2},y_{i-1},y_i,y_{i+1},y_{i+2},\dots)$ and the capture time $(\dots,x_{i-2},x_{i-1},x_i,x_{i+1},x_{i+2},\dots)$ of each observation, we can interpolate a new
-Light Probe using the following formule:
+	The second interpolation method is the Gauss Foward Central Difference Formula. Given a set of $n$ light probes, acquired at a regular time interval $h$, 
+$(\dots,y_{i-2},y_{i-1},y_i,y_{i+1},y_{i+2},\dots)$ with acquisition times $(\dots,x_{i-2},x_{i-1},x_i,x_{i+1},x_{i+2},\dots)$, we can interpolate a new
+light probe using the following formula:
 \begin{align}
 \begin{split}
 	p' &= p_i + T \delta_{1/2} + G_2 \delta_0^2 + G_3 \delta_{1/2}^3 + \dots\\
