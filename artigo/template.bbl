@@ -7,10 +7,12 @@
   mathematical tables}.
 \newblock No.~55. Courier Dover Publications.
 
-\bibitem[\protect\citename{Bailey }]{linda}
-{\sc Bailey, L.}
+\bibitem[\protect\citename{Bailey }2007]{linda2007}
+{\sc Bailey, L.}, 2007.
 \newblock
   A\_large\_mirror\_ball\_on\_the\_promenade\_-\_geograph.org.uk\_-\_532274.jpg.
+\newblock
+  http://commons.wikimedia.org/wiki/File:A\_large\_mirror\_ball\_on\_the\_Promenade\_-\_geograph.org.uk\_-\_532274.jpg.
 
 \bibitem[\protect\citename{Debevec }2002]{debevec2002}
 {\sc Debevec, P.}
@@ -31,7 +33,7 @@
 \newblock In {\em Proceedings of SIGGRAPH 1997}, ACM Press / ACM SIGGRAPH,
   Computer Graphics Proceedings, Annual Conference Series, ACM, 369--378.
 
-\bibitem[\protect\citename{Salgado }]{salgado}
+\bibitem[\protect\citename{Salgado }]{salgado2010}
 {\sc Salgado, E.~F.}
 \newblock Up close and personal with the very large telescope.
 \newblock http://www.eso.org/public/images/potw1049a/.

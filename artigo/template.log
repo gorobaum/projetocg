@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.9)  10 DEC 2014 22:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.9)  11 DEC 2014 00:26
 entering extended mode
 **C:/Users/Caio/Documents/Visual*Studio*2012/Projects/projetocg/artigo/template
 .tex
@@ -473,28 +473,6 @@ Underfull \vbox (badness 2980) has occurred while \output is active []
 
  <C:/Users/Caio/Documents/Visual Studio 2012/Projects/projetocg/artigo/images/f
 isheye.jpg>]
-Underfull \hbox (badness 1635) in paragraph at lines 146--149
-\OT1/ptm/m/n/9 The sec-ond in-ter-po-la-tion method is the Gauss Foward Cen-
- []
-
-
-Underfull \hbox (badness 2698) in paragraph at lines 146--149
-\OT1/ptm/m/n/9 tral Dif-fer-ence For-mula. Given a set of $\OML/cmm/m/it/9 n$ \
-OT1/ptm/m/n/9 Light Probes
- []
-
-
-Underfull \hbox (badness 2088) in paragraph at lines 146--149
-\OT1/ptm/m/n/9 over time, with a com-mom dif-fer-ence of $\OML/cmm/m/it/9 h$ \O
-T1/ptm/m/n/9 units of time,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 146--149
-$\OT1/cmr/m/n/9 ([] \OML/cmm/m/it/9 ; y[]; y[]; y[]; y[]; y[]; [] \OT1/cmr/m/n/
-9 )$ \OT1/ptm/m/n/9 and the cap-ture time
- []
-
 <images/forward.png, id=43, 613.2pt x 229.22pt>
 File: images/forward.png Graphic file (type png)
  <use images/forward.png>
@@ -508,16 +486,27 @@ Overfull \hbox (43.58257pt too wide) in paragraph at lines 162--164
 
 ("C:\Users\Caio\Documents\Visual Studio 2012\Projects\projetocg\artigo\template
 .bbl"
-Underfull \hbox (badness 10000) in paragraph at lines 11--14
-[]\OT1/ptm/m/sc/9 Bailey, L.  \OT1/ptm/m/n/9 A[]large[]mirror[]ball[]on[]the[]p
-romenade[]-
+Underfull \hbox (badness 3000) in paragraph at lines 11--16
+[]\OT1/ptm/m/sc/9 Bailey, L.\OT1/ptm/m/n/9 , 2007.  A[]large[]mirror[]ball[]on[
+]the[]promenade[]-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--16
+[]\OT1/ptm/m/n/9 geograph.org.uk[]-[]532274.jpg.
+ []
+
+
+Overfull \hbox (64.39565pt too wide) in paragraph at lines 11--16
+\OT1/ptm/m/n/9 http://commons.wikimedia.org/wiki/File:A[]large[]mirror[]ball[]o
+n[]the[]Promenade[]-
  []
 
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
 
-Underfull \hbox (badness 1418) in paragraph at lines 40--43
+Underfull \hbox (badness 1418) in paragraph at lines 42--45
 []\OT1/ptm/m/sc/9 Spheron\OT1/ptm/m/n/9 .  Spheron.  https://www.spheron.com/pr
 oducts/cgi-
  []
@@ -537,7 +526,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 179.
  ) 
 Here is how much of TeX's memory you used:
  7475 strings out of 493921
- 112245 string characters out of 3144879
+ 112261 string characters out of 3144879
  196813 words of memory out of 3000000
  10631 multiletter control sequences out of 15000+200000
  29687 words of font info for 68 fonts, out of 3000000 for 9000
@@ -556,7 +545,7 @@ nts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
 1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times
 /utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pf
 b>
-Output written on template.pdf (2 pages, 497674 bytes).
+Output written on template.pdf (2 pages, 497885 bytes).
 PDF statistics:
  114 PDF objects out of 1000 (max. 8388607)
  31 named destinations out of 1000 (max. 500000)

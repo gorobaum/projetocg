@@ -7,8 +7,6 @@ I was expecting a `,' or a `}'---line 163 of file template.bib
  :   publisher = european 
  :                        Southern Observatory"
 I'm skipping whatever remains of this entry
-Warning--string name "http://commons.wikimedia.org/wiki/file:a\_large\_mirror\_ball\_on\_the\_promenade\_-\_geograph.org.uk\_-\_532274.jpg" is undefined
---line 170 of file template.bib
 Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
 while executing---line 1276 of file acmsiggraph.bst
 Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
