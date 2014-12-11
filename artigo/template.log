@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.9)  11 DEC 2014 19:33
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.12.9)  11 DEC 2014 19:36
 entering extended mode
 **C:/Users/Caio/Documents/Visual*Studio*2012/Projects/projetocg/artigo/template
 .tex
@@ -420,11 +420,11 @@ File: omsptm.fd
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 93.
 
-<images/fisheye.jpg, id=4, 543.4704pt x 433.62pt>
-File: images/fisheye.jpg Graphic file (type jpg)
- <use images/fisheye.jpg>
-Package pdftex.def Info: images/fisheye.jpg used on input line 100.
-(pdftex.def)             Requested size: 170.71652pt x 136.20726pt.
+<images/ext2.jpg, id=4, 1187.1552pt x 786.2976pt>
+File: images/ext2.jpg Graphic file (type jpg)
+ <use images/ext2.jpg>
+Package pdftex.def Info: images/ext2.jpg used on input line 100.
+(pdftex.def)             Requested size: 227.62204pt x 150.75386pt.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
 (Font)              scaled to size 9.19998pt on input line 106.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
@@ -440,12 +440,14 @@ Missing character: There is no ™ in font ptmr7t!
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ™ in font ptmr7t!
-File: images/fisheye.jpg Graphic file (type jpg)
 
-<use images/fisheye.jpg>
+<images/fisheye.jpg, id=13, 543.4704pt x 433.62pt>
+File: images/fisheye.jpg Graphic file (type jpg)
+ <use images/fisheye.jpg>
 Package pdftex.def Info: images/fisheye.jpg used on input line 125.
 (pdftex.def)             Requested size: 170.71652pt x 136.20726pt.
- <images/lightprobe.jpg, id=13, 642.4pt x 492.84125pt>
+
+<images/lightprobe.jpg, id=14, 642.4pt x 492.84125pt>
 File: images/lightprobe.jpg Graphic file (type jpg)
 
 <use images/lightprobe.jpg>
@@ -481,9 +483,9 @@ LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
 [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
- <C:/Users/Caio/Documents/Visual Studio 2012/Projects/projetocg/artigo/images/f
-isheye.jpg>]
-<images/forward.png, id=48, 613.2pt x 229.22pt>
+ <C:/Users/Caio/Documents/Visual Studio 2012/Projects/projetocg/artigo/images/e
+xt2.jpg>]
+<images/forward.png, id=49, 613.2pt x 229.22pt>
 File: images/forward.png Graphic file (type png)
  <use images/forward.png>
 Package pdftex.def Info: images/forward.png used on input line 164.
@@ -492,7 +494,7 @@ Package pdftex.def Info: images/forward.png used on input line 164.
 Underfull \vbox (badness 2269) has occurred while \output is active []
 
 
-<images/backward.png, id=51, 631.60968pt x 223.58531pt>
+<images/backward.png, id=52, 631.60968pt x 223.58531pt>
 File: images/backward.png Graphic file (type png)
 
 <use images/backward.png>
@@ -502,9 +504,10 @@ Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ™ in font ptmr7t!
  [2 <C:/Users/Caio/Documents/Visual Studio 2012/Projects/projetocg/artigo/image
-s/lightprobe.jpg> <C:/Users/Caio/Documents/Visual Studio 2012/Projects/projetoc
-g/artigo/images/forward.png> <C:/Users/Caio/Documents/Visual Studio 2012/Projec
-ts/projetocg/artigo/images/backward.png>]
+s/fisheye.jpg> <C:/Users/Caio/Documents/Visual Studio 2012/Projects/projetocg/a
+rtigo/images/lightprobe.jpg> <C:/Users/Caio/Documents/Visual Studio 2012/Projec
+ts/projetocg/artigo/images/forward.png> <C:/Users/Caio/Documents/Visual Studio 
+2012/Projects/projetocg/artigo/images/backward.png>]
 Overfull \hbox (25.81734pt too wide) in paragraph at lines 276--276
 [] 
  []
@@ -552,10 +555,10 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 289.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 289.
  ) 
 Here is how much of TeX's memory you used:
- 7463 strings out of 493921
- 112115 string characters out of 3144879
+ 7467 strings out of 493921
+ 112198 string characters out of 3144879
  201813 words of memory out of 3000000
- 10609 multiletter control sequences out of 15000+200000
+ 10613 multiletter control sequences out of 15000+200000
  30757 words of font info for 68 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  43i,15n,40p,514b,337s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -572,9 +575,9 @@ eX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files (x86)/MiKTeX
 s/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
 /times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr
 i8a.pfb>
-Output written on template.pdf (3 pages, 528813 bytes).
+Output written on template.pdf (3 pages, 3389497 bytes).
 PDF statistics:
- 138 PDF objects out of 1000 (max. 8388607)
+ 139 PDF objects out of 1000 (max. 8388607)
  44 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
