@@ -7,6 +7,11 @@
   mathematical tables}.
 \newblock No.~55. Courier Dover Publications.
 
+\bibitem[\protect\citename{Bailey }]{linda}
+{\sc Bailey, L.}
+\newblock
+  A\_large\_mirror\_ball\_on\_the\_promenade\_-\_geograph.org.uk\_-\_532274.jpg.
+
 \bibitem[\protect\citename{Debevec }2002]{debevec2002}
 {\sc Debevec, P.}
 \newblock 2002.
@@ -25,6 +30,11 @@
 \newblock Recovering high dynamic range radiance maps from photographs.
 \newblock In {\em Proceedings of SIGGRAPH 1997}, ACM Press / ACM SIGGRAPH,
   Computer Graphics Proceedings, Annual Conference Series, ACM, 369--378.
+
+\bibitem[\protect\citename{Salgado }]{salgado}
+{\sc Salgado, E.~F.}
+\newblock Up close and personal with the very large telescope.
+\newblock http://www.eso.org/public/images/potw1049a/.
 
 \bibitem[\protect\citename{Spheron }]{spheron}
 {\sc Spheron}.
