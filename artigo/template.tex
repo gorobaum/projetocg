@@ -263,13 +263,20 @@ can be writen as:
 
 \subsection{Data Validation}
 
-\subsection{Interpolated light probe}
-	To create the interpolated light probe we've chosen one observation with a poor quality and remove it form the set, and using the other 
-observations with a good quality, generated the removed light probe.
+\subsection{Interpolated light probes}
+	To create both the linear and Lagrange interpolated light probes we have used all data available with the real time associated with them. 
+However, for the Gauss interpolated light probes we have used only a subset of the data available, the main reason for that was that we had to space our data evenly with at least a one-hour interval between them., For Gauss interpolation, we have considered that the time difference between each acquisition for the light probes 8 through 20 was 30 minutes.
+
+\subsection{Distance between HDR images}
+	We have defined a simple distance to compare two HDR images, which is given by:
+\begin{align}
+\begin{split}
+	d = \sum\limits_{i}^{n} \sum\limits_{j}^{n} \sum\limits_{channel} \mid Image1[i][j].channel - Image2[i][j].channel \mid
+\end{split}
+\end{align}
 
 \subsubsection{Rendering the White Cube}
-	For the rendering of the white cube we've chosen one particular good shot for comparinson of the white cube, interpolated the
-respecting light probe and generated the scene using the information of hte interpolated light probe.
+	Using the distance previously defined, we have determined for each of the chosen scenes two interpolations with least distance compared to the real light probe. These interpolations were used to render a white cube modeled in Maya. The chosen renderer was nvidia’s Mental Ray, which supports image based lighting.
 
 \section{Results}
 
