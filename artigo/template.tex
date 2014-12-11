@@ -30,11 +30,13 @@
 \title{Lighting estimation for different time periods using light probes}
 
 \author{
-  Caio F. Valente\\
-  \texttt{caiov@ime.usp.br}
+  Caio F. Valente
+  \thanks{caiov@ime.usp.br} \\
+  IME USP
   \and
-  Thiago G. Nunes\\
-  \texttt{nunes@ime.usp.br}
+  Thiago G. Nunes
+  \thanks{nunes@ime.usp.br} \\
+  IME USP
 }
 \pdfauthor{Caio F. Valente}
 \pdfauthor{Thiago G. Nunes}
@@ -77,10 +79,8 @@ Computer graphics is present in a wide variety of areas ranging from entertainme
 convincing synthetic scenes. Realistic scene synthesis is dependent on a few factors, like geometry, materials and lighting. One of the most complex elements to reproduce are those 
 related to lighting.
 
-We would like to render scenes in different periods of the day with realistic and convincing lighting. Realistic lighting can be achieved by means of a technique called IBL – Image 
-Based Lighting. 
-
-Image Based Lighting consists in obtaining light probes, which are omnidirectional High Dynamic Range images, and using them as environment maps during the rendering phase.
+We would like to render scenes in different periods of the day with realistic and convincing lighting. Realistic lighting can be achieved by means of a technique called Image 
+Based Lighting. Image Based Lighting (IBL) consists in obtaining light probes, which are omnidirectional High Dynamic Range images, and using them as environment maps during the rendering phase.
 
 However, this technique is limited in the sense that we must obtain a new light probe for every instant we would like to render. This limitation makes the use of image-based lighting 
 inviable depending on the time range of the scenes to be rendered due to enormous amount of work involved in obtaining the light probes.
@@ -97,7 +97,7 @@ We propose two comparisons to validate our approximation:
 \begin{figure}[!ht]
 	\caption{Image obtained by using a fisheye lens.}
 	\centering
-	\includegraphics[width=7cm]{images/fisheye.jpg}
+	\includegraphics[width=6cm]{images/fisheye.jpg}
 	\label{fig:whitecube}
 \end{figure}
 
@@ -122,19 +122,22 @@ We propose two comparisons to validate our approximation:
 	\begin{figure}[!ht]
 		\caption{Image obtained by using a fisheye lens.}
 		\centering
-		\includegraphics[width=7cm]{images/fisheye.jpg}
+		\includegraphics[width=6cm]{images/fisheye.jpg}
 		\label{fig:fisheye}
 	\end{figure}
 
 	\begin{figure}[!ht]
 		\caption{Reflective sphere that could be used as a light probe.}
 		\centering
-		\includegraphics[width=7cm]{images/lightprobe.jpg}
+		\includegraphics[width=6cm]{images/lightprobe.jpg}
 		\label{fig:lightprobe}
 	\end{figure}
 
 \subsection{Interpolations}
 	We have used five types of  interpolations to generate new light probes from our data. The light probes were interpolatate using pixel intensities over time.
+For every interpolation method the set of light probes is represented by $(\dots,y_{i-2},y_{i-1},y_i,y_{i+1},y_{i+2},\dots)$, ordered by the time of acquisition.
+The acquisition time, or observation, is represented by the set $(\dots,x_{i-2},x_{i-1},x_i,x_{i+1},x_{i+2},\dots)$, ordered in crescent order. The interpolated
+light probe is $y'$ in the formules below.
 \subsubsection{Linear Interpolation}
 	The first interpolation is the classic linear interpolation. It's formula is as below: 
 \begin{align}
@@ -142,31 +145,137 @@ We propose two comparisons to validate our approximation:
 \end{align}
 Where $y$ represents the intensities of each pixel while $x$ represents the time associated with the light probe's acquisition.
 
-\subsubsection{Gauss Foward Central Difference Formula}
-	The second interpolation method is the Gauss Foward Central Difference Formula. Given a set of $n$ light probes, acquired at a regular time interval $h$, 
-$(\dots,y_{i-2},y_{i-1},y_i,y_{i+1},y_{i+2},\dots)$ with acquisition times $(\dots,x_{i-2},x_{i-1},x_i,x_{i+1},x_{i+2},\dots)$, we can interpolate a new
-light probe using the following formula:
+\subsubsection{Gauss Foward Central Difference}
+	The second interpolation method is the Gauss Foward Central Difference. The Foward interpolation uses an iterative method that adds the $n$-esieme central 
+difference\cite{abramowitz1972handbook} using the piramidal construction represented by Figure \ref{fig:fowardcentral}. This and the next method require
+that the observations time be separated by a constant interval $h$. The interpolation formula is:
 \begin{align}
 \begin{split}
-	p' &= p_i + T \delta_{1/2} + G_2 \delta_0^2 + G_3 \delta_{1/2}^3 + \dots\\
-	T &= (t-t0)/h \\
-	G_{2n} &= \binom{T+n-1}{2n} \\
-	G_{2n+1} &= \binom{T+n}{2n+1}
+	y' &= 	y_i + P \delta_{1/2} + G_2 \delta_0^2 + G_3 \delta_{1/2}^3 + \dots\\
+	P &= (x-x_i)/h \\
+	G_{2n} &= \binom{P+n-1}{2n} \\
+	G_{2n+1} &= \binom{P+n}{2n+1}
 \end{split}
 \end{align}
-	The Foward interpolation uses an iterative method that adds the $n$-esieme central difference\cite{abramowitz1972handbook} using the piramidal construction showed by Figure \ref{fig:fowardcentral}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 	\caption{Reflective sphere that could be used as a light probe.}
 	\centering
-	\includegraphics[width=10cm]{images/forward.png}
+	\includegraphics[width=08cm]{images/forward.png}
 	\label{fig:fowardcentral}
 \end{figure}
 
-\subsubsection{Gauss Backward Central Difference Formula}
-	The Gauss Backward Central Difference Formula differ from the Foward because it's uses 
+\subsubsection{Gauss Backward Central Difference}
+	The Gauss Backward Central Difference differ from the Foward in the way that the iteractions choose which central difference to use. 
+It uses another direction in the piramidal scheme to choose which central difference will be used. The selection algorithm is represented 
+by Figure\ref{fig:backwardcentral}. The formula used is:
+\begin{align}
+\begin{split}
+	y' &= y_i + P \delta_{-1/2} + G_2 \delta_0^2 + G_3 \delta_{-1/2}^3 + \dots\\
+	P &= (x-x_i)/h \\
+	G'_{2n} &= \binom{P+n}{2n} \\
+	G_{2n+1} &= \binom{P+n}{2n+1}
+\end{split}
+\end{align}
+	As stated above, the Backward interpolation 
+
+\begin{figure}[H]
+	\caption{Reflective sphere that could be used as a light probe.}
+	\centering
+	\includegraphics[width=08cm]{images/backward.png}
+	\label{fig:backwardcentral}
+\end{figure}
+
+\subsubsection{LaGrange Interpolation}
+	Different from the Gauss interpolations methods, the LaGrange interpolation can be used with observations that doesn't have a constant interval between 
+each other, thus making the process of gathering the light probe images a little easier. The general formula for the LaGrange interpolation is:
+\begin{align}
+\begin{split}
+	y' = \frac{(x-x_1)(x-x_2)\dots(x-x_n)}{(x_0-x_1)(x_0-x_2)\dots(x_0-x_n)}y_0 &+ \\
+		 \frac{(x-x_0)(x-x_2)\dots(x-x_n)}{(x_1-x_0)(x_1-x_2)\dots(x_1-x_n)}y_1 &+ \\
+		 \dots &\\
+		 \frac{(x-x_0)(x-x_2)\dots(x-x_{n-1})}{(x_n-x_0)(x_n-x_2)\dots(x_n-x_{n-1})}y_n &
+\end{split}
+\end{align}
+
+\subsubsection{Stirling's Interpolation}
+	Stirling's interpolation is calculated taking the average of the Gauss Foward difference and the Gauss Backward difference. The main formula
+can be writen as:
+\begin{align}
+\begin{split}
+	y' &= y_i + P \frac{\delta_{1/2}+\delta_{-1/2}}{2} + \\ &H_2 \delta_0^2 + H_3 \frac{\delta^3_{1/2}+\delta^3_{-1/2}}{2} + \dots\\
+	P &= (x-x_i)/h \\
+	H_{2n} &= \frac{G_2 + G'_2}{2} \\
+	H_{2n+1} &= \binom{P+n}{2n+1}
+\end{split}
+\end{align}
 
 \section{Experiment}
+	As stated in the Introduction, we want to validate our interpolations using two comparisons. One of then is comparing our interpolated Light Probe
+with the Light Probe obtained using the usual way, and the other is rendering a white cube using the illuminating provided by our interpolated Light Probe
+and compare it with a shot of a white cube.
+
+\subsection{Data Acquisition}
+	To realize our experiments, we've acquired 2 sets of Light Probes data. The first set was taken in the outside, always in the same location, starting at
+10:45 A.M. and ending 20:00 P.M. The second was acquired inside a build, close to a window, commencing 11:00 A.M. and ending 19:45. We tried to take one shot
+every 30 minutes. For every shot of hte Light Probe another was made for the white cube, on the same position. The Table \ref{tab:backwardcentral} 
+shows the list of observations time.
+\begin{center}
+    \begin{tabular}{| l | l | l |}
+	\hline
+    \multicolumn{3}{|c|}{Data Acquision Time} \\
+    \hline
+    \# & Outside & Inside \\
+    \hline
+    1 & 10:45 & 11:00 \\
+    \hline
+    2 & 11:20 & 11:30 \\
+    \hline
+    3 & 11:52 & 12:02 \\
+    \hline
+    4 & 12:18 & 12:30 \\
+    \hline
+    5 & 12:48 & 13:00 \\
+    \hline
+	6 & 13:18 & 13:30 \\
+    \hline
+	7 & 14:35 & 14:40 \\
+    \hline
+	8 & 15:05 & 15:10 \\
+    \hline
+    9 & 15:30 & 15:40 \\
+    \hline
+	10 & 16:00 & 16:10 \\
+    \hline
+	11 & 16:30 & 16:40 \\
+    \hline
+	12 & 17:05 & 17:15 \\
+    \hline
+	13 & 17:40 & 17:45 \\
+    \hline
+	14 & 18:05 & 18:15 \\
+    \hline
+	15 & 18:35 & 18:45 \\
+    \hline
+	16 & 19:05 & 19:15 \\
+    \hline
+	17 & 19:35 & 19:45 \\
+    \hline
+	18 & 20:00 & \\
+    \hline
+    \end{tabular}
+    \label{tab:backwardcentral}
+\end{center}
+
+\subsection{Data Validation}
+
+\subsection{Interpolated Light Probe}
+	To create the interpolated Light Probe we've chosen one observation with a poor quality and remove it form the set, and using the other 
+observations with a good quality, generated the removed Light Probe.
+
+\subsubsection{Rendering the White Cube}
+	For the renderization of the white cube we've chosen one particular good shot for comparinson of the white cube, interpolated the
+respecting Light Probe and generated the scene using the information of hte interpolated Light Probe.
 
 \section{Results}
 
