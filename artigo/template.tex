@@ -91,13 +91,13 @@ the light probes for the instants that data is not available.
 We propose two comparisons to validate our approximation:
 \begin{itemize}
 	\item Comparing light probes obtained through interpolation and light probes obtained through the usual way, which is done by combining different exposure time images.
-	\item Comparing the rendering a simple object using the interpolated light probe as a light source and the same object in the real scene. The object is a white cube \ref{fig:whitecube}.
+	\item Comparing the rendering a simple object using the interpolated light probe as a light source and the same object in the real scene. The object is a white cube see Figure \ref{fig:whitecube}.
 \end{itemize}
 
 \begin{figure}[!ht]
-	\caption{Image obtained by using a fisheye lens.}
+	\caption{White cube used for comparison.}
 	\centering
-	\includegraphics[width=6cm]{images/fisheye.jpg}
+	\includegraphics[width=8cm]{images/ext2.jpg}
 	\label{fig:whitecube}
 \end{figure}
 
@@ -134,21 +134,21 @@ We propose two comparisons to validate our approximation:
 	\end{figure}
 
 \subsection{Interpolations}
-	We have used five types of  interpolations to generate new light probes from our data. The light probes were interpolatate using pixel intensities over time.
+	We have used five types of  interpolations to generate new light probes from our data. The light probes were interpolated  using pixel intensities over time.
 For every interpolation method the set of light probes is represented by $(\dots,y_{i-2},y_{i-1},y_i,y_{i+1},y_{i+2},\dots)$, ordered by the time of acquisition.
-The acquisition time, or observation, is represented by the set $(\dots,x_{i-2},x_{i-1},x_i,x_{i+1},x_{i+2},\dots)$, ordered in crescent order. The interpolated
-light probe is $y'$ in the formules below.
+The acquisition time, or observation, is represented by the set $(\dots,x_{i-2},x_{i-1},x_i,x_{i+1},x_{i+2},\dots)$, ordered in crescent manner. The interpolated
+light probe is $y'$ in the formulae below.
 \subsubsection{Linear Interpolation}
-	The first interpolation is the classic linear interpolation. It's formula is as below: 
+	The first interpolation is the classic linear interpolation. Its formula is as below: 
 \begin{align}
 	y' = y_0 + (y_1-y_0)*\frac{x-x_0}{x_1-x_0}
 \end{align}
 Where $y$ represents the intensities of each pixel while $x$ represents the time associated with the light probe's acquisition.
 
-\subsubsection{Gauss Foward Central Difference}
-	The second interpolation method is the Gauss Foward Central Difference. The Foward interpolation uses an iterative method that adds the $n$-esieme central 
-difference\cite{abramowitz1972handbook} using the piramidal construction represented by Figure \ref{fig:fowardcentral}. This and the next method require
-that the observations time be separated by a constant interval $h$. The interpolation formula is:
+\subsubsection{Gauss Forward Central Difference}
+	The second interpolation method is the Gauss Forward Central Difference. The Forward interpolation uses an iterative method that adds the $n$-esieme central 
+difference\cite{abramowitz1972handbook} using the pyramidal construction represented by Figure \ref{fig:fowardcentral}. This method and the next requires
+that the observation times are acquired at an regular time interval $h$. The interpolation formula is:
 \begin{align}
 \begin{split}
 	y' &= 	y_i + P \delta_{1/2} + G_2 \delta_0^2 + G_3 \delta_{1/2}^3 + \dots\\
@@ -166,8 +166,8 @@ that the observations time be separated by a constant interval $h$. The interpol
 \end{figure}
 
 \subsubsection{Gauss Backward Central Difference}
-	The Gauss Backward Central Difference differ from the Foward in the way that the iteractions choose which central difference to use. 
-It uses another direction in the piramidal scheme to choose which central difference will be used. The selection algorithm is represented 
+	The Gauss Backward Central Difference diffesr from the Foward in the way that the iteraction chooses which central difference to use. 
+It uses another direction in the pyramidal scheme to determine which central difference will be used. The selection algorithm is represented 
 by Figure\ref{fig:backwardcentral}. The formula used is:
 \begin{align}
 \begin{split}
@@ -186,9 +186,8 @@ by Figure\ref{fig:backwardcentral}. The formula used is:
 	\label{fig:backwardcentral}
 \end{figure}
 
-\subsubsection{LaGrange Interpolation}
-	Different from the Gauss interpolations methods, the LaGrange interpolation can be used with observations that doesn't have a constant interval between 
-each other, thus making the process of gathering the light probe images a little easier. The general formula for the LaGrange interpolation is:
+\subsubsection{Lagrange Interpolation}
+	Lagrange’s interpolation advantage in relation to Gauss methods are that it does not require regularly spaced data to work, thus making the process of gathering the light probe images a little easier. The general formula for the Lagrange interpolation is:
 \begin{align}
 \begin{split}
 	y' = \frac{(x-x_1)(x-x_2)\dots(x-x_n)}{(x_0-x_1)(x_0-x_2)\dots(x_0-x_n)}y_0 &+ \\
@@ -199,7 +198,7 @@ each other, thus making the process of gathering the light probe images a little
 \end{align}
 
 \subsubsection{Stirling's Interpolation}
-	Stirling's interpolation is calculated taking the average of the Gauss Foward difference and the Gauss Backward difference. The main formula
+	Stirling's interpolation can be calculated by taking the average of the Gauss Forward difference and the Gauss Backward difference. The formula
 can be writen as:
 \begin{align}
 \begin{split}
@@ -211,19 +210,14 @@ can be writen as:
 \end{align}
 
 \section{Experiment}
-	As stated in the Introduction, we want to validate our interpolations using two comparisons. One of then is comparing our interpolated Light Probe
-with the Light Probe obtained using the usual way, and the other is rendering a white cube using the illuminating provided by our interpolated Light Probe
-and compare it with a shot of a white cube.
+	As stated in the Introduction, we want to validate our interpolations by using two kinds of comparisons. In one of them, we compare interpolated light probes with the light probes obtained by conventional means, while in the other we compare a shot of a white cube with a rendering of a white cube, using image based lighting using an interpolated light probe that was created using the same time the shot was taken.
 
 \subsection{Data Acquisition}
-	To realize our experiments, we've acquired 2 sets of Light Probes data. The first set was taken in the outside, always in the same location, starting at
-10:45 A.M. and ending 20:00 P.M. The second was acquired inside a build, close to a window, commencing 11:00 A.M. and ending 19:45. We tried to take one shot
-every 30 minutes. For every shot of hte Light Probe another was made for the white cube, on the same position. The Table \ref{tab:backwardcentral} 
-shows the list of observations time.
+	To realize our experiments, we have acquired two sets of light probe data. The first set was taken outdoors, always in the same location, starting at 10:45 A.M. and ending 20:00 P.M. The second was acquired indoors, close to a window, commencing 11:00 A.M. and ending 19:45. We tried to take one shot every 30 minutes. For every shot, we also took a shot of a white cube. The Table \ref{tab:backwardcentral} 
 \begin{center}
     \begin{tabular}{| l | l | l |}
 	\hline
-    \multicolumn{3}{|c|}{Data Acquision Time} \\
+    \multicolumn{3}{|c|}{Data Acquisition Time} \\
     \hline
     \# & Outside & Inside \\
     \hline
@@ -269,17 +263,50 @@ shows the list of observations time.
 
 \subsection{Data Validation}
 
-\subsection{Interpolated Light Probe}
-	To create the interpolated Light Probe we've chosen one observation with a poor quality and remove it form the set, and using the other 
-observations with a good quality, generated the removed Light Probe.
+\subsection{Interpolated light probes}
+	To create both the linear and Lagrange interpolated light probes we have used all data available with the real time associated with them. 
+However, for the Gauss interpolated light probes we have used only a subset of the data available, the main reason for that was that we had to space our data evenly with at least a one-hour interval between them., For Gauss interpolation, we have considered that the time difference between each acquisition for the light probes 8 through 20 was 30 minutes.
+
+\subsection{Distance between HDR images}
+	We have defined a simple distance to compare two HDR images, which is given by:
+\begin{align}
+\begin{split}
+	d = \sum\limits_{i}^{n} \sum\limits_{j}^{n} \sum\limits_{channel} \mid Image1[i][j].channel - Image2[i][j].channel \mid
+\end{split}
+\end{align}
 
 \subsubsection{Rendering the White Cube}
-	For the renderization of the white cube we've chosen one particular good shot for comparinson of the white cube, interpolated the
-respecting Light Probe and generated the scene using the information of hte interpolated Light Probe.
+	Using the distance previously defined, we have determined for each of the chosen scenes two interpolations with least distance compared to the real light probe. These interpolations were used to render a white cube modeled in Maya. The chosen renderer was nvidia’s Mental Ray, which supports image based lighting.
 
 \section{Results}
 
+\subsection{Our data}
+	Figure  \ref{fig:lpext} shows the light probes we obtained outdoors. While figure  \ref{fig:lpint} shows the light probes we obtained indoors.
+
+
+	\begin{figure}[!ht]
+		\caption{Outdoors light probes.}
+		\centering
+		\includegraphics[width=10cm]{images/lightprobesext.png}
+		\label{fig:lpext}
+	\end{figure}
+
+
+	\begin{figure}[!ht]
+		\caption{Indoors light probes.}
+		\centering
+		\includegraphics[width=10cm]{images/lightprobesint.png}
+		\label{fig:lpint}
+	\end{figure}
+
 \section{Conclusion}
+
+In this paper, we have explored a way to alleviate the restrictions surrounding the use of light probes by using interpolations. 
+
+We were not entirely successful in our white cube rendering comparisons, however interpolating a light probe proved feasible, especially with linear interpolation.
+
+AS for our next steps, we would like to explore other local low order interpolations like quadratic or cubic interpolations. We would like to explore these interpolations in order to avoid black areas in HDR images like those we see in Lagrange and Gauss interpolations.
+
 
 \section*{Acknowledgements}
 

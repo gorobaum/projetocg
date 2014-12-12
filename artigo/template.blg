@@ -1,6 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: template.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: template.aux
 The style file: acmsiggraph.bst
 Database file #1: template.bib
 Warning--string name "european" is undefined
@@ -34,45 +32,4 @@ Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Ak
 while executing---line 1341 of file acmsiggraph.bst
 Too many commas in name 1 of "Hughes, Van Dam, McGuire, Sklar, Foley, Feiner, Akeley" for entry hughes2013
 while executing---line 1341 of file acmsiggraph.bst
-You've used 7 entries,
-            2748 wiz_defined-function locations,
-            633 strings with 5464 characters,
-and the built_in function-call counts, 2210 in all, are:
-= -- 214
-> -- 69
-< -- 0
-+ -- 17
-- -- 24
-* -- 140
-:= -- 378
-add.period$ -- 26
-call.type$ -- 7
-change.case$ -- 34
-chr.to.int$ -- 7
-cite$ -- 8
-duplicate$ -- 94
-empty$ -- 207
-format.name$ -- 25
-if$ -- 463
-int.to.chr$ -- 1
-int.to.str$ -- 0
-missing$ -- 6
-newline$ -- 42
-num.names$ -- 21
-pop$ -- 52
-preamble$ -- 1
-purify$ -- 29
-quote$ -- 0
-skip$ -- 65
-stack$ -- 0
-substring$ -- 83
-swap$ -- 21
-text.length$ -- 0
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 48
-warning$ -- 1
-while$ -- 23
-width$ -- 10
-write$ -- 94
 (There were 13 error messages)
