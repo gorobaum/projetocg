@@ -33,6 +33,12 @@
 \newblock In {\em Proceedings of SIGGRAPH 1997}, ACM Press / ACM SIGGRAPH,
   Computer Graphics Proceedings, Annual Conference Series, ACM, 369--378.
 
+\bibitem[\protect\citename{Pozrikidis }1998]{pozrikidis1998}
+{\sc Pozrikidis, C.}
+\newblock 1998.
+\newblock {\em Numerical Computation in Science and Engineering}, 1~ed.
+\newblock Oxford University Presss.
+
 \bibitem[\protect\citename{Salgado }]{salgado2010}
 {\sc Salgado, E.~F.}
 \newblock Up close and personal with the very large telescope.

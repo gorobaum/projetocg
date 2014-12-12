@@ -187,7 +187,7 @@ by Figure\ref{fig:backwardcentral}. The formula used is:
 \end{figure}
 
 \subsubsection{Lagrange Interpolation}
-	Lagrange’s interpolation advantage in relation to Gauss methods are that it does not require regularly spaced data to work, thus making the process of gathering the light probe images a little easier. The general formula for the Lagrange interpolation is:
+	Lagrange’s interpolation \cite{pozrikidis1998} advantage in relation to Gauss methods are that it does not require regularly spaced data to work, thus making the process of gathering the light probe images a little easier. The general formula for the Lagrange interpolation is:
 \begin{align}
 \begin{split}
 	y' = \frac{(x-x_1)(x-x_2)\dots(x-x_n)}{(x_0-x_1)(x_0-x_2)\dots(x_0-x_n)}y_0 &+ \\
@@ -276,7 +276,7 @@ However, for the Gauss interpolated light probes we have used only a subset of t
 \end{align}
 
 \subsubsection{Rendering the White Cube}
-	Using the distance previously defined, we have determined for each of the chosen scenes two interpolations with least distance compared to the real light probe. These interpolations were used to render a white cube modeled in Maya. The chosen renderer was nvidia’s Mental Ray, which supports image based lighting.
+	Using the distance previously defined, we have determined for each of the chosen scenes two interpolations with least distance compared to the real light probe. These interpolations were used to render a white cube modeled in Maya. The chosen renderer was nvidia's Mental Ray, which supports image based lighting.
 
 \section{Results}
 
@@ -287,7 +287,7 @@ However, for the Gauss interpolated light probes we have used only a subset of t
 	\begin{figure}[!ht]
 		\caption{Outdoors light probes.}
 		\centering
-		\includegraphics[width=10cm]{images/lightprobesext.png}
+		\includegraphics[width=9cm]{images/lightprobesext.png}
 		\label{fig:lpext}
 	\end{figure}
 
@@ -295,19 +295,70 @@ However, for the Gauss interpolated light probes we have used only a subset of t
 	\begin{figure}[!ht]
 		\caption{Indoors light probes.}
 		\centering
-		\includegraphics[width=10cm]{images/lightprobesint.png}
+		\includegraphics[width=9cm]{images/lightprobesint.png}
 		\label{fig:lpint}
 	\end{figure}
 
 \subsection{Interpolated Light Probes}
 
-One thing we noticed when using higher order interpolations like Lagrange and Gauss was that sometimes the pixel intensities would be negative. Because of this at the end of the interpolation, we clamp the values to 0.0 if they are negative, which created black areas in the resulting image. Linear interpolation does not suffer from this effect.
+One thing we noticed when using higher order interpolations like Lagrange and Gauss was that sometimes the pixel intensities would be negative. Because of this at the end of the interpolation, we clamp the values to 0.0 if they are negative, which created black areas in the resulting image, see figure \ref{fig:orlali}. Linear interpolation does not suffer from this effect.
+
+	\begin{figure}[H]
+		\caption{Original image, followed by a Lagrange interpolated light probe and then a linearly interpolated light probe.}
+		\centering
+		\includegraphics[width=9cm]{images/orlali.png}
+		\label{fig:orlali}
+	\end{figure}
+
 
 Gauss forward and Gauss Backward methods produced the same results, because of that so does Stirling’s method. Therefore, we will only refer to Gauss Forward from now on.
 
 We will now show some of the interpolated light probes with the corresponding light probe that was obtained in the usual way and their differences. Note that HDR images are not bound by [0.0, 1.0] therefore neither is the difference.
 
-IBAGENS
+
+	We will now show some of the rendered images with the corresponding real scenes and the difference between the rendered scenes and the base scenes.
+
+	\begin{figure}[!ht]
+		\caption{Outdoor scene at 18:05, Gauss forward interpolated light probe and the difference.}
+		\centering
+		\includegraphics[width=8cm]{images/ext1forward.png}
+		\label{fig:ext1forward}
+	\end{figure}
+
+	\begin{figure}[!ht]
+		\caption{Outdoor scene at 18:05,linearly interpolated light probe and the difference.}
+		\centering
+		\includegraphics[width=8cm]{images/ext1linear.png}
+		\label{fig:ext1linear}
+	\end{figure}
+
+	\begin{figure}[!ht]
+		\caption{Outdoor scene at 19:35, Gauss forward interpolated light probe and the difference.}
+		\centering
+		\includegraphics[width=8cm]{images/ext3forward.png}
+		\label{fig:ext3forward}
+	\end{figure}
+
+	\begin{figure}[!ht]
+		\caption{Outdoor scene at 19:35,  linearly interpolated light probe and the difference.}
+		\centering
+		\includegraphics[width=8cm]{images/ext3linear.png}
+		\label{fig:ext3linear}
+	\end{figure}
+
+	\begin{figure}[!ht]
+		\caption{Indoor scene at 19:45, Gauss forward interpolated light probe and the difference.}
+		\centering
+		\includegraphics[width=8cm]{images/int1forward.png}
+		\label{fig:int1forward}
+	\end{figure}
+
+	\begin{figure}[!ht]
+		\caption{Indoor scene at 19:45, linearly interpolated light probe and the difference.}
+		\centering
+		\includegraphics[width=8cm]{images/int1linear.png}
+		\label{fig:int1linear}
+	\end{figure}
 
 The linear interpolation produces either the best or the second best results. In addition, no black areas are created by this method. We believe this is due to the fact that linear interpolation is a low order local interpolation.
 
@@ -318,29 +369,55 @@ The linear interpolation produces either the best or the second best results. In
 
 	After modeling the cube we had to discover the light probe reflectance coefficient. To do that we compared the pixel values using figure \ref{fig:base} and figure \ref{fig:esf}.
 
-	We discovered that the coefficient is 1.594594.... However, using this coefficient led us to dark scenes, which were very different from the ones we had shot. Not only that but for each of the scenes we rendered we had to adjust the coefficient manually, the valued ranged from 1.8 to 4.6.
-
-
 	\begin{figure}[!ht]
-		\caption{First image used to determine the sphere’s coefficient.}
 		\centering
-		\includegraphics[width=9cm]{images/base.png}
+		\caption{First image used to determine the sphere’s coefficient.}
+		\includegraphics[width=8cm]{images/base.png}
 		\label{fig:base}
 	\end{figure}
 
 
 	\begin{figure}[!ht]
-		\caption{Second image used to determine the sphere’s coefficient.}
 		\centering
-		\includegraphics[width=9cm]{images/esf.png}
+		\caption{Second image used to determine the sphere’s coefficient.}
+		\includegraphics[width=8cm]{images/esf.png}
 		\label{fig:esf}
 	\end{figure}
 
-	We will now show some of the rendered images with the corresponding real scenes and the difference between the rendered scenes and the base scenes.
+	We discovered that the coefficient is 1.594594.... However, using this coefficient led us to dark scenes, which were very different from the ones we had shot. Not only that but for each of the scenes we rendered we had to adjust the coefficient manually, the valued ranged from 1.8 to 4.6.
 
-	IBAGENS
 
-	Because there were many variables involved – geometry, materials, and image based lighting coefficient - we were not able to reproduce the shading the cubes should have had. It is worth noting that even though the shading did not match the real cube, the lighting consistency is not totally lost the sense that darker and lighter areas are still mostly same as in the original image. The exception to this is figure X, where the left side of the cube is darker than it should be.
+	\begin{figure}[!ht]
+		\caption{Indoor scene at 18:05, rendered cube using a Gauss forward interpolated light probe and the difference.}
+		\centering
+		\includegraphics[width=9cm]{images/extcubo1for.png}
+		\label{fig:extcubo1for}
+	\end{figure}
+
+	\begin{figure}[!ht]
+		\caption{Indoor scene at 18:05, rendered cube using a linearly interpolated light probe and the difference.}
+		\centering
+		\includegraphics[width=9cm]{images/extcubo1lin.png}
+		\label{fig:extcubo1lin}
+	\end{figure}
+
+	\begin{figure}[!ht]
+		\caption{Indoor scene at 19:45, rendered cube using a Gauss forward interpolated light probe and the difference.}
+		\centering
+		\includegraphics[width=9cm]{images/intcubo1for.png}
+		\label{fig:intcubo1for}
+	\end{figure}
+
+	\begin{figure}[!ht]
+		\caption{Indoor scene at 19:45, rendered cube using a linearly interpolated light probe and the difference.}
+		\centering
+		\includegraphics[width=9cm]{images/intcubo1lin.png}
+		\label{fig:intcubo1lin}
+	\end{figure}
+
+
+
+	Because there were many variables involved – geometry, materials, and image based lighting coefficient - we were not able to reproduce the shading the cubes should have had. It is worth noting that even though the shading did not match the real cube, the lighting consistency is not totally lost the sense that darker and lighter areas are still mostly same as in the original image. The exception to this is figure \ref{fig:intcubo1for} and figure \ref{fig:intcubo1lin}, where the left side of the cube is darker than it should be.
 
 \section{Conclusion}
 

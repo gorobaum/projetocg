@@ -2,8 +2,8 @@ This is BibTeX, Version 0.99dThe top-level auxiliary file: template.aux
 The style file: acmsiggraph.bst
 Database file #1: template.bib
 Warning--string name "european" is undefined
---line 163 of file template.bib
-I was expecting a `,' or a `}'---line 163 of file template.bib
+--line 171 of file template.bib
+I was expecting a `,' or a `}'---line 171 of file template.bib
  :   publisher = european 
  :                        Southern Observatory",
 I'm skipping whatever remains of this entry
