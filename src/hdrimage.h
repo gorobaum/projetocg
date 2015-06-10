@@ -15,6 +15,8 @@ public:
 	}
 	HdrImage(std::string filename) {
 		imageBitmap_ = std::shared_ptr<FIBITMAP>(FreeImage_Load(FIF_HDR, filename.c_str(), HDR_DEFAULT), &FreeImage_Unload);
+		//int bytespp = FreeImage_GetLine(imageBitmap_.get()) / FreeImage_GetWidth(imageBitmap_.get()); 
+		// CARREGA 12 BYTES POR PIXEL - FORMATO FLOAT COM 96 BITS POR PIXEL -- RGBE APENAS PARA SALVAR O ARQUIVO - TRABALHA NA PRATICA COMO FLOAT
 	}
 	HdrImage(const std::shared_ptr<FIBITMAP> &imageBitmap) :
 		imageBitmap_(imageBitmap) {}
@@ -25,6 +27,7 @@ public:
 	FIRGBF getPixelAt(unsigned int x, unsigned int y);
 	float calcDist(const HdrImage& param);
 	HdrImage diffAbs(const HdrImage& param);
+	float hdrabs();
 	HdrImage operator-(const HdrImage& param);
 	HdrImage operator+(const HdrImage& param);
 	HdrImage operator*(const double& param);

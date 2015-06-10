@@ -25,39 +25,39 @@ HdrImage GaussianBackwardInterpolator::calculateInterpolationOn(float observatio
 		xpos--;
 		xneg++;
 	}
-	if(x0+1 < numberOfObservations && min(xpos,xneg) < min(xpos-1, xneg+1))
-	{
-		x0 = x0+1;
-		xpos--;
-		xneg++;
-	}
+	x0 = x0+1;
+	xpos--;
+	xneg++;
+
 	double p = (observation-observations_[x0])/(1.0*interval_);
-	int dist = xpos;
-	if(xneg < dist) dist = xneg;
+
+	if(xpos > xneg) xpos = xneg;
+	if(xneg > xpos) xneg = xpos+1;
+
 	std::vector<std::vector<HdrImage>> dy;
-	for(int i = 0; i < 2*dist+1; i++)
+	for(int i = 0; i < xpos+xneg+1; i++)
 	{
 		std::vector<HdrImage> v;
 		dy.push_back(v);
-		for(int j = 0; j < 2*dist+1-i; j++)
+		for(int j = 0; j < xpos+xneg+1-i; j++)
 		{
 			dy[i].push_back(HdrImage(width, height));
-			if(i == 0)	dy[i][j] = values_[x0-dist+j];
+			if(i == 0)	dy[i][j] = values_[x0-xneg+j];
 			else dy[i][j] = dy[i-1][j+1]-dy[i-1][j];
 		}
 	}
 	int denominator = 1;
 	double numerator = p;
-	int signal = -1;
+	int sign = -1;
 	int counter = 0;
 	interpolation = values_[x0];
-	for(int i = 1; i < 2*dist+1; i++)
+	for(int i = 1; i < xpos+xneg+1; i++)
 	{
 		denominator = denominator*i;
-		interpolation = interpolation + (dy[i][(int)floor((2*dist-i)/2.0)]*(numerator/denominator));
-		signal = -signal;
-		if(signal == 1) counter++;
-		numerator = numerator*(p+signal*counter);
+		interpolation = interpolation + (dy[i][(int)abs(floor((2*xneg-i)/2.0))]*(numerator/denominator));
+		sign = -sign;
+		if(sign == 1) counter++;
+		numerator = numerator*(p+sign*counter);
 	}
 	interpolation = interpolation.clamp();
 

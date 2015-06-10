@@ -98,6 +98,16 @@ HdrImage HdrImage::diffAbs(const HdrImage& param) {
 	return ret;
 }
 
+float HdrImage::hdrabs() {
+	float dist = 0.0;
+	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
+		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
+		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_.get()); x++)
+			dist += diffImageBits[x].red + diffImageBits[x].green + diffImageBits[x].blue;
+	}
+	return dist;
+}
+
 
 HdrImage HdrImage::clamp() {
 	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);

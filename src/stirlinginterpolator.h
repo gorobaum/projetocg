@@ -14,6 +14,8 @@ public:
 	StirlingInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval);
 
 private:
+	HdrImage calculateForwardInterpolationOn(float observation);
+	HdrImage calculateBackwardInterpolationOn(float observation);
 };
 
 #endif
