@@ -1,8 +1,9 @@
+interpolate results
 3 70
 lagrange
 linear
 gaussforward
-imteste1.hdr 60
-imteste2.hdr 90
-imteste3.hdr 120
-imteste4.hdr 150
+im1teste.hdr 60
+im2teste.hdr 90
+im3teste.hdr 120
+im4teste.hdr 150
