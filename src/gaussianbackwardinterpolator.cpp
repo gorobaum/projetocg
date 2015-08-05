@@ -3,10 +3,12 @@
 #include "gaussianbackwardinterpolator.h"
 #include "minmax.h"
 
-GaussianBackwardInterpolator::GaussianBackwardInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval) :
-	Interpolator(observations, values, interval){}
+GaussianBackwardInterpolator::GaussianBackwardInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values) :
+	Interpolator(observations, values){}
 
 HdrImage GaussianBackwardInterpolator::calculateInterpolationOn(float observation) {
+	int interval_ = observations_[1]-observations_[0];
+
 	int numberOfObservations = observations_.size();
 	int width = values_[0].getWidth();
 	int height = values_[0].getHeight();

@@ -33,6 +33,8 @@ public:
 	HdrImage operator*(const double& param);
 	HdrImage operator/(const double& param);
 	HdrImage clamp();
+	void HdrImage::setPixelAt(unsigned int x, unsigned int y, FIRGBF rgb);
+
 
 
 private:

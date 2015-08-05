@@ -11,7 +11,7 @@ class GaussianBackwardInterpolator : public Interpolator {
 using Interpolator::Interpolator;
 public:
 	HdrImage calculateInterpolationOn(float observation);
-	GaussianBackwardInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval);
+	GaussianBackwardInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values);
 
 private:
 };

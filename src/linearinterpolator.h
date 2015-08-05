@@ -10,7 +10,7 @@ class LinearInterpolator : public Interpolator {
 using Interpolator::Interpolator;
 public:
 	HdrImage calculateInterpolationOn(float observation);
-	LinearInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval);
+	LinearInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values);
 };
 
 #endif

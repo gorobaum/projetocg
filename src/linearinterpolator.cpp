@@ -3,8 +3,8 @@
 
 #include "linearinterpolator.h"
 
-LinearInterpolator::LinearInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval) :
-	Interpolator(observations, values, interval){}
+LinearInterpolator::LinearInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values) :
+	Interpolator(observations, values){}
 
 HdrImage LinearInterpolator::calculateInterpolationOn(float observation) {
 	int count = 0;

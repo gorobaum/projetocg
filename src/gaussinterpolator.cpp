@@ -2,8 +2,8 @@
 
 #include "gaussinterpolator.h"
 
-GaussianInterpolator::GaussianInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval) :
-	Interpolator(observations, values, interval),
+GaussianInterpolator::GaussianInterpolator(std::vector<int> observations, std::vector<HdrImage> values) :
+	Interpolator(observations, values),
 	p(0.0){}
 
 
@@ -17,6 +17,8 @@ HdrImage GaussianInterpolator::takeStep(float observation) {
 }
 
 HdrImage GaussianInterpolator::calculateInterpolationOn(float observation) {
+	int interval_ = observations_[1]-observations_[0];
+
 	int numberOfObservations = observations_.size();
 	int middle = std::floor(numberOfObservations/2);
 	double medianObservation = observations_[middle];

@@ -3,8 +3,8 @@
 
 #include "lagrangeinterpolator.h"
 
-LaGrangeInterpolator::LaGrangeInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values, int interval) :
-	Interpolator(observations, values, interval){}
+LaGrangeInterpolator::LaGrangeInterpolator(const std::vector<int> &observations, const std::vector<HdrImage> &values) :
+	Interpolator(observations, values){}
 
 HdrImage LaGrangeInterpolator::calculateInterpolationOn(float observation) {
 	int width = values_[0].getWidth();

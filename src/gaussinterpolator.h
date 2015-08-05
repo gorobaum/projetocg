@@ -12,7 +12,7 @@ using Interpolator::Interpolator;
 public:
 	HdrImage calculateInterpolationOn(float observation);
 	HdrImage takeStep(float observation);
-	GaussianInterpolator(std::vector<int> observations, std::vector<HdrImage> values, int interval);
+	GaussianInterpolator(std::vector<int> observations, std::vector<HdrImage> values);
 
 private:
 	double p;

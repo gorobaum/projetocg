@@ -1,0 +1,8 @@
+3 70
+lagrange
+linear
+gaussforward
+imteste1.hdr 60
+imteste2.hdr 90
+imteste3.hdr 120
+imteste4.hdr 150

@@ -25,6 +25,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\hdrimage.cpp" />
+    <ClCompile Include="src\input.cpp" />
     <ClCompile Include="src\lagrangeinterpolator.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -33,6 +34,8 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\minmax.cpp" />
+    <ClCompile Include="src\pixelobserver.cpp" />
+    <ClCompile Include="src\quadraticinterpolator.cpp" />
     <ClCompile Include="src\stirlinginterpolator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +48,7 @@
     <ClInclude Include="src\hdrimage.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="src\input.h" />
     <ClInclude Include="src\interpolator.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
@@ -55,6 +59,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="src\minmax.h" />
+    <ClInclude Include="src\pixelobserver.h" />
+    <ClInclude Include="src\quadraticinterpolator.h" />
     <ClInclude Include="src\stirlinginterpolator.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -14,6 +14,8 @@
 #include "hdrimage.h"
 #include "pixelobserver.h"
 
+#include "input.h"
+
 void internalImages1()
 {
 	
@@ -70,13 +72,13 @@ void internalImages1()
 	//observations.push_back(270);
 	observations.push_back(300);
 
-	LinearInterpolator li(observations, imagesToInterpolate, 30);
+	LinearInterpolator li(observations, imagesToInterpolate);
 	HdrImage finalLi = li.calculateInterpolationOn(270);
 	finalLi.saveImageAsHdr("correto/linear_int1.hdr");
 	finalLi.diffAbs(base).saveImageAsHdr("correto/linear_dif_int1.hdr");
 	std::cout << "Linar: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalLi.calcDist(base) << std::endl;
 
-	LaGrangeInterpolator la(observations, imagesToInterpolate, 30);
+	LaGrangeInterpolator la(observations, imagesToInterpolate);
 	HdrImage finalLa = la.calculateInterpolationOn(270);
 	finalLa.saveImageAsHdr("correto/lagrange_int1.hdr");
 	finalLa.diffAbs(base).saveImageAsHdr("correto/lagrange_dif_int1.hdr");
@@ -112,19 +114,19 @@ void internalImages1()
 	observations.push_back(300);
 
 	
-	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
+	GaussianForwardInterpolator gfi(observations, imagesToInterpolate);
 	HdrImage finalGfi = gfi.calculateInterpolationOn(270);
 	finalGfi.saveImageAsHdr("correto/forward_int1.hdr");
 	finalGfi.diffAbs(base).saveImageAsHdr("correto/forward_dif_int1.hdr");
 	std::cout << "Forward: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalGfi.calcDist(base) << std::endl;
 
-	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
+	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(270);
 	finalGbi.saveImageAsHdr("correto/backward_int1.hdr");
 	finalGbi.diffAbs(base).saveImageAsHdr("correto/backward_dif_int1.hdr");
 	std::cout << "Backward: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalGbi.calcDist(base) << std::endl;
 
-	StirlingInterpolator si(observations, imagesToInterpolate, 60);
+	StirlingInterpolator si(observations, imagesToInterpolate);
 	HdrImage finalSi = si.calculateInterpolationOn(270);
 	finalSi.saveImageAsHdr("correto/stirling_int1.hdr");
 	finalSi.diffAbs(base).saveImageAsHdr("correto/stirling_dif_int1.hdr");
@@ -188,13 +190,13 @@ void internalImages2()
 	observations.push_back(270);
 	observations.push_back(300);
 
-	LinearInterpolator li(observations, imagesToInterpolate, 30);
+	LinearInterpolator li(observations, imagesToInterpolate);
 	HdrImage finalLi = li.calculateInterpolationOn(240);
 	finalLi.saveImageAsHdr("correto/linear_int2.hdr");
 	finalLi.diffAbs(base).saveImageAsHdr("correto/linear_dif_int2.hdr");
 	std::cout << "Linar: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalLi.calcDist(base) << std::endl;
 
-	LaGrangeInterpolator la(observations, imagesToInterpolate, 30);
+	LaGrangeInterpolator la(observations, imagesToInterpolate);
 	HdrImage finalLa = la.calculateInterpolationOn(240);
 	finalLa.saveImageAsHdr("correto/lagrange_int2.hdr");
 	finalLa.diffAbs(base).saveImageAsHdr("correto/lagrange_dif_int2.hdr");
@@ -230,19 +232,19 @@ void internalImages2()
 	//observations.push_back(300);
 
 	
-	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
+	GaussianForwardInterpolator gfi(observations, imagesToInterpolate);
 	HdrImage finalGfi = gfi.calculateInterpolationOn(240);
 	finalGfi.saveImageAsHdr("correto/forward_int2.hdr");
 	finalGfi.diffAbs(base).saveImageAsHdr("correto/forward_dif_int2.hdr");
 	std::cout << "Forward: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalGfi.calcDist(base) << std::endl;
 
-	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
+	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(240);
 	finalGbi.saveImageAsHdr("correto/backward_int2.hdr");
 	finalGbi.diffAbs(base).saveImageAsHdr("correto/backward_dif_int2.hdr");
 	std::cout << "Backward: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalGbi.calcDist(base) << std::endl;
 
-	StirlingInterpolator si(observations, imagesToInterpolate, 60);
+	StirlingInterpolator si(observations, imagesToInterpolate);
 	HdrImage finalSi = si.calculateInterpolationOn(240);
 	finalSi.saveImageAsHdr("correto/stirling_int2.hdr");
 	finalSi.diffAbs(base).saveImageAsHdr("correto/stirling_dif_int2.hdr");
@@ -309,13 +311,13 @@ void externalImages1()
 	observations.push_back(300);
 	observations.push_back(330);
 
-	LinearInterpolator li(observations, imagesToInterpolate, 30);
+	LinearInterpolator li(observations, imagesToInterpolate);
 	HdrImage finalLi = li.calculateInterpolationOn(210);
 	finalLi.saveImageAsHdr("correto/linear_ext1.hdr");
 	finalLi.diffAbs(base).saveImageAsHdr("correto/linear_dif_ext1.hdr");
 	std::cout << "Linar: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalLi.calcDist(base) << std::endl;
 
-	LaGrangeInterpolator la(observations, imagesToInterpolate, 30);
+	LaGrangeInterpolator la(observations, imagesToInterpolate);
 	HdrImage finalLa = la.calculateInterpolationOn(210);
 	finalLa.saveImageAsHdr("correto/lagrange_ext1.hdr");
 	finalLa.diffAbs(base).saveImageAsHdr("correto/lagrange_dif_ext1.hdr");
@@ -353,19 +355,19 @@ void externalImages1()
 	//observations.push_back(330);
 
 	
-	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
+	GaussianForwardInterpolator gfi(observations, imagesToInterpolate);
 	HdrImage finalGfi = gfi.calculateInterpolationOn(210);
 	finalGfi.saveImageAsHdr("correto/forward_ext1.hdr");
 	finalGfi.diffAbs(base).saveImageAsHdr("correto/forward_dif_ext1.hdr");
 	std::cout << "Forward: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalGfi.calcDist(base) << std::endl;
 
-	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
+	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(210);
 	finalGbi.saveImageAsHdr("correto/backward_ext1.hdr");
 	finalGbi.diffAbs(base).saveImageAsHdr("correto/backward_dif_ext1.hdr");
 	std::cout << "Backward: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalGbi.calcDist(base) << std::endl;
 
-	StirlingInterpolator si(observations, imagesToInterpolate, 60);
+	StirlingInterpolator si(observations, imagesToInterpolate);
 	HdrImage finalSi = si.calculateInterpolationOn(210);
 	finalSi.saveImageAsHdr("correto/stirling_ext1.hdr");
 	finalSi.diffAbs(base).saveImageAsHdr("correto/stirling_dif_ext1.hdr");
@@ -432,13 +434,13 @@ void externalImages2()
 	observations.push_back(300);
 	observations.push_back(330);
 
-	LinearInterpolator li(observations, imagesToInterpolate, 30);
+	LinearInterpolator li(observations, imagesToInterpolate);
 	HdrImage finalLi = li.calculateInterpolationOn(180);
 	finalLi.saveImageAsHdr("correto/linear_ext2.hdr");
 	finalLi.diffAbs(base).saveImageAsHdr("correto/linear_dif_ext2.hdr");
 	std::cout << "Linar: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalLi.calcDist(base) << std::endl;
 
-	LaGrangeInterpolator la(observations, imagesToInterpolate, 30);
+	LaGrangeInterpolator la(observations, imagesToInterpolate);
 	HdrImage finalLa = la.calculateInterpolationOn(180);
 	finalLa.saveImageAsHdr("correto/lagrange_ext2.hdr");
 	finalLa.diffAbs(base).saveImageAsHdr("correto/lagrange_dif_ext2.hdr");
@@ -476,19 +478,19 @@ void externalImages2()
 	observations.push_back(330);
 
 	
-	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
+	GaussianForwardInterpolator gfi(observations, imagesToInterpolate);
 	HdrImage finalGfi = gfi.calculateInterpolationOn(180);
 	finalGfi.saveImageAsHdr("correto/forward_ext2.hdr");
 	finalGfi.diffAbs(base).saveImageAsHdr("correto/forward_dif_ext2.hdr");
 	std::cout << "Forward: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalGfi.calcDist(base) << std::endl;
 
-	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
+	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(180);
 	finalGbi.saveImageAsHdr("correto/backward_ext2.hdr");
 	finalGbi.diffAbs(base).saveImageAsHdr("correto/backward_dif_ext2.hdr");
 	std::cout << "Backward: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalGbi.calcDist(base) << std::endl;
 
-	StirlingInterpolator si(observations, imagesToInterpolate, 60);
+	StirlingInterpolator si(observations, imagesToInterpolate);
 	HdrImage finalSi = si.calculateInterpolationOn(180);
 	finalSi.saveImageAsHdr("correto/stirling_ext2.hdr");
 	finalSi.diffAbs(base).saveImageAsHdr("correto/stirling_dif_ext2.hdr");
@@ -555,13 +557,13 @@ void externalImages3()
 	//observations.push_back(300);
 	observations.push_back(330);
 
-	LinearInterpolator li(observations, imagesToInterpolate, 30);
+	LinearInterpolator li(observations, imagesToInterpolate);
 	HdrImage finalLi = li.calculateInterpolationOn(300);
 	finalLi.saveImageAsHdr("correto/linear_ext3.hdr");
 	finalLi.diffAbs(base).saveImageAsHdr("correto/linear_dif_ext3.hdr");
 	std::cout << "Linar: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalLi.calcDist(base) << std::endl;
 
-	LaGrangeInterpolator la(observations, imagesToInterpolate, 30);
+	LaGrangeInterpolator la(observations, imagesToInterpolate);
 	HdrImage finalLa = la.calculateInterpolationOn(300);
 	finalLa.saveImageAsHdr("correto/lagrange_ext3.hdr");
 	finalLa.diffAbs(base).saveImageAsHdr("correto/lagrange_dif_ext3.hdr");
@@ -599,19 +601,19 @@ void externalImages3()
 	observations.push_back(330);
 
 	
-	GaussianForwardInterpolator gfi(observations, imagesToInterpolate, 60);
+	GaussianForwardInterpolator gfi(observations, imagesToInterpolate);
 	HdrImage finalGfi = gfi.calculateInterpolationOn(300);
 	finalGfi.saveImageAsHdr("correto/forward_ext3.hdr");
 	finalGfi.diffAbs(base).saveImageAsHdr("correto/forward_dif_ext3.hdr");
 	std::cout << "Forward: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalGfi.calcDist(base) << std::endl;
 
-	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate, 60);
+	GaussianBackwardInterpolator gbi(observations, imagesToInterpolate);
 	HdrImage finalGbi = gbi.calculateInterpolationOn(300);
 	finalGbi.saveImageAsHdr("correto/backward_ext3.hdr");
 	finalGbi.diffAbs(base).saveImageAsHdr("correto/backward_dif_ext3.hdr");
 	std::cout << "Backward: " << std::fixed << std::setprecision( 1 ) << std::setfill( '0' ) << finalGbi.calcDist(base) << std::endl;
 
-	StirlingInterpolator si(observations, imagesToInterpolate, 60);
+	StirlingInterpolator si(observations, imagesToInterpolate);
 	HdrImage finalSi = si.calculateInterpolationOn(300);
 	finalSi.saveImageAsHdr("correto/stirling_ext3.hdr");
 	finalSi.diffAbs(base).saveImageAsHdr("correto/stirling_dif_ext3.hdr");
@@ -619,14 +621,72 @@ void externalImages3()
 
 }
 
+
+void redMax(float &rmax, int &x, int &y, HdrImage img)
+{
+	rmax = 0;
+	for(int i = 0; i < img.getWidth(); i++)
+	{
+		for(int j = 0; j < img.getWidth(); j++)
+		{
+			if( img.getPixelAt(i,j).red > rmax)
+			{
+				rmax = img.getPixelAt(i,j).red;
+				x = i;
+				y = j;
+			}
+		}
+	}
+}
+
+
 int main(int argc, char** argv) 
 {
 	DLL_API void DLL_CALLCONV FreeImage_Initialise(BOOL load_local_plugins_only FI_DEFAULT(FALSE));
+	/*
+	std::cout << "int1\n";
 	internalImages1();
+	std::cout << "int2\n";
 	internalImages2();
+	std::cout << "ext1\n";
 	externalImages1();
+	std::cout << "ext2\n";
 	externalImages2();
-	externalImages3();
-	system("PAUSE");
+	std::cout << "ext3\n";
+	externalImages3();*/
+
+	/*
+	HdrImage im1(1,1);
+	FIRGBF color, res;
+	color.blue = 10;
+	color.red = 0;
+	color.green = 0;
+	im1.setPixelAt(0,0,color);
+	im1.saveImageAsHdr("im1teste.hdr");
+
+	HdrImage im2(1,1);
+	color.blue = 2;
+	im2.setPixelAt(0,0,color);
+	im2.saveImageAsHdr("im2teste.hdr");
+
+	HdrImage im3(1,1);
+	color.blue = 8;
+	im3.setPixelAt(0,0,color);
+	im3.saveImageAsHdr("im3teste.hdr");
+
+	HdrImage im4(1,1);
+	color.blue = 0;
+	im4.setPixelAt(0,0,color);
+	im4.saveImageAsHdr("im4teste.hdr");
+
+	HdrImage teste("im1teste.hdr");
+	res = teste.getPixelAt(0,0);
+	*/
+
+	for(int i = 1; i < argc; i++)
+	{
+		fileRead(argv[i]);
+	}
+
 	return 0;
 };
