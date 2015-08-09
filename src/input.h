@@ -7,6 +7,7 @@
 #include "gaussianbackwardinterpolator.h"
 #include "stirlinginterpolator.h"
 #include "quadraticinterpolator.h"
+#include "naturalcubicsplineinterpolator.h"
 
 
 void fileRead(char *fname);

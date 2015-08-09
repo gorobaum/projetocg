@@ -34,6 +34,7 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\minmax.cpp" />
+    <ClCompile Include="src\naturalcubicsplineinterpolator.cpp" />
     <ClCompile Include="src\pixelobserver.cpp" />
     <ClCompile Include="src\quadraticinterpolator.cpp" />
     <ClCompile Include="src\stirlinginterpolator.cpp" />
@@ -59,6 +60,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="src\minmax.h" />
+    <ClInclude Include="src\naturalcubicsplineinterpolator.h" />
     <ClInclude Include="src\pixelobserver.h" />
     <ClInclude Include="src\quadraticinterpolator.h" />
     <ClInclude Include="src\stirlinginterpolator.h" />
@@ -138,6 +140,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

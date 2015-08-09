@@ -1,8 +1,7 @@
-interpolate results
-3 70
-lagrange
+interpolate_continuos results
+2 1
+ncspline
 linear
-gaussforward
 im1teste.hdr 60
 im2teste.hdr 90
 im3teste.hdr 120

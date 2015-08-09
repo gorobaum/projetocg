@@ -643,50 +643,12 @@ void redMax(float &rmax, int &x, int &y, HdrImage img)
 int main(int argc, char** argv) 
 {
 	DLL_API void DLL_CALLCONV FreeImage_Initialise(BOOL load_local_plugins_only FI_DEFAULT(FALSE));
-	/*
-	std::cout << "int1\n";
-	internalImages1();
-	std::cout << "int2\n";
-	internalImages2();
-	std::cout << "ext1\n";
-	externalImages1();
-	std::cout << "ext2\n";
-	externalImages2();
-	std::cout << "ext3\n";
-	externalImages3();*/
-
-	/*
-	HdrImage im1(1,1);
-	FIRGBF color, res;
-	color.blue = 10;
-	color.red = 0;
-	color.green = 0;
-	im1.setPixelAt(0,0,color);
-	im1.saveImageAsHdr("im1teste.hdr");
-
-	HdrImage im2(1,1);
-	color.blue = 2;
-	im2.setPixelAt(0,0,color);
-	im2.saveImageAsHdr("im2teste.hdr");
-
-	HdrImage im3(1,1);
-	color.blue = 8;
-	im3.setPixelAt(0,0,color);
-	im3.saveImageAsHdr("im3teste.hdr");
-
-	HdrImage im4(1,1);
-	color.blue = 0;
-	im4.setPixelAt(0,0,color);
-	im4.saveImageAsHdr("im4teste.hdr");
-
-	HdrImage teste("im1teste.hdr");
-	res = teste.getPixelAt(0,0);
-	*/
 
 	for(int i = 1; i < argc; i++)
 	{
 		fileRead(argv[i]);
 	}
 
+	system("PAUSE");
 	return 0;
 };

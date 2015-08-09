@@ -1,7 +1,26 @@
-<interpolate/compare> <nome_da_serie_de_comparacoes/interpolacoes(necessario criar uma pasta com esse nome)>
+<interpolate/interpolate_continuos/compare> <nome_da_serie_de_comparacoes/interpolacoes(necessario criar uma pasta com esse nome)>
 <EM CASO DE INTERPOLACAO>{ 
 <num de interpolacoes distintas utilizadas> <instante da interpolacao>
-<interp1>
+<interp1> -- {lagrange,linear,ncspline,quadratic,gaussforward,gaussbackward,stirling}
+<interp2>
+...
+<interpN>
+<imagem1> <tempo1>
+<imagem2> <tempo2>
+...
+<imagemM> <tempoM>
+}
+<EM CASO DE COMPARACAO>{
+<im1a> <im1b> <Nome Comp>
+<im2a> <im2b> <Nome Comp>
+...
+<imNa> <imNb> <Nome Comp>
+}
+
+(necessario criar uma pasta com esse nome)>
+<EM CASO DE INTERPOLATE_CONTIUNOUS>{ 
+<num de interpolacoes distintas utilizadas> <diferencas de tempo>
+<interp1> -- {lagrange,linear,ncspline,quadratic,gaussforward,gaussbackward,stirling}
 <interp2>
 ...
 <interpN>

@@ -51,6 +51,9 @@
     <ClCompile Include="src\pixelobserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\naturalcubicsplineinterpolator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\FreeImage.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\pixelobserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\naturalcubicsplineinterpolator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

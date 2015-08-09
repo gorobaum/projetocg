@@ -1,16 +1,21 @@
 #include <stdlib.h>
+#include <omp.h>
 
 #include "hdrimage.h"
 #include "minmax.h"
 
-HdrImage HdrImage::operator-(const HdrImage& param) {
-	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
-	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
 
+
+HdrImage HdrImage::operator-(const HdrImage& param) {
+	int height = static_cast<int>(FreeImage_GetHeight(imageBitmap_.get()));
+	int width = FreeImage_GetWidth(imageBitmap_.get());
+	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
+	#pragma omp parallel for
+	for (int y = 0; y < height; y++) {
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *paramBits = (FIRGBF *)FreeImage_GetScanLine(param.imageBitmap_.get(), y);
 		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
-		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_.get()); x++) {
+		for (int x = 0; x < width; x++) {
 			diffImageBits[x].red = thisBits[x].red - paramBits[x].red;
 			diffImageBits[x].blue = thisBits[x].blue - paramBits[x].blue;
 			diffImageBits[x].green = thisBits[x].green - paramBits[x].green;
@@ -22,12 +27,15 @@ HdrImage HdrImage::operator-(const HdrImage& param) {
 }
 
 HdrImage HdrImage::operator+(const HdrImage& param) {
+	int height = FreeImage_GetHeight(imageBitmap_.get());
+	int width = FreeImage_GetWidth(imageBitmap_.get());
 	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
-	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
+	#pragma omp parallel for
+	for (int y = 0; y < height; y++) {
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *paramBits = (FIRGBF *)FreeImage_GetScanLine(param.imageBitmap_.get(), y);
 		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
-		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_.get()); x++) {
+		for (int x = 0; x < width; x++) {
 			diffImageBits[x].red = thisBits[x].red + paramBits[x].red;
 			diffImageBits[x].blue = thisBits[x].blue + paramBits[x].blue;
 			diffImageBits[x].green = thisBits[x].green + paramBits[x].green;
@@ -39,11 +47,14 @@ HdrImage HdrImage::operator+(const HdrImage& param) {
 }
 
 HdrImage HdrImage::operator*(const double& param) {
+	int height = FreeImage_GetHeight(imageBitmap_.get());
+	int width = FreeImage_GetWidth(imageBitmap_.get());
 	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
-	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
+	#pragma omp parallel for
+	for (int y = 0; y < height; y++) {
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
-		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_.get()); x++) {
+		for (int x = 0; x < width; x++) {
 			diffImageBits[x].red = thisBits[x].red * param;
 			diffImageBits[x].blue = thisBits[x].blue * param;
 			diffImageBits[x].green = thisBits[x].green * param;
@@ -55,11 +66,14 @@ HdrImage HdrImage::operator*(const double& param) {
 }
 
 HdrImage HdrImage::operator/(const double& param) {
+	int height = FreeImage_GetHeight(imageBitmap_.get());
+	int width = FreeImage_GetWidth(imageBitmap_.get());
 	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
-	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
+	#pragma omp parallel for
+	for (int y = 0; y < height; y++) {
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
-		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_.get()); x++) {
+		for (int x = 0; x < width; x++) {
 			diffImageBits[x].red = thisBits[x].red / param;
 			diffImageBits[x].blue = thisBits[x].blue / param;
 			diffImageBits[x].green = thisBits[x].green / param;
@@ -82,12 +96,15 @@ float HdrImage::calcDist(const HdrImage& param) {
 }
 
 HdrImage HdrImage::diffAbs(const HdrImage& param) {
+	int height = FreeImage_GetHeight(imageBitmap_.get());
+	int width = FreeImage_GetWidth(imageBitmap_.get());
 	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
-	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
+	#pragma omp parallel for
+	for (int y = 0; y < height; y++) {
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *paramBits = (FIRGBF *)FreeImage_GetScanLine(param.imageBitmap_.get(), y);
 		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
-		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_.get()); x++) {
+		for (int x = 0; x < width; x++) {
 			diffImageBits[x].red = abs(thisBits[x].red - paramBits[x].red);
 			diffImageBits[x].blue = abs(thisBits[x].blue - paramBits[x].blue);
 			diffImageBits[x].green = abs(thisBits[x].green - paramBits[x].green);
@@ -110,11 +127,14 @@ float HdrImage::hdrabs() {
 
 
 HdrImage HdrImage::clamp() {
+	int height = FreeImage_GetHeight(imageBitmap_.get());
+	int width = FreeImage_GetWidth(imageBitmap_.get());
 	FIBITMAP * diffImage = FreeImage_AllocateT(FIT_RGBF, getWidth(), getHeight(), 96);
-	for (unsigned int y = 0; y < FreeImage_GetHeight(imageBitmap_.get()); y++) {
+	#pragma omp parallel for
+	for (int y = 0; y < height; y++) {
 		FIRGBF *thisBits = (FIRGBF *)FreeImage_GetScanLine(imageBitmap_.get(), y);
 		FIRGBF *diffImageBits = (FIRGBF *)FreeImage_GetScanLine(diffImage, y);
-		for (unsigned int x = 0; x < FreeImage_GetWidth(imageBitmap_.get()); x++) {
+		for (int x = 0; x < width; x++) {
 			diffImageBits[x].red = max(thisBits[x].red, 0.0);
 			diffImageBits[x].blue = max(thisBits[x].blue, 0.0);
 			diffImageBits[x].green = max(thisBits[x].green, 0.0);
