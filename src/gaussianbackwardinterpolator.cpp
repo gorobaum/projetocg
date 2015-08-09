@@ -18,6 +18,16 @@ HdrImage GaussianBackwardInterpolator::calculateInterpolationOn(float observatio
 		std::cout << "Observation out of bounds.\n";
 		return interpolation;
 	}
+	if(observation == observations_[0])
+	{
+		interpolation = values_[0];
+		return interpolation;
+	}
+	if(observation == observations_[numberOfObservations-1])
+	{
+		interpolation = values_[numberOfObservations-1];
+		return interpolation;
+	}
 	int x0 = 0;
 	int xpos = numberOfObservations;
 	int xneg = -1;

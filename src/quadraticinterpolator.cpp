@@ -34,6 +34,7 @@ HdrImage QuadraticInterpolator::calculateInterpolationOn(float observation) {
 
 		interpolation = la.calculateInterpolationOn(observation);
 	}
+
 	interpolation = interpolation.clamp();
 	return interpolation;
 }

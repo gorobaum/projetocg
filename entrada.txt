@@ -1,7 +1,10 @@
 interpolate_continuos results
-2 1
+5 1
 ncspline
 linear
+quadratic
+lagrange
+stirling
 im1teste.hdr 60
 im2teste.hdr 90
 im3teste.hdr 120
