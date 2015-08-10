@@ -7,7 +7,7 @@
 using namespace std;
 
 
-void interpolationsTypesVerifier(char *type, bool &lagrange, bool &linear, bool &quadratic, bool &gaussforward, bool &gaussbackward, bool &stirling, bool &ncspline)
+void interpolationsTypesVerifier(char *type, bool &lagrange, bool &linear, bool &quadratic, bool &gaussforward, bool &gaussbackward, bool &stirling, bool &ncspline, bool &bezier, bool &bezierquad, bool &beziercub, bool &bsplinecub)
 {
 	if(strcmp(type, "lagrange")==0) lagrange = true;
 	else if(strcmp(type, "linear")==0) linear = true;
@@ -16,10 +16,14 @@ void interpolationsTypesVerifier(char *type, bool &lagrange, bool &linear, bool 
 	else if(strcmp(type, "gaussbackward")==0) gaussbackward = true;
 	else if(strcmp(type, "stirling")==0) stirling = true;
 	else if(strcmp(type, "ncspline")==0) ncspline = true;
+	else if(strcmp(type, "bezier")==0) bezier = true;
+	else if(strcmp(type, "bezierquad")==0) bezierquad = true;
+	else if(strcmp(type, "beziercub")==0) beziercub = true;
+	else if(strcmp(type, "bsplinecub")==0) bsplinecub = true;
 	else cout << "Undefined interpolation.\n";
 }
 
-void interpolate(char *seriesName, vector<HdrImage> images, vector<int> observations, int observationTime, bool &lagrange, bool &linear, bool &quadratic, bool &gaussforward, bool &gaussbackward, bool &stirling, bool &ncspline)
+void interpolate(char *seriesName, vector<HdrImage> images, vector<int> observations, int observationTime, bool &lagrange, bool &linear, bool &quadratic, bool &gaussforward, bool &gaussbackward, bool &stirling, bool &ncspline, bool &bezier, bool &bezierquad, bool &beziercub, bool &bsplinecub)
 {
 	string sfname;
 	if(lagrange) 
@@ -71,6 +75,34 @@ void interpolate(char *seriesName, vector<HdrImage> images, vector<int> observat
 		sfname.append(seriesName).append("\\ncspline").append(to_string(observationTime)).append(".hdr");
 		ncs.calculateInterpolationOn(observationTime).saveImageAsHdr(sfname);;
 	}
+	if(bezier)
+	{
+		sfname.erase();
+		BezierApproximator bez(observations, images);
+		sfname.append(seriesName).append("\\bezier").append(to_string(observationTime)).append(".hdr");
+		bez.calculateContinuousInterpolationOn(observationTime).saveImageAsHdr(sfname);;
+	}
+	if(bezierquad)
+	{
+		sfname.erase();
+		BezierQuadraticApproximator bezq(observations, images);
+		sfname.append(seriesName).append("\\bezierquad").append(to_string(observationTime)).append(".hdr");
+		bezq.calculateInterpolationOn(observationTime).saveImageAsHdr(sfname);;
+	}
+	if(beziercub)
+	{
+		sfname.erase();
+		BezierCubicApproximator bezc(observations, images);
+		sfname.append(seriesName).append("\\beziercub").append(to_string(observationTime)).append(".hdr");
+		bezc.calculateInterpolationOn(observationTime).saveImageAsHdr(sfname);;
+	}
+	if(bsplinecub)
+	{
+		sfname.erase();
+		//NaturalCubicSplineInterpolator bsc(observations, images);
+		sfname.append(seriesName).append("\\bsplinecub").append(to_string(observationTime)).append(".hdr");
+		//bsc.calculateInterpolationOn(observationTime).saveImageAsHdr(sfname);;
+	}
 }
 
 void compare(char *seriesName, char *imageFile, char *imageFile2, char *description)
@@ -96,7 +128,7 @@ void fileRead(char *fname)
 	char imageFile2[40];
 	char description[40];
 	char interpolationType[40];
-	bool lagrange,linear,quadratic,gaussforward,gaussbackward,stirling,ncspline;
+	bool lagrange,linear,quadratic,gaussforward,gaussbackward,stirling,ncspline,bezier,bezierquad,beziercub,bsplinecub;
 	int imageTime;
 	vector<HdrImage> images;
 	vector<int> observations;
@@ -104,7 +136,7 @@ void fileRead(char *fname)
 	string line;
 	fstream file;
 	int i = 0;
-	lagrange=linear=quadratic=gaussforward=gaussbackward=stirling=ncspline=false;
+	lagrange=linear=quadratic=gaussforward=gaussbackward=stirling=ncspline=bezier=bezierquad=beziercub=bsplinecub=false;
 
 	file.open(fname, fstream::in);
 	if (!file.is_open())
@@ -125,7 +157,7 @@ void fileRead(char *fname)
 			if(i < interpolationTypes)
 			{
 				sscanf(line.c_str(), "%s", interpolationType);
-				interpolationsTypesVerifier(interpolationType, lagrange, linear, quadratic, gaussforward, gaussbackward, stirling, ncspline);
+				interpolationsTypesVerifier(interpolationType, lagrange, linear, quadratic, gaussforward, gaussbackward, stirling, ncspline, bezier, bezierquad, beziercub, bsplinecub);
 				i++;
 			}
 			else
@@ -137,14 +169,14 @@ void fileRead(char *fname)
 		}
 		if(strcmp(inputType, "interpolate") == 0)
 		{
-			interpolate(seriesName, images, observations, observationTime, lagrange, linear, quadratic, gaussforward, gaussbackward, stirling,ncspline);
+			interpolate(seriesName, images, observations, observationTime, lagrange, linear, quadratic, gaussforward, gaussbackward, stirling,ncspline, bezier, bezierquad, beziercub, bsplinecub);
 		}
 		else
 		{
 			int timeDiff = observationTime;
 			for(observationTime = observations[0]; observationTime <= observations[observations.size()-1]; observationTime = observationTime+timeDiff)
 			{
-				interpolate(seriesName, images, observations, observationTime, lagrange, linear, quadratic, gaussforward, gaussbackward, stirling,ncspline);
+				interpolate(seriesName, images, observations, observationTime, lagrange, linear, quadratic, gaussforward, gaussbackward, stirling,ncspline, bezier, bezierquad, beziercub, bsplinecub);
 			}
 		}
 	}

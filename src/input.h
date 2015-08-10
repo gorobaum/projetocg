@@ -8,6 +8,9 @@
 #include "stirlinginterpolator.h"
 #include "quadraticinterpolator.h"
 #include "naturalcubicsplineinterpolator.h"
+#include "bezier.h"
+#include "beziercubapproximator.h"
+#include "bezierquadapproximator.h"
 
 
 void fileRead(char *fname);

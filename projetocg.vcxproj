@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\bezier.cpp" />
+    <ClCompile Include="src\beziercubapproximator.cpp" />
+    <ClCompile Include="src\bezierquadapproximator.cpp" />
     <ClCompile Include="src\gaussianbackwardinterpolator.cpp" />
     <ClCompile Include="src\gaussianforwardinterpolator.cpp" />
     <ClCompile Include="src\gaussinterpolator.cpp">
@@ -40,6 +43,9 @@
     <ClCompile Include="src\stirlinginterpolator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\bezier.h" />
+    <ClInclude Include="src\beziercubapproximator.h" />
+    <ClInclude Include="src\bezierquadapproximator.h" />
     <ClInclude Include="src\FreeImage.h" />
     <ClInclude Include="src\gaussianbackwardinterpolator.h" />
     <ClInclude Include="src\gaussianforwardinterpolator.h" />

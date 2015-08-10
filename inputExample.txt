@@ -1,7 +1,7 @@
 <interpolate/interpolate_continuos/compare> <nome_da_serie_de_comparacoes/interpolacoes(necessario criar uma pasta com esse nome)>
 <EM CASO DE INTERPOLACAO>{ 
 <num de interpolacoes distintas utilizadas> <instante da interpolacao>
-<interp1> -- {lagrange,linear,ncspline,quadratic,gaussforward,gaussbackward,stirling}
+<interp1> -- {lagrange,linear,ncspline,quadratic,gaussforward,gaussbackward,stirling,bezier,bezierquad,beziercub,bsplinecub}
 <interp2>
 ...
 <interpN>
