@@ -128,8 +128,8 @@ double cubicRootBetween0And1(double a,double b,double c, double d)
 		X3 = (-1.0/2.0)*(S+T)-b/(3.0*a)-(S-T)*complex<double>(0,sqrt(3.0)/2);
 	}
 
-	if(X1.real() > 0.0 && X1.real() < 1.0 && fabs(X1.imag()) < Epsilon) x = X1.real();
-	else if(X2.real() > 0.0 && X2.real() < 1.0 && fabs(X2.imag()) < Epsilon) x = X2.real();
+	if(X1.real() >= 0.0 && X1.real() <= 1.0 && fabs(X1.imag()) < Epsilon) x = X1.real();
+	else if(X2.real() >= 0.0 && X2.real() <= 1.0 && fabs(X2.imag()) < Epsilon) x = X2.real();
 	else x = X3.real();
 
 	return x;

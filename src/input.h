@@ -11,6 +11,7 @@
 #include "bezier.h"
 #include "beziercubapproximator.h"
 #include "bezierquadapproximator.h"
+#include "bsplineapproximator.h"
 
 
 void fileRead(char *fname);

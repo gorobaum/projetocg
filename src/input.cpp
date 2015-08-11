@@ -99,9 +99,9 @@ void interpolate(char *seriesName, vector<HdrImage> images, vector<int> observat
 	if(bsplinecub)
 	{
 		sfname.erase();
-		//NaturalCubicSplineInterpolator bsc(observations, images);
+		BSplineApproximator bsc(observations, images);
 		sfname.append(seriesName).append("\\bsplinecub").append(to_string(observationTime)).append(".hdr");
-		//bsc.calculateInterpolationOn(observationTime).saveImageAsHdr(sfname);;
+		bsc.calculateInterpolationOn(observationTime).saveImageAsHdr(sfname);;
 	}
 }
 

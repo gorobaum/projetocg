@@ -22,7 +22,7 @@ HdrImage BezierCubicApproximator::calculateInterpolationOn(float observation) {
 	
 	double t = 0;
 
-	if ((observation >= observations_.front()) && (observation <= observations_.back()) && (observations_.size() >= 3)) {
+	if ((observation >= observations_.front()) && (observation <= observations_.back()) && (observations_.size() >= 4)) {
 		if (observations_[0] == observation) return values_[0];
 		if (observations_[observations_.size()-1] == observation) return values_[observations_.size()-1];
 		

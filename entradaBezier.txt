@@ -1,7 +1,7 @@
 interpolate_continuos resultsB
 1 1
-beziercub
+bsplinecub
 im1teste.hdr 60
-im2teste.hdr 110
+im2teste.hdr 90
 im3teste.hdr 120
-im4teste.hdr 140
+im4teste.hdr 150

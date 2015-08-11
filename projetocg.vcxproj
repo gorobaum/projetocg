@@ -22,6 +22,7 @@
     <ClCompile Include="src\bezier.cpp" />
     <ClCompile Include="src\beziercubapproximator.cpp" />
     <ClCompile Include="src\bezierquadapproximator.cpp" />
+    <ClCompile Include="src\bsplineapproximator.cpp" />
     <ClCompile Include="src\gaussianbackwardinterpolator.cpp" />
     <ClCompile Include="src\gaussianforwardinterpolator.cpp" />
     <ClCompile Include="src\gaussinterpolator.cpp">
@@ -47,6 +48,7 @@
     <ClInclude Include="src\bezier.h" />
     <ClInclude Include="src\beziercubapproximator.h" />
     <ClInclude Include="src\bezierquadapproximator.h" />
+    <ClInclude Include="src\bsplineapproximator.h" />
     <ClInclude Include="src\define.h" />
     <ClInclude Include="src\FreeImage.h" />
     <ClInclude Include="src\gaussianbackwardinterpolator.h" />
