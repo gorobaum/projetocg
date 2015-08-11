@@ -36,6 +36,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\math2.cpp" />
     <ClCompile Include="src\minmax.cpp" />
     <ClCompile Include="src\naturalcubicsplineinterpolator.cpp" />
     <ClCompile Include="src\pixelobserver.cpp" />
@@ -46,6 +47,7 @@
     <ClInclude Include="src\bezier.h" />
     <ClInclude Include="src\beziercubapproximator.h" />
     <ClInclude Include="src\bezierquadapproximator.h" />
+    <ClInclude Include="src\define.h" />
     <ClInclude Include="src\FreeImage.h" />
     <ClInclude Include="src\gaussianbackwardinterpolator.h" />
     <ClInclude Include="src\gaussianforwardinterpolator.h" />
@@ -65,6 +67,7 @@
     <ClInclude Include="src\linearinterpolator.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="src\math2.h" />
     <ClInclude Include="src\minmax.h" />
     <ClInclude Include="src\naturalcubicsplineinterpolator.h" />
     <ClInclude Include="src\pixelobserver.h" />

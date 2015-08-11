@@ -18,6 +18,5 @@ HdrImage LinearInterpolator::calculateInterpolationOn(float observation) {
 
 		interpolation = values_[count-1]+(values_[count] - values_[count-1])*denominator;
 	}
-	interpolation = interpolation.clamp();
 	return interpolation;
 }

@@ -34,9 +34,7 @@ HdrImage BezierApproximator::calculateInterpolationOn(float t) {
 		}
 	}
 	approximation = tempValues[count-2][0];
-	//std::cout << approximation.getPixelAt(0,0).blue << std::endl;
 
-	approximation = approximation.clamp();
 	return approximation;
 }
 
@@ -64,8 +62,6 @@ HdrImage BezierApproximator::calculateContinuousInterpolationOn(float t) {
 		}
 	}
 	approximation = tempValues[count-2][0];
-	std::cout << approximation.getPixelAt(0,0).blue << std::endl;
 
-	approximation = approximation.clamp();
 	return approximation;
 }
