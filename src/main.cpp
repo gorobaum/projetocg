@@ -640,6 +640,9 @@ void redMax(float &rmax, int &x, int &y, HdrImage img)
 }
 
 
+#include "math2.h"
+
+
 int main(int argc, char** argv) 
 {
 	DLL_API void DLL_CALLCONV FreeImage_Initialise(BOOL load_local_plugins_only FI_DEFAULT(FALSE));
@@ -649,6 +652,9 @@ int main(int argc, char** argv)
 		fileRead(argv[i]);
 	}
 
+
+	cubicRootBetween0And1(1,0,-3,2);
 	system("PAUSE");
+
 	return 0;
 };

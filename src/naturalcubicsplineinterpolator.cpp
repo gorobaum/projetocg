@@ -41,7 +41,7 @@ HdrImage NaturalCubicSplineInterpolator::calculateInterpolationOn(float observat
 	}
 	
 
-	SolveTriDiagonalSystem(width, height, m, h, dy2, p);
+	solveTriDiagonalSystem(width, height, m, h, dy2, p);
 
 	int count = 0;
 	if ((observation >= observations_.front()) && (observation <= observations_.back()) && (observations_.size() >= 4))

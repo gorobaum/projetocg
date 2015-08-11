@@ -10,10 +10,7 @@
 BezierCubicApproximator::BezierCubicApproximator(const std::vector<int> &observations, const std::vector<HdrImage> &values) :
 	Interpolator(observations, values){}
 
-double cubicRoot(double a,double b,double c, double d)
-{
-	return a;
-}
+
 
 HdrImage BezierCubicApproximator::calculateInterpolationOn(float observation) {
 	int count = 0;
@@ -51,7 +48,7 @@ HdrImage BezierCubicApproximator::calculateInterpolationOn(float observation) {
 					double d = bezierObservations[0]-observation;
 					if(fabs(a) > Epsilon)
 					{
-						t = cubicRoot(a,b,c,d);
+						t = cubicRootBetween0And1(a,b,c,d);
 					}
 					else t = (observation-bezierObservations[0])/(bezierObservations[3]-bezierObservations[0]);
 					BezierApproximator bez(bezierObservations, bezierValues);
