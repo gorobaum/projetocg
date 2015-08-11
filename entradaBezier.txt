@@ -1,6 +1,6 @@
 interpolate_continuos resultsB
 1 1
-bezierquad
+beziercub
 im1teste.hdr 60
 im2teste.hdr 110
 im3teste.hdr 120

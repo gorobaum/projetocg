@@ -81,9 +81,9 @@ double cbrt(double x) {
   double last_b_2 = 0;
   while (last_b_1 != b && last_b_2 != b) {
     last_b_1 = b;
-    b = (2*b + x / b / b) / 3;
+    b = (2 * b + x / b / b) / 3;
     last_b_2 = b;
-    b = (2*b + x / b / b) / 3;
+    b = (2 * b + x / b / b) / 3;
   }
   return b;
 }
@@ -122,7 +122,7 @@ double cubicRootBetween0And1(double a,double b,double c, double d)
 	else
 	{
 		S = cbrt(R.real()+sqrt(D).real());
-		T = cbrt(R.real()+sqrt(D).real());
+		T = cbrt(R.real()-sqrt(D).real());
 		X1 = S.real()+T.real()-b/(3.0*a);
 		X2 = (-1.0/2.0)*(S+T)-b/(3.0*a)+(S-T)*complex<double>(0,sqrt(3.0)/2);
 		X3 = (-1.0/2.0)*(S+T)-b/(3.0*a)-(S-T)*complex<double>(0,sqrt(3.0)/2);
